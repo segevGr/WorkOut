@@ -7,6 +7,7 @@ import OptionContainer from "../optionContainer/OptionContainer";
 const WorkOutOption = ({ workoutName, picture, fontFamily }) => {
   return (
     <OptionContainer
+      containerStyle={style.containerStyle}
       content={
         <>
           <Image

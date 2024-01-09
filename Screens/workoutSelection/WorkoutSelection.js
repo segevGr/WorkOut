@@ -22,27 +22,22 @@ const WorkoutSelection = () => {
 
   const WorkOutTypes = [
     {
-      key: 1,
       workoutName: "אימון A",
       picture: require("../../assets/pictures/workout.jpg"),
     },
     {
-      key: 2,
       workoutName: "אימון B",
       picture: require("../../assets/pictures/workout.jpg"),
     },
     {
-      key: 3,
       workoutName: "אימון Full Body",
       picture: require("../../assets/pictures/workout.jpg"),
     },
     {
-      key: 4,
       workoutName: "test3",
       picture: require("../../assets/pictures/workout.jpg"),
     },
     {
-      key: 5,
       workoutName: "test4",
       picture: require("../../assets/pictures/workout.jpg"),
     },
@@ -60,7 +55,7 @@ const WorkoutSelection = () => {
         data={WorkOutTypes}
         renderItem={({ item }) => (
           <WorkOutOption
-            key={item.key}
+            key={item.workoutName}
             workoutName={item.workoutName}
             picture={item.picture}
             fontFamily={"Manrope-Bold"}

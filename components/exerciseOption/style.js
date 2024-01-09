@@ -10,18 +10,17 @@ const style = StyleSheet.create({
     marginHorizontal: horizontalScale(28),
     marginVertical: verticalScale(28),
   },
-  workoutImage: {
-    width: "100%",
-    height: verticalScale(135),
-    borderRadius: horizontalScale(10),
-  },
   detailsContainer: {
-    paddingVertical: verticalScale(20),
+    flex: 1,
+    // paddingVertical: verticalScale(20),
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: "red",
   },
-  workoutDetails: {
-    fontSize: scaleFontSize(30),
+  setsContainer: {
+    height: "50%",
+    width: "100%",
+    backgroundColor: "red",
   },
 });
 

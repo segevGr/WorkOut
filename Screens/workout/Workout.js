@@ -1,14 +1,14 @@
 import { Text, SafeAreaView, FlatList } from "react-native";
 import useFonts from "../../assets/fonts/useFonts";
 import Header from "../../components/header/Header";
-import WorkOutOption from "../../components/workoutOption/WorkoutOption";
 import globalStyle from "../../assets/styles/globalStyle";
 import style from "./style";
+import ExerciseOption from "../../components/exerciseOption/ExerciseOption";
 
 const Workout = () => {
   const fontsLoaded = useFonts({
     "Montserrat-Bold": require("../../assets/fonts/Montserrat-Bold.ttf"),
-    "Manrope-Bold": require("../../assets/fonts/Manrope-Bold.ttf"),
+    "Manrope-Medium": require("../../assets/fonts/Manrope-Medium.ttf"),
   });
 
   if (!fontsLoaded) {
@@ -19,30 +19,25 @@ const Workout = () => {
     );
   }
 
-  const WorkOutTypes = [
+  const exerciseTypes = [
     {
-      key: 1,
-      workoutName: "אימון A",
+      exerciseName: "לחיצת חזה",
       picture: require("../../assets/pictures/workout.jpg"),
     },
     {
-      key: 2,
-      workoutName: "אימון B",
+      exerciseName: "אימון B",
       picture: require("../../assets/pictures/workout.jpg"),
     },
     {
-      key: 3,
-      workoutName: "אימון Full Body",
+      exerciseName: "אימון Full Body",
       picture: require("../../assets/pictures/workout.jpg"),
     },
     {
-      key: 4,
-      workoutName: "test3",
+      exerciseName: "test3",
       picture: require("../../assets/pictures/workout.jpg"),
     },
     {
-      key: 5,
-      workoutName: "test4",
+      exerciseName: "test4",
       picture: require("../../assets/pictures/workout.jpg"),
     },
   ];
@@ -56,13 +51,12 @@ const Workout = () => {
           </>
         }
         showsVerticalScrollIndicator={false}
-        data={WorkOutTypes}
+        data={exerciseTypes}
         renderItem={({ item }) => (
-          <WorkOutOption
-            key={item.key}
-            workoutName={item.workoutName}
-            picture={item.picture}
-            fontFamily={"Manrope-Bold"}
+          <ExerciseOption
+            key={item.exerciseName}
+            exerciseName={item.exerciseName}
+            fontFamily={"Manrope-Medium"}
           />
         )}
       ></FlatList>
