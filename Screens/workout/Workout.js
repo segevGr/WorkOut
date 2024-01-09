@@ -1,4 +1,3 @@
-import React from "react";
 import { Text, SafeAreaView, FlatList } from "react-native";
 import useFonts from "../../assets/fonts/useFonts";
 import Header from "../../components/header/Header";
@@ -6,7 +5,7 @@ import WorkOutOption from "../../components/workoutOption/WorkoutOption";
 import globalStyle from "../../assets/styles/globalStyle";
 import style from "./style";
 
-const WorkoutSelection = () => {
+const Workout = () => {
   const fontsLoaded = useFonts({
     "Montserrat-Bold": require("../../assets/fonts/Montserrat-Bold.ttf"),
     "Manrope-Bold": require("../../assets/fonts/Manrope-Bold.ttf"),
@@ -71,4 +70,4 @@ const WorkoutSelection = () => {
   );
 };
 
-export default WorkoutSelection;
+export default Workout;

@@ -8,20 +8,16 @@ import {
 const style = StyleSheet.create({
   headerContainer: {
     width: "100%",
-    height: verticalScale(70),
     backgroundColor: "#FFF",
   },
   headerItemsContainer: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    marginTop: verticalScale(20),
-    marginBottom: verticalScale(20),
+    marginVertical: verticalScale(20),
   },
   backButtonContainer: {
     marginLeft: horizontalScale(28),
-    height: verticalScale(30),
-    width: horizontalScale(30),
     padding: horizontalScale(5),
   },
   title: {
@@ -30,8 +26,6 @@ const style = StyleSheet.create({
   },
   optionsButtonContainer: {
     marginRight: horizontalScale(28),
-    height: verticalScale(30),
-    width: horizontalScale(30),
     padding: horizontalScale(5),
   },
   divider: {
