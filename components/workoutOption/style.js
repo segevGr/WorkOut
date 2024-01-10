@@ -8,7 +8,8 @@ import {
 const style = StyleSheet.create({
   containerStyle: {
     marginHorizontal: horizontalScale(28),
-    marginVertical: verticalScale(28),
+    marginVertical: verticalScale(10),
+    alignItems: "center",
   },
   workoutImage: {
     width: "100%",

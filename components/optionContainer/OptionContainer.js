@@ -4,11 +4,7 @@ import PropTypes from "prop-types";
 import style from "./style";
 
 const OptionContainer = ({ content, containerStyle }) => {
-  return (
-    <TouchableOpacity style={{ ...style.optionContainer, ...containerStyle }}>
-      {content}
-    </TouchableOpacity>
-  );
+  return <View style={[style.optionContainer, containerStyle]}>{content}</View>;
 };
 
 OptionContainer.prototype = {

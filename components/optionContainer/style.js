@@ -4,10 +4,9 @@ import { horizontalScale, verticalScale } from "../../assets/styles/scaling";
 const style = StyleSheet.create({
   optionContainer: {
     flexDirection: "column",
-    borderRadius: horizontalScale(10),
     borderColor: "#E5F0FA",
+    borderRadius: horizontalScale(10),
     borderWidth: horizontalScale(1.5),
-    alignItems: "center",
   },
 });
 

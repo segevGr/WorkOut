@@ -9,7 +9,7 @@ const MainNavigation = () => {
   return (
     <Stack.Navigator
       screenOptions={{ header: () => null, headerShown: false }}
-      initialRouteName={Routes.Workout}
+      initialRouteName={Routes.WorkoutSelection}
     >
       <Stack.Screen
         name={Routes.WorkoutSelection}

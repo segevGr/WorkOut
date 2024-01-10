@@ -5,8 +5,9 @@ import Header from "../../components/header/Header";
 import WorkOutOption from "../../components/workoutOption/WorkoutOption";
 import globalStyle from "../../assets/styles/globalStyle";
 import style from "./style";
+import { Routes } from "../../navigation/Routes";
 
-const WorkoutSelection = () => {
+const WorkoutSelection = ({ navigation }) => {
   const fontsLoaded = useFonts({
     "Montserrat-Bold": require("../../assets/fonts/Montserrat-Bold.ttf"),
     "Manrope-Bold": require("../../assets/fonts/Manrope-Bold.ttf"),
@@ -59,6 +60,7 @@ const WorkoutSelection = () => {
             workoutName={item.workoutName}
             picture={item.picture}
             fontFamily={"Manrope-Bold"}
+            navigatePress={() => navigation.navigate(Routes.Workout)}
           />
         )}
       ></FlatList>

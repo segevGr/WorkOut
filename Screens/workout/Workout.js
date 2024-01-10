@@ -5,10 +5,11 @@ import globalStyle from "../../assets/styles/globalStyle";
 import style from "./style";
 import ExerciseOption from "../../components/exerciseOption/ExerciseOption";
 
-const Workout = () => {
+const Workout = ({ navigation }) => {
   const fontsLoaded = useFonts({
     "Montserrat-Bold": require("../../assets/fonts/Montserrat-Bold.ttf"),
     "Manrope-Medium": require("../../assets/fonts/Manrope-Medium.ttf"),
+    "Manrope-Bold": require("../../assets/fonts/Manrope-Bold.ttf"),
   });
 
   if (!fontsLoaded) {
@@ -47,7 +48,11 @@ const Workout = () => {
       <FlatList
         ListHeaderComponent={
           <>
-            <Header title={"WorkOut"} fontFamily={"Montserrat-Bold"} />
+            <Header
+              title={"WorkOut"}
+              fontFamily={"Montserrat-Bold"}
+              backPress={() => navigation.goBack()}
+            />
           </>
         }
         showsVerticalScrollIndicator={false}
@@ -56,7 +61,8 @@ const Workout = () => {
           <ExerciseOption
             key={item.exerciseName}
             exerciseName={item.exerciseName}
-            fontFamily={"Manrope-Medium"}
+            regularManropeFont={"Manrope-Medium"}
+            boldManropeFont={"Manrope-Bold"}
           />
         )}
       ></FlatList>

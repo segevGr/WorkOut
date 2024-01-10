@@ -6,21 +6,41 @@ import {
 } from "../../assets/styles/scaling";
 
 const style = StyleSheet.create({
-  containerStyle: {
+  mainExerciseContainerStyle: {
     marginHorizontal: horizontalScale(28),
-    marginVertical: verticalScale(28),
+    marginVertical: verticalScale(10),
   },
-  detailsContainer: {
-    flex: 1,
-    // paddingVertical: verticalScale(20),
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "red",
+  innerContainer: {
+    alignItems: "flex-end",
+    marginHorizontal: horizontalScale(10),
+    marginVertical: verticalScale(5),
+    paddingTop: verticalScale(3),
+    paddingBottom: verticalScale(5),
+    paddingRight: horizontalScale(5),
   },
-  setsContainer: {
-    height: "50%",
+  textsTitleStyle: {
+    textAlign: "right",
+    fontSize: scaleFontSize(22),
+  },
+  textsContentStyle: {
+    textAlign: "right",
+    fontSize: scaleFontSize(16),
+  },
+  notesContainer: { backgroundColor: "#F6FAFD" },
+  videoContainer: {
     width: "100%",
-    backgroundColor: "red",
+    height: verticalScale(130),
+    borderRadius: horizontalScale(10),
+  },
+  videoContainer: {
+    marginHorizontal: horizontalScale(10),
+    marginVertical: verticalScale(5),
+  },
+  video: {
+    width: "100%",
+    height: verticalScale(130),
+    borderRadius: horizontalScale(10),
+    paddingBottom: 0,
   },
 });
 

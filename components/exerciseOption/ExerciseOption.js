@@ -1,13 +1,21 @@
 import React, { useState } from "react";
-import { View, Text } from "react-native";
-import style from "./style";
-import PropTypes from "prop-types";
-import OptionContainer from "../optionContainer/OptionContainer";
 import Collapsible from "react-native-collapsible";
-import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
-import ExerciseCollapseClose from "../exerciseCollapseClose/ExerciseCollapseClose";
 
-const ExerciseOption = ({ exerciseName, fontFamily }) => {
+import { Video } from "expo-av";
+import PropTypes from "prop-types";
+import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
+
+import style from "./style";
+import OptionContainer from "../optionContainer/OptionContainer";
+import ExerciseCollapseClose from "../exerciseCollapseClose/ExerciseCollapseClose";
+import ExerciseCollapseOpen from "../exerciseCollapseOpen/ExerciseCollapseOpen";
+import { Strings } from "../../assets/strings/Strings";
+
+const ExerciseOption = ({
+  exerciseName,
+  regularManropeFont,
+  boldManropeFont,
+}) => {
   const [isCollapsed, setCollapsed] = useState(true);
   const [collapseImage, setCollapseImage] = useState(faChevronDown);
 
@@ -20,23 +28,39 @@ const ExerciseOption = ({ exerciseName, fontFamily }) => {
 
   return (
     <OptionContainer
-      containerStyle={style.containerStyle}
+      containerStyle={style.mainExerciseContainerStyle}
       content={
         <>
           <ExerciseCollapseClose
             handlePress={handlePress}
             collapseImage={collapseImage}
-            fontFamily={fontFamily}
+            fontFamily={regularManropeFont}
             exerciseName={exerciseName}
           />
           <Collapsible collapsed={isCollapsed}>
+            <ExerciseCollapseOpen
+              regularManropeFont={regularManropeFont}
+              boldManropeFont={boldManropeFont}
+              title={Strings.Sets}
+              backgroundColor={"#FFFFFF"}
+            />
+            <ExerciseCollapseOpen
+              regularManropeFont={regularManropeFont}
+              boldManropeFont={boldManropeFont}
+              title={Strings.Notes}
+              backgroundColor={"#F6FAFD"}
+            />
             <OptionContainer
+              containerStyle={style.videoContainer}
               content={
                 <>
-                  <Text>gggggggggggggggggggggggg</Text>
+                  <Video
+                    source={require("../../assets/videos/benchPress.mp4")}
+                    style={style.video}
+                    useNativeControls
+                  />
                 </>
               }
-              containerStyle={style.setsContainer}
             />
           </Collapsible>
         </>
@@ -47,7 +71,8 @@ const ExerciseOption = ({ exerciseName, fontFamily }) => {
 
 ExerciseOption.prototype = {
   exerciseName: PropTypes.string.isRequired,
-  fontFamily: PropTypes.string.isRequired,
+  regularManropeFont: PropTypes.string.isRequired,
+  boldManropeFont: PropTypes.string.isRequired,
 };
 
 export default ExerciseOption;

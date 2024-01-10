@@ -6,11 +6,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faArrowLeftLong, faBars } from "@fortawesome/free-solid-svg-icons";
 import { horizontalScale } from "../../assets/styles/scaling";
 
-const Header = ({ title, fontFamily }) => {
+const Header = ({ title, fontFamily, backPress }) => {
   return (
     <View style={style.headerContainer}>
       <View style={style.headerItemsContainer}>
-        <TouchableOpacity style={style.backButtonContainer}>
+        <TouchableOpacity style={style.backButtonContainer} onPress={backPress}>
           <FontAwesomeIcon icon={faArrowLeftLong} size={horizontalScale(20)} />
         </TouchableOpacity>
         <Text style={{ ...style.title, fontFamily: fontFamily }}>{title}</Text>
@@ -26,6 +26,7 @@ const Header = ({ title, fontFamily }) => {
 Header.prototype = {
   title: PropTypes.string.isRequired,
   fontFamily: PropTypes.string.isRequired,
+  backPress: PropTypes.func.isRequired,
 };
 
 export default Header;
