@@ -1,24 +1,16 @@
-import { Text, SafeAreaView, FlatList } from "react-native";
-import useFonts from "../../assets/fonts/useFonts";
-import Header from "../../components/header/Header";
+import React from "react";
+import { SafeAreaView, FlatList } from "react-native";
+
+import { useSelector } from "react-redux";
+
+import { Routes } from "../../navigation/Routes";
 import globalStyle from "../../assets/styles/globalStyle";
-import style from "./style";
+
+import Header from "../../components/header/Header";
 import ExerciseOption from "../../components/exerciseOption/ExerciseOption";
 
 const Workout = ({ navigation }) => {
-  const fontsLoaded = useFonts({
-    "Montserrat-Bold": require("../../assets/fonts/Montserrat-Bold.ttf"),
-    "Manrope-Medium": require("../../assets/fonts/Manrope-Medium.ttf"),
-    "Manrope-Bold": require("../../assets/fonts/Manrope-Bold.ttf"),
-  });
-
-  if (!fontsLoaded) {
-    return (
-      <SafeAreaView style={style.loadingContainer}>
-        <Text>Loading fonts...</Text>
-      </SafeAreaView>
-    );
-  }
+  const exerciseDetails = useSelector((state) => state.userDetails);
 
   const exerciseTypes = [
     {
@@ -26,7 +18,7 @@ const Workout = ({ navigation }) => {
       picture: require("../../assets/pictures/workout.jpg"),
     },
     {
-      exerciseName: "אימון B",
+      exerciseName: exerciseDetails.exerciseName,
       picture: require("../../assets/pictures/workout.jpg"),
     },
     {

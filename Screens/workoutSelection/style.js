@@ -1,12 +1,5 @@
 import { StyleSheet } from "react-native";
 
-const style = StyleSheet.create({
-  loadingContainer: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
+const style = StyleSheet.create({});
 
 export default style;
