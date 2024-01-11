@@ -1,7 +1,7 @@
 import React from "react";
 import { SafeAreaView, FlatList } from "react-native";
 
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Routes } from "../../navigation/Routes";
 import globalStyle from "../../assets/styles/globalStyle";
@@ -9,9 +9,13 @@ import globalStyle from "../../assets/styles/globalStyle";
 import Header from "../../components/header/Header";
 import ExerciseOption from "../../components/exerciseOption/ExerciseOption";
 
-const Workout = ({ navigation, route }) => {
-  const workoutName = route.params.workoutName;
+const Workout = ({ navigation }) => {
   const exerciseDetails = useSelector((state) => state.userDetails);
+
+  const workoutsList = useSelector((state) => state.workoutsList);
+  const workoutName = workoutsList.selectedWorkout;
+
+  const dispatch = useDispatch();
 
   const exerciseTypes = [
     {

@@ -1,6 +1,9 @@
 import React from "react";
 import { SafeAreaView, FlatList } from "react-native";
 
+import { useDispatch, useSelector } from "react-redux";
+import { updateSelectedWorkout } from "../../redux/reducers/WorkoutsList";
+
 import { Routes } from "../../navigation/Routes";
 import globalStyle from "../../assets/styles/globalStyle";
 
@@ -8,28 +11,14 @@ import Header from "../../components/header/Header";
 import WorkOutOption from "../../components/workoutOption/WorkoutOption";
 
 const WorkoutSelection = ({ navigation }) => {
-  const WorkOutTypes = [
-    {
-      workoutName: "אימון A",
-      picture: require("../../assets/pictures/workout.jpg"),
-    },
-    {
-      workoutName: "אימון B",
-      picture: require("../../assets/pictures/workout.jpg"),
-    },
-    {
-      workoutName: "אימון Full Body",
-      picture: require("../../assets/pictures/workout.jpg"),
-    },
-    {
-      workoutName: "test3",
-      picture: require("../../assets/pictures/workout.jpg"),
-    },
-    {
-      workoutName: "test4",
-      picture: require("../../assets/pictures/workout.jpg"),
-    },
-  ];
+  const workoutsList = useSelector((state) => state.workoutsList);
+
+  const dispatch = useDispatch();
+
+  const navigateToWorkout = (workoutName) => {
+    dispatch(updateSelectedWorkout(workoutName));
+    navigation.navigate(Routes.Workout);
+  };
 
   return (
     <SafeAreaView style={globalStyle.background}>
@@ -40,17 +29,13 @@ const WorkoutSelection = ({ navigation }) => {
           </>
         }
         showsVerticalScrollIndicator={false}
-        data={WorkOutTypes}
+        data={workoutsList.WorkOutTypes}
         renderItem={({ item }) => (
           <WorkOutOption
             key={item.workoutName}
             workoutName={item.workoutName}
             picture={item.picture}
-            navigatePress={() =>
-              navigation.navigate(Routes.Workout, {
-                workoutName: item.workoutName,
-              })
-            }
+            navigatePress={() => navigateToWorkout(item.workoutName)}
           />
         )}
       ></FlatList>
