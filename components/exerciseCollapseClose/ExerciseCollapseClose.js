@@ -1,14 +1,15 @@
 import React from "react";
-import { Text, TouchableOpacity, View, Image } from "react-native";
-import style from "./style";
+import { Text, TouchableOpacity, View } from "react-native";
+
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { horizontalScale } from "../../assets/styles/scaling";
 
+import style from "./style";
+
 const ExerciseCollapseClose = ({
   handlePress,
   collapseImage,
-  fontFamily,
   exerciseName,
 }) => {
   return (
@@ -16,9 +17,7 @@ const ExerciseCollapseClose = ({
       <View style={style.collapseContainer}>
         <FontAwesomeIcon icon={collapseImage} size={horizontalScale(25)} />
       </View>
-      <Text style={{ ...style.exerciseTitle, fontFamily: fontFamily }}>
-        {exerciseName}
-      </Text>
+      <Text style={style.exerciseTitle}>{exerciseName}</Text>
     </TouchableOpacity>
   );
 };
@@ -26,7 +25,6 @@ const ExerciseCollapseClose = ({
 ExerciseCollapseClose.prototype = {
   handlePress: PropTypes.func.isRequired,
   collapseImage: PropTypes.object.isRequired,
-  fontFamily: PropTypes.string.isRequired,
   exerciseName: PropTypes.string.isRequired,
 };
 

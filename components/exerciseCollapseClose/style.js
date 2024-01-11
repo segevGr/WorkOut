@@ -15,6 +15,7 @@ const style = StyleSheet.create({
     fontSize: scaleFontSize(25),
     paddingHorizontal: horizontalScale(15),
     paddingVertical: verticalScale(10),
+    fontFamily: "Manrope-Medium",
   },
   collapseContainer: {
     paddingHorizontal: horizontalScale(15),

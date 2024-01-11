@@ -9,7 +9,8 @@ import globalStyle from "../../assets/styles/globalStyle";
 import Header from "../../components/header/Header";
 import ExerciseOption from "../../components/exerciseOption/ExerciseOption";
 
-const Workout = ({ navigation }) => {
+const Workout = ({ navigation, route }) => {
+  const workoutName = route.params.workoutName;
   const exerciseDetails = useSelector((state) => state.userDetails);
 
   const exerciseTypes = [
@@ -40,11 +41,7 @@ const Workout = ({ navigation }) => {
       <FlatList
         ListHeaderComponent={
           <>
-            <Header
-              title={"WorkOut"}
-              fontFamily={"Montserrat-Bold"}
-              backPress={() => navigation.goBack()}
-            />
+            <Header title={workoutName} backPress={() => navigation.goBack()} />
           </>
         }
         showsVerticalScrollIndicator={false}
@@ -53,8 +50,6 @@ const Workout = ({ navigation }) => {
           <ExerciseOption
             key={item.exerciseName}
             exerciseName={item.exerciseName}
-            regularManropeFont={"Manrope-Medium"}
-            boldManropeFont={"Manrope-Bold"}
           />
         )}
       ></FlatList>

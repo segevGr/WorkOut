@@ -1,7 +1,9 @@
-import { combineReducers } from "redux";
-import { configureStore } from "@reduxjs/toolkit";
-import UserDetails from "./reducers/UserDetails";
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { logger } from "redux-logger";
+import { persistReducer, persistStore } from "redux-persist";
+
+import UserDetails from "./reducers/UserDetails";
 
 const rootReducer = combineReducers({
   userDetails: UserDetails,

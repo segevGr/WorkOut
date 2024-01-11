@@ -8,6 +8,10 @@ const style = StyleSheet.create({
     borderRadius: horizontalScale(10),
     borderWidth: horizontalScale(1.5),
   },
+  default: {
+    marginHorizontal: horizontalScale(28),
+    marginVertical: verticalScale(10),
+  },
 });
 
 export default style;

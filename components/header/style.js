@@ -21,8 +21,9 @@ const style = StyleSheet.create({
     padding: horizontalScale(5),
   },
   title: {
-    fontSize: scaleFontSize(16),
+    fontSize: scaleFontSize(25),
     padding: horizontalScale(5),
+    fontFamily: "Montserrat-Bold",
   },
   optionsButtonContainer: {
     marginRight: horizontalScale(28),

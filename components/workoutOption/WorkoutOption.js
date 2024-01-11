@@ -4,11 +4,10 @@ import style from "./style";
 import PropTypes from "prop-types";
 import OptionContainer from "../optionContainer/OptionContainer";
 
-const WorkOutOption = ({ workoutName, picture, fontFamily, navigatePress }) => {
+const WorkOutOption = ({ workoutName, picture, navigatePress }) => {
   return (
     <TouchableOpacity onPress={navigatePress}>
       <OptionContainer
-        containerStyle={style.containerStyle}
         content={
           <>
             <Image
@@ -17,9 +16,7 @@ const WorkOutOption = ({ workoutName, picture, fontFamily, navigatePress }) => {
               style={style.workoutImage}
             />
             <View style={style.detailsContainer}>
-              <Text style={{ ...style.workoutDetails, fontFamily: fontFamily }}>
-                {workoutName}
-              </Text>
+              <Text style={style.workoutDetails}>{workoutName}</Text>
             </View>
           </>
         }
@@ -31,7 +28,6 @@ const WorkOutOption = ({ workoutName, picture, fontFamily, navigatePress }) => {
 WorkOutOption.prototype = {
   workoutName: PropTypes.string.isRequired,
   picture: PropTypes.object.isRequired,
-  fontFamily: PropTypes.string.isRequired,
   navigatePress: PropTypes.func.isRequired,
 };
 

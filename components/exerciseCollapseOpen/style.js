@@ -21,6 +21,7 @@ const style = StyleSheet.create({
   textsTitle: {
     textAlign: "right",
     fontSize: scaleFontSize(22),
+    fontFamily: "Manrope-Bold",
   },
   contentContainer: {
     width: "100%",
@@ -28,6 +29,7 @@ const style = StyleSheet.create({
   content: {
     textAlign: "right",
     fontSize: scaleFontSize(16),
+    fontFamily: "Manrope-Medium",
   },
 });
 

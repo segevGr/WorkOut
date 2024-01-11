@@ -6,10 +6,6 @@ import {
 } from "../../assets/styles/scaling";
 
 const style = StyleSheet.create({
-  mainExerciseContainerStyle: {
-    marginHorizontal: horizontalScale(28),
-    marginVertical: verticalScale(10),
-  },
   innerContainer: {
     alignItems: "flex-end",
     marginHorizontal: horizontalScale(10),

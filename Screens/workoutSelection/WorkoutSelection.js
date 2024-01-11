@@ -36,7 +36,7 @@ const WorkoutSelection = ({ navigation }) => {
       <FlatList
         ListHeaderComponent={
           <>
-            <Header title={"WorkOut"} fontFamily={"Montserrat-Bold"} />
+            <Header title={"אימונים"} />
           </>
         }
         showsVerticalScrollIndicator={false}
@@ -46,8 +46,11 @@ const WorkoutSelection = ({ navigation }) => {
             key={item.workoutName}
             workoutName={item.workoutName}
             picture={item.picture}
-            fontFamily={"Manrope-Bold"}
-            navigatePress={() => navigation.navigate(Routes.Workout)}
+            navigatePress={() =>
+              navigation.navigate(Routes.Workout, {
+                workoutName: item.workoutName,
+              })
+            }
           />
         )}
       ></FlatList>
