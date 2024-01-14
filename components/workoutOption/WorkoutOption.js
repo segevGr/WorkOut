@@ -1,12 +1,12 @@
 import React from "react";
-import { Text, TouchableOpacity, View, Image } from "react-native";
+import { Text, View, Image, Pressable } from "react-native";
 import style from "./style";
 import PropTypes from "prop-types";
 import OptionContainer from "../optionContainer/OptionContainer";
 
 const WorkOutOption = ({ workoutName, picture, navigatePress }) => {
   return (
-    <TouchableOpacity onPress={navigatePress}>
+    <Pressable onPress={navigatePress}>
       <OptionContainer
         content={
           <>
@@ -21,7 +21,7 @@ const WorkOutOption = ({ workoutName, picture, navigatePress }) => {
           </>
         }
       ></OptionContainer>
-    </TouchableOpacity>
+    </Pressable>
   );
 };
 
