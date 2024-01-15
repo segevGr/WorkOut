@@ -4,6 +4,7 @@ import {
   scaleFontSize,
   verticalScale,
 } from "../../assets/styles/scaling";
+import { getFontFamily } from "../../assets/fonts/getFontFamily";
 
 const style = StyleSheet.create({
   innerContainer: {
@@ -21,7 +22,7 @@ const style = StyleSheet.create({
   textsTitle: {
     textAlign: "right",
     fontSize: scaleFontSize(22),
-    fontFamily: "Manrope-Bold",
+    fontFamily: getFontFamily("Manrope", "700"),
   },
   contentContainer: {
     width: "100%",
@@ -29,7 +30,7 @@ const style = StyleSheet.create({
   content: {
     textAlign: "right",
     fontSize: scaleFontSize(16),
-    fontFamily: "Manrope-Medium",
+    fontFamily: getFontFamily("Manrope", "500"),
   },
 });
 

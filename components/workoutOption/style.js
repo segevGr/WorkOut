@@ -4,6 +4,7 @@ import {
   scaleFontSize,
   verticalScale,
 } from "../../assets/styles/scaling";
+import { getFontFamily } from "../../assets/fonts/getFontFamily";
 
 const style = StyleSheet.create({
   workoutImage: {
@@ -17,7 +18,7 @@ const style = StyleSheet.create({
   },
   workoutDetails: {
     fontSize: scaleFontSize(30),
-    fontFamily: "Manrope-Bold",
+    fontFamily: getFontFamily("Manrope", "700"),
   },
 });
 

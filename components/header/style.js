@@ -4,11 +4,12 @@ import {
   scaleFontSize,
   verticalScale,
 } from "../../assets/styles/scaling";
+import { getFontFamily } from "../../assets/fonts/getFontFamily";
 
 const style = StyleSheet.create({
   headerContainer: {
     width: "100%",
-    backgroundColor: "#FFF",
+    backgroundColor: "transparent",
   },
   headerItemsContainer: {
     flexDirection: "row",
@@ -23,7 +24,7 @@ const style = StyleSheet.create({
   title: {
     fontSize: scaleFontSize(25),
     padding: horizontalScale(5),
-    fontFamily: "Montserrat-Bold",
+    fontFamily: getFontFamily("Montserrat", "700"),
   },
   optionsButtonContainer: {
     marginRight: horizontalScale(28),

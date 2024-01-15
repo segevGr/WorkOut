@@ -25,7 +25,7 @@ const WorkoutSelection = ({ navigation }) => {
       <FlatList
         ListHeaderComponent={
           <>
-            <Header title={"אימונים"} />
+            <Header title={"אימונים"} backPress={() => navigation.goBack()} />
           </>
         }
         showsVerticalScrollIndicator={false}

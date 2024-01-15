@@ -8,16 +8,28 @@ import { faArrowLeftLong, faBars } from "@fortawesome/free-solid-svg-icons";
 import style from "./style";
 import { horizontalScale } from "../../assets/styles/scaling";
 
-const Header = ({ title, backPress }) => {
+const Header = ({ title, backPress, textColor }) => {
   return (
     <View style={style.headerContainer}>
       <View style={style.headerItemsContainer}>
-        <TouchableOpacity style={style.backButtonContainer} onPress={backPress}>
-          <FontAwesomeIcon icon={faArrowLeftLong} size={horizontalScale(25)} />
-        </TouchableOpacity>
-        <Text style={style.title}>{title}</Text>
+        <View style={style.backButtonContainer}>
+          {backPress ? (
+            <TouchableOpacity onPress={backPress}>
+              <FontAwesomeIcon
+                icon={faArrowLeftLong}
+                size={horizontalScale(25)}
+                color={textColor}
+              />
+            </TouchableOpacity>
+          ) : null}
+        </View>
+        <Text style={{ ...style.title, color: textColor }}>{title}</Text>
         <TouchableOpacity style={style.optionsButtonContainer}>
-          <FontAwesomeIcon icon={faBars} size={horizontalScale(25)} />
+          <FontAwesomeIcon
+            icon={faBars}
+            size={horizontalScale(25)}
+            color={textColor}
+          />
         </TouchableOpacity>
       </View>
       <View style={style.divider} />
@@ -25,9 +37,14 @@ const Header = ({ title, backPress }) => {
   );
 };
 
+Header.defaultProps = {
+  textColor: "#000",
+};
+
 Header.prototype = {
   title: PropTypes.string.isRequired,
-  backPress: PropTypes.func.isRequired,
+  backPress: PropTypes.func,
+  textColor: PropTypes.string,
 };
 
 export default Header;

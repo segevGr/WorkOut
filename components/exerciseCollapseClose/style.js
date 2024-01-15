@@ -4,6 +4,7 @@ import {
   scaleFontSize,
   verticalScale,
 } from "../../assets/styles/scaling";
+import { getFontFamily } from "../../assets/fonts/getFontFamily";
 
 const style = StyleSheet.create({
   containerView: {
@@ -15,7 +16,7 @@ const style = StyleSheet.create({
     fontSize: scaleFontSize(25),
     paddingHorizontal: horizontalScale(15),
     paddingVertical: verticalScale(10),
-    fontFamily: "Manrope-Medium",
+    fontFamily: getFontFamily("Manrope", "500"),
   },
   collapseContainer: {
     paddingHorizontal: horizontalScale(15),
