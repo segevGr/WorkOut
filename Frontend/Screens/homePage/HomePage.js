@@ -13,6 +13,7 @@ import style from "./style";
 
 const HomePage = ({ navigation }) => {
   const username = "שגב";
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <ImageBackground

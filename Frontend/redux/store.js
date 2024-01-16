@@ -5,10 +5,12 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import UserDetails from "./reducers/UserDetails";
 import WorkoutsList from "./reducers/WorkoutsList";
+import ExerciseList from "./reducers/ExerciseList";
 
 const rootReducer = combineReducers({
   userDetails: UserDetails,
   workoutsList: WorkoutsList,
+  exerciseList: ExerciseList,
 });
 
 const configuration = {
@@ -17,8 +19,10 @@ const configuration = {
   version: 1,
 };
 
+const persistedReducer = persistReducer(configuration, rootReducer);
+
 const store = configureStore({
-  reducer: rootReducer,
+  reducer: persistedReducer,
   middleware: (getDefaultMiddleware) => {
     return getDefaultMiddleware({
       serializableCheck: false,
