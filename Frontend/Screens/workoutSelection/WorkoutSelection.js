@@ -12,7 +12,6 @@ import WorkOutOption from "../../components/workoutOption/WorkoutOption";
 
 const WorkoutSelection = ({ navigation }) => {
   const workoutsList = useSelector((state) => state.workoutsList);
-
   const dispatch = useDispatch();
 
   const navigateToWorkout = (workoutName) => {

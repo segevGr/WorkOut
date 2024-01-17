@@ -10,6 +10,7 @@ app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
 
-app.get("/gg", (req, res) => {
-  res.send("hello world");
+app.get("/gg/:user/test/:param2", (req, res) => {
+  const { user, param2 } = req.params;
+  res.send(`hello world ${user}, ${param2} `);
 });

@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  catagories: [
+  categories: [
     {
       muscleName: "בטן",
       muscleImage: require("../../assets/icons/muscles/Six-pack.png"),
@@ -12,7 +12,7 @@ const initialState = {
     },
     {
       muscleName: "חזה",
-      muscleImage: require("../../assets/icons/muscles/chestIcon.png"),
+      muscleImage: require("../../assets/icons/muscles/chest.png"),
     },
     {
       muscleName: "יד אחורית",
@@ -42,11 +42,11 @@ export const MusclesBankList = createSlice({
   name: "MusclesBankList",
   initialState: initialState,
   reducers: {
-    setSelectedCategory: (state, action) => {
-      state.selectedCategory = action.payload.selectedCategory;
+    updateSelectedCategory: (state, action) => {
+      state.selectedCategory = action.payload;
     },
   },
 });
 
-export const { setSelectedCategory } = MusclesBankList.actions;
+export const { updateSelectedCategory } = MusclesBankList.actions;
 export default MusclesBankList.reducer;

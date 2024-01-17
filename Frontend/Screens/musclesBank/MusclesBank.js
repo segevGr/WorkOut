@@ -1,11 +1,18 @@
 import React from "react";
-import { SafeAreaView, View, Text, Image, FlatList } from "react-native";
+import {
+  SafeAreaView,
+  View,
+  Text,
+  Image,
+  FlatList,
+  TouchableOpacity,
+} from "react-native";
 
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Routes } from "../../navigation/Routes";
 
 import Header from "../../components/header/Header";
 import OptionContainer from "../../components/optionContainer/OptionContainer";
-import { Routes } from "../../navigation/Routes";
 
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
@@ -13,9 +20,16 @@ import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import globalStyle from "../../assets/styles/globalStyle";
 import style from "./style";
 import { horizontalScale } from "../../assets/styles/scaling";
+import { updateSelectedCategory } from "../../redux/reducers/MusclesBankList";
 
 const MusclesBank = ({ navigation }) => {
-  const musclesList = useSelector((state) => state.MusclesBankList.catagories);
+  const musclesList = useSelector((state) => state.musclesBankList.categories);
+  const dispatch = useDispatch();
+
+  const navigateToMuscle = (selectedCategory) => {
+    dispatch(updateSelectedCategory(selectedCategory));
+    navigation.navigate(Routes.MuscleBank);
+  };
 
   return (
     <SafeAreaView style={globalStyle.background}>
@@ -49,10 +63,14 @@ const MusclesBank = ({ navigation }) => {
                       למעבר לתרגילי {item.muscleName}
                     </Text>
                   </View>
-                  <FontAwesomeIcon
-                    icon={faChevronRight}
-                    size={horizontalScale(24)}
-                  />
+                  <TouchableOpacity
+                    onPress={() => navigateToMuscle(item.muscleName)}
+                  >
+                    <FontAwesomeIcon
+                      icon={faChevronRight}
+                      size={horizontalScale(24)}
+                    />
+                  </TouchableOpacity>
                 </View>
               </>
             }

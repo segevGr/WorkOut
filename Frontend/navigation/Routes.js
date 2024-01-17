@@ -3,4 +3,5 @@ export const Routes = {
   Workout: "Workout",
   WorkoutSelection: "WorkoutSelection",
   MusclesBank: "MusclesBank",
+  MuscleBank: "MuscleBank",
 };
