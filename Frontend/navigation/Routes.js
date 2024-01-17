@@ -1,5 +1,6 @@
 export const Routes = {
-  WorkoutSelection: "WorkoutSelection",
-  Workout: "Workout",
   HomePage: "HomePage",
+  Workout: "Workout",
+  WorkoutSelection: "WorkoutSelection",
+  ExerciseBank: "ExerciseBank",
 };

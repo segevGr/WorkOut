@@ -4,8 +4,8 @@ import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import { useDispatch } from "react-redux";
 
 import PropTypes from "prop-types";
-import { faPencil, faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { faPencil, faCheck } from "@fortawesome/free-solid-svg-icons";
 
 import style from "./style";
 import OptionContainer from "../optionContainer/OptionContainer";

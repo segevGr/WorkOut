@@ -38,7 +38,7 @@ const WorkoutSelection = ({ navigation }) => {
             navigatePress={() => navigateToWorkout(item.workoutName)}
           />
         )}
-      ></FlatList>
+      />
     </SafeAreaView>
   );
 };
