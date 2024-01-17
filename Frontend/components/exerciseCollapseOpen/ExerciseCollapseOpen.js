@@ -10,7 +10,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import style from "./style";
 import OptionContainer from "../optionContainer/OptionContainer";
 import { scaleFontSize } from "../../assets/styles/scaling";
-import { updateExerciseNotes } from "../../redux/reducers/ExerciseList";
+import {
+  updateExerciseNotes,
+  updateExerciseSets,
+} from "../../redux/reducers/ExerciseList";
 
 const ExerciseCollapseOpen = ({
   title,
@@ -26,10 +29,20 @@ const ExerciseCollapseOpen = ({
 
   const [isEditingSets, setIsEditingSets] = useState(false);
   const [notesValue, setNotesValue] = useState(isSets ? null : notesData);
+  const [setsValue, setSetsValue] = useState(isSets ? setsData : null);
+
+  const setValues = (value) => {
+    isSets ? setSetsValue(value) : setNotesValue(value);
+  };
 
   const submitChanges = () => {
     isSets
-      ? console.log("no")
+      ? dispatch(
+          updateExerciseSets({
+            exerciseName: exerciseName,
+            exerciseSets: setsValue,
+          })
+        )
       : dispatch(
           updateExerciseNotes({
             exerciseName: exerciseName,
@@ -64,11 +77,10 @@ const ExerciseCollapseOpen = ({
                   <TextInput
                     style={style.content}
                     placeholder={placeHolder}
-                    onChangeText={(notesValue) => setNotesValue(notesValue)}
+                    value={isSets ? setsValue : notesValue}
+                    onChangeText={(value) => setValues(value)}
                     multiline
-                  >
-                    סט ראשון: 10 קילו 12 חזרות{"\n"}סט שני: 12 קילו 10 חזרות
-                  </TextInput>
+                  />
                 </>
               ) : (
                 <>
@@ -82,7 +94,7 @@ const ExerciseCollapseOpen = ({
                     <Text style={style.textsTitle}>{title}</Text>
                   </View>
                   <Text style={style.content}>
-                    {isSets ? "ggggg" : notesValue}
+                    {isSets ? setsData : notesValue}
                   </Text>
                 </>
               )}

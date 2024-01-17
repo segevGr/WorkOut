@@ -6,6 +6,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import MainNavigation from "./navigation/MainNavigation";
 import store from "./redux/store";
 import { useFonts } from "expo-font";
+import { StatusBar } from "expo-status-bar";
 
 const App = () => {
   let [fontsLoaded] = useFonts({
@@ -25,6 +26,7 @@ const App = () => {
 
   return (
     <Provider store={store}>
+      <StatusBar hidden />
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "padding"}
         style={{ flex: 1 }}

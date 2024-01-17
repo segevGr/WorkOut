@@ -4,60 +4,35 @@ const initialState = {
   exercises: [
     {
       exerciseName: "לחיצת חזה",
-      exerciseSets: {
-        "סט ראשון": "10 קילו 10 חזרות",
-        "סט שני": "10 קילו 12 חזרות",
-        "סט שלישי": "10 קילו 12 חזרות",
-        "סט רביעי": "10 קילו 12 חזרות",
-      },
+      exerciseSets: `סט ראשון: 10 קילו 4 חזרות\nסט שני: 20 קילו 6 חזרות`,
       exerciseNotes: "bla bla bla",
       exerciseVideoName: "benchPress",
       containInWorkout: ["אימון A"],
     },
     {
       exerciseName: "פרפר",
-      exerciseSets: {
-        "סט ראשון": "10 קילו 10 חזרות",
-        "סט שני": "10 קילו 12 חזרות",
-        "סט שלישי": "10 קילו 12 חזרות",
-        "סט רביעי": "10 קילו 12 חזרות",
-      },
+      exerciseSets: `סט ראשון: 10 קילו 4 חזרות\nסט שני: 20 קילו 6 חזרות`,
       exerciseNotes: "bla bla bla",
       exerciseVideoName: "benchPress",
       containInWorkout: ["אימון A"],
     },
     {
       exerciseName: "לחיצת כתפיים",
-      exerciseSets: {
-        "סט ראשון": "10 קילו 10 חזרות",
-        "סט שני": "10 קילו 12 חזרות",
-        "סט שלישי": "10 קילו 12 חזרות",
-        "סט רביעי": "10 קילו 12 חזרות",
-      },
+      exerciseSets: `סט ראשון: 10 קילו 4 חזרות\nסט שני: 20 קילו 6 חזרות`,
       exerciseNotes: "bla bla bla",
       exerciseVideoName: "benchPress",
       containInWorkout: ["אימון B"],
     },
     {
       exerciseName: "מקבילים",
-      exerciseSets: {
-        "סט ראשון": "10 קילו 10 חזרות",
-        "סט שני": "10 קילו 12 חזרות",
-        "סט שלישי": "10 קילו 12 חזרות",
-        "סט רביעי": "10 קילו 12 חזרות",
-      },
+      exerciseSets: `סט ראשון: 10 קילו 4 חזרות\nסט שני: 20 קילו 6 חזרות`,
       exerciseNotes: "bla bla bla",
       exerciseVideoName: "benchPress",
       containInWorkout: ["אימון B"],
     },
     {
-      exerciseName: "מקבילים",
-      exerciseSets: {
-        "סט ראשון": "10 קילו 10 חזרות",
-        "סט שני": "10 קילו 12 חזרות",
-        "סט שלישי": "10 קילו 12 חזרות",
-        "סט רביעי": "10 קילו 12 חזרות",
-      },
+      exerciseName: "לחיצת זין",
+      exerciseSets: `סט ראשון: 10 קילו 4 חזרות\nסט שני: 20 קילו 6 חזרות`,
       exerciseNotes: "bla bla bla",
       exerciseVideoName: "benchPress",
       containInWorkout: ["אימון B", "אימון A"],
@@ -81,8 +56,18 @@ export const ExerciseList = createSlice({
         foundExercise.exerciseNotes = exerciseNotes;
       }
     },
+    updateExerciseSets: (state, action) => {
+      const { exerciseName, exerciseSets } = action.payload;
+      const foundExercise = state.exercises.find(
+        (exercise) => exercise.exerciseName === exerciseName
+      );
+      if (foundExercise) {
+        foundExercise.exerciseSets = exerciseSets;
+      }
+    },
   },
 });
 
-export const { updateExerciseName, updateExerciseNotes } = ExerciseList.actions;
+export const { updateExerciseName, updateExerciseNotes, updateExerciseSets } =
+  ExerciseList.actions;
 export default ExerciseList.reducer;

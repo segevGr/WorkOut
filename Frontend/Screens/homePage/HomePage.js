@@ -15,11 +15,11 @@ const HomePage = ({ navigation }) => {
   const username = "שגב";
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <ImageBackground
-        source={require("../../assets/pictures/HomePageBackground.png")}
-        style={style.background}
-      >
+    <ImageBackground
+      source={require("../../assets/pictures/HomePageBackground.png")}
+      style={style.background}
+    >
+      <SafeAreaView style={{ flex: 1 }}>
         <Header title={`ברוך הבא ${username}`} textColor={"#FFF"} />
         <View style={style.optionsContainer}>
           <TouchableOpacity
@@ -44,8 +44,8 @@ const HomePage = ({ navigation }) => {
           </TouchableOpacity>
         </View>
         <Text style={style.versionDetails}>MyWorkout v1.0.0</Text>
-      </ImageBackground>
-    </SafeAreaView>
+      </SafeAreaView>
+    </ImageBackground>
   );
 };
 

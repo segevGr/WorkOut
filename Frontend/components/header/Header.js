@@ -8,7 +8,7 @@ import { faArrowLeftLong, faBars } from "@fortawesome/free-solid-svg-icons";
 import style from "./style";
 import { horizontalScale } from "../../assets/styles/scaling";
 
-const Header = ({ title, backPress, textColor }) => {
+const Header = ({ title, backPress, optionButtonFunction, textColor }) => {
   return (
     <View style={style.headerContainer}>
       <View style={style.headerItemsContainer}>
@@ -24,13 +24,17 @@ const Header = ({ title, backPress, textColor }) => {
           ) : null}
         </View>
         <Text style={{ ...style.title, color: textColor }}>{title}</Text>
-        <TouchableOpacity style={style.optionsButtonContainer}>
-          <FontAwesomeIcon
-            icon={faBars}
-            size={horizontalScale(25)}
-            color={textColor}
-          />
-        </TouchableOpacity>
+        <View style={style.optionsButtonContainer}>
+          {optionButtonFunction ? (
+            <TouchableOpacity>
+              <FontAwesomeIcon
+                icon={faBars}
+                size={horizontalScale(25)}
+                color={textColor}
+              />
+            </TouchableOpacity>
+          ) : null}
+        </View>
       </View>
       <View style={style.divider} />
     </View>
@@ -44,6 +48,7 @@ Header.defaultProps = {
 Header.prototype = {
   title: PropTypes.string.isRequired,
   backPress: PropTypes.func,
+  optionButtonFunction: PropTypes.func,
   textColor: PropTypes.string,
 };
 
