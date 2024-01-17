@@ -14,8 +14,8 @@ import globalStyle from "../../assets/styles/globalStyle";
 import style from "./style";
 import { horizontalScale } from "../../assets/styles/scaling";
 
-const ExerciseBank = ({ navigation }) => {
-  const musclesList = useSelector((state) => state.exerciseBankList.catagories);
+const MusclesBank = ({ navigation }) => {
+  const musclesList = useSelector((state) => state.MusclesBankList.catagories);
 
   return (
     <SafeAreaView style={globalStyle.background}>
@@ -63,4 +63,4 @@ const ExerciseBank = ({ navigation }) => {
   );
 };
 
-export default ExerciseBank;
+export default MusclesBank;

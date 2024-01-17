@@ -31,7 +31,7 @@ const HomePage = ({ navigation }) => {
             <Text style={style.optionText}>התפריט שלי</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => navigation.navigate(Routes.ExerciseBank)}
+            onPress={() => navigation.navigate(Routes.MusclesBank)}
           >
             <Text style={style.optionText}>בנק תרגילים</Text>
           </TouchableOpacity>

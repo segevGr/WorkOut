@@ -3,7 +3,7 @@ import { Routes } from "./Routes";
 import WorkoutSelection from "../Screens/workoutSelection/WorkoutSelection";
 import Workout from "../Screens/workout/Workout";
 import HomePage from "../Screens/homePage/HomePage";
-import ExerciseBank from "../Screens/exerciseBank/ExerciseBank";
+import MusclesBank from "../Screens/musclesBank/MusclesBank";
 
 const Stack = createStackNavigator();
 
@@ -19,7 +19,7 @@ const MainNavigation = () => {
       />
       <Stack.Screen name={Routes.Workout} component={Workout} />
       <Stack.Screen name={Routes.HomePage} component={HomePage} />
-      <Stack.Screen name={Routes.ExerciseBank} component={ExerciseBank} />
+      <Stack.Screen name={Routes.MusclesBank} component={MusclesBank} />
     </Stack.Navigator>
   );
 };
