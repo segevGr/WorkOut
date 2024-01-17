@@ -1,6 +1,8 @@
 import React from "react";
 import { SafeAreaView, View, Text, Image, FlatList } from "react-native";
 
+import { useSelector } from "react-redux";
+
 import Header from "../../components/header/Header";
 import OptionContainer from "../../components/optionContainer/OptionContainer";
 import { Routes } from "../../navigation/Routes";
@@ -13,16 +15,7 @@ import style from "./style";
 import { horizontalScale } from "../../assets/styles/scaling";
 
 const ExerciseBank = ({ navigation }) => {
-  const list = [
-    {
-      muscleName: "חזה",
-      muscleImage: require("../../assets/icons/muscles/chestIcon.png"),
-    },
-    {
-      muscleName: "רגליים",
-      muscleImage: require("../../assets/icons/muscles/chestIcon.png"),
-    },
-  ];
+  const musclesList = useSelector((state) => state.exerciseBankList.catagories);
 
   return (
     <SafeAreaView style={globalStyle.background}>
@@ -36,7 +29,7 @@ const ExerciseBank = ({ navigation }) => {
           </>
         }
         showsVerticalScrollIndicator={false}
-        data={list}
+        data={musclesList}
         renderItem={({ item }) => (
           <OptionContainer
             key={item.muscleName}

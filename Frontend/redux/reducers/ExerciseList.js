@@ -41,7 +41,7 @@ const initialState = {
 };
 
 export const ExerciseList = createSlice({
-  name: "userDetails",
+  name: "ExerciseList",
   initialState: initialState,
   reducers: {
     updateExerciseName: (state, action) => {
