@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, SafeAreaView } from "react-native";
+import { Text, SafeAreaView, KeyboardAvoidingView } from "react-native";
 import { Provider } from "react-redux";
 
 import { NavigationContainer } from "@react-navigation/native";
@@ -25,9 +25,14 @@ const App = () => {
 
   return (
     <Provider store={store}>
-      <NavigationContainer>
-        <MainNavigation />
-      </NavigationContainer>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "padding"}
+        style={{ flex: 1 }}
+      >
+        <NavigationContainer>
+          <MainNavigation />
+        </NavigationContainer>
+      </KeyboardAvoidingView>
     </Provider>
   );
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import { SafeAreaView, FlatList } from "react-native";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 import { Routes } from "../../navigation/Routes";
 import globalStyle from "../../assets/styles/globalStyle";
@@ -10,12 +10,13 @@ import Header from "../../components/header/Header";
 import ExerciseOption from "../../components/exerciseOption/ExerciseOption";
 
 const Workout = ({ navigation }) => {
-  const exerciseDetails = useSelector((state) => state.userDetails);
-
   const workoutsList = useSelector((state) => state.workoutsList);
   const workoutName = workoutsList.selectedWorkout;
 
-  const dispatch = useDispatch();
+  let exerciseList = useSelector((state) => state.exerciseList);
+  exerciseList = exerciseList.exercises.filter((exercise) =>
+    exercise.containInWorkout.includes(workoutName)
+  );
 
   const exerciseTypes = [
     {
@@ -23,7 +24,7 @@ const Workout = ({ navigation }) => {
       picture: require("../../assets/pictures/workout.jpg"),
     },
     {
-      exerciseName: exerciseDetails.exerciseName,
+      exerciseName: "לחיצת חזה",
       picture: require("../../assets/pictures/workout.jpg"),
     },
     {
@@ -49,12 +50,9 @@ const Workout = ({ navigation }) => {
           </>
         }
         showsVerticalScrollIndicator={false}
-        data={exerciseTypes}
+        data={exerciseList}
         renderItem={({ item }) => (
-          <ExerciseOption
-            key={item.exerciseName}
-            exerciseName={item.exerciseName}
-          />
+          <ExerciseOption key={item.exerciseName} exerciseData={item} />
         )}
       ></FlatList>
     </SafeAreaView>

@@ -12,7 +12,9 @@ import OptionContainer from "../optionContainer/OptionContainer";
 import ExerciseCollapseClose from "../exerciseCollapseClose/ExerciseCollapseClose";
 import ExerciseCollapseOpen from "../exerciseCollapseOpen/ExerciseCollapseOpen";
 
-const ExerciseOption = ({ exerciseName }) => {
+const ExerciseOption = ({ exerciseData }) => {
+  const exerciseName = exerciseData.exerciseName;
+
   const [isCollapsed, setCollapsed] = useState(true);
   const [collapseImage, setCollapseImage] = useState(faChevronDown);
 
@@ -33,10 +35,16 @@ const ExerciseOption = ({ exerciseName }) => {
             exerciseName={exerciseName}
           />
           <Collapsible collapsed={isCollapsed}>
-            <ExerciseCollapseOpen title={Strings.Sets} />
+            <ExerciseCollapseOpen
+              title={Strings.Sets}
+              exerciseName={exerciseName}
+              setsData={exerciseData.exerciseSets}
+            />
             <ExerciseCollapseOpen
               title={Strings.Notes}
+              exerciseName={exerciseName}
               backgroundColor="#F6FAFD"
+              notesData={exerciseData.exerciseNotes}
             />
             <OptionContainer
               containerStyle={style.videoContainer}
@@ -58,7 +66,7 @@ const ExerciseOption = ({ exerciseName }) => {
 };
 
 ExerciseOption.prototype = {
-  exerciseName: PropTypes.string.isRequired,
+  exerciseData: PropTypes.object.isRequired,
 };
 
 export default ExerciseOption;
