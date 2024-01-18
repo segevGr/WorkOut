@@ -5,10 +5,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateSelectedCategory } from "../../redux/reducers/MusclesBankList";
 
 import Header from "../../components/header/Header";
+import CollapseContainer from "../../components/collapseContainer/CollapseContainer";
 
 import globalStyle from "../../assets/styles/globalStyle";
 import style from "./style";
 import { horizontalScale } from "../../assets/styles/scaling";
+import BankExerciseCollapseOpen from "../../components/collapseOpen/BankExerciseCollapseOpen";
+import { Strings } from "../../assets/strings/Strings";
 
 const MuscleBank = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -40,9 +43,25 @@ const MuscleBank = ({ navigation }) => {
         }
         showsVerticalScrollIndicator={false}
         data={exercisesList}
-        renderItem={(item) => {
-          // console.log(item);
-          return <Text>{item.category}</Text>;
+        renderItem={({ item }) => {
+          return (
+            <CollapseContainer
+              exerciseName={item.exerciseName}
+              exerciseVideo={item.exerciseVideo}
+              collapseOpenContent={
+                <>
+                  <BankExerciseCollapseOpen
+                    title={Strings.WorksOn}
+                    exerciseData={item.workOn}
+                  />
+                  <BankExerciseCollapseOpen
+                    title={Strings.Highlights}
+                    exerciseData={item.highlights}
+                  />
+                </>
+              }
+            />
+          );
         }}
       />
     </SafeAreaView>

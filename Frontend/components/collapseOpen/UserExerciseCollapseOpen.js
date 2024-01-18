@@ -15,7 +15,7 @@ import {
   updateExerciseSets,
 } from "../../redux/reducers/UserExerciseList";
 
-const ExerciseCollapseOpen = ({
+const UserExerciseCollapseOpen = ({
   title,
   exerciseName,
   backgroundColor,
@@ -106,13 +106,13 @@ const ExerciseCollapseOpen = ({
   );
 };
 
-ExerciseCollapseOpen.defaultProps = {
+UserExerciseCollapseOpen.defaultProps = {
   backgroundColor: "#FFFFFF",
   setsData: null,
   notesData: null,
 };
 
-ExerciseCollapseOpen.prototype = {
+UserExerciseCollapseOpen.prototype = {
   title: PropTypes.string.isRequired,
   exerciseName: PropTypes.string.isRequired,
   backgroundColor: PropTypes.string,
@@ -120,4 +120,4 @@ ExerciseCollapseOpen.prototype = {
   notesData: PropTypes.string,
 };
 
-export default ExerciseCollapseOpen;
+export default UserExerciseCollapseOpen;

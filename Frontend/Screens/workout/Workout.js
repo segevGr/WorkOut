@@ -7,7 +7,9 @@ import { Routes } from "../../navigation/Routes";
 import globalStyle from "../../assets/styles/globalStyle";
 
 import Header from "../../components/header/Header";
-import ExerciseOption from "../../components/exerciseOption/ExerciseOption";
+import CollapseContainer from "../../components/collapseContainer/CollapseContainer";
+import UserExerciseCollapseOpen from "../../components/collapseOpen/UserExerciseCollapseOpen";
+import { Strings } from "../../assets/strings/Strings";
 
 const Workout = ({ navigation }) => {
   const workoutsList = useSelector((state) => state.workoutsList);
@@ -17,29 +19,6 @@ const Workout = ({ navigation }) => {
   userExerciseList = userExerciseList.exercises.filter((exercise) =>
     exercise.containInWorkout.includes(workoutName)
   );
-
-  const exerciseTypes = [
-    {
-      exerciseName: "לחיצת חזה",
-      picture: require("../../assets/pictures/workout.jpg"),
-    },
-    {
-      exerciseName: "לחיצת חזה",
-      picture: require("../../assets/pictures/workout.jpg"),
-    },
-    {
-      exerciseName: "אימון Full Body",
-      picture: require("../../assets/pictures/workout.jpg"),
-    },
-    {
-      exerciseName: "test3",
-      picture: require("../../assets/pictures/workout.jpg"),
-    },
-    {
-      exerciseName: "test4",
-      picture: require("../../assets/pictures/workout.jpg"),
-    },
-  ];
 
   return (
     <SafeAreaView style={globalStyle.background}>
@@ -52,7 +31,26 @@ const Workout = ({ navigation }) => {
         showsVerticalScrollIndicator={false}
         data={userExerciseList}
         renderItem={({ item }) => (
-          <ExerciseOption key={item.exerciseName} exerciseData={item} />
+          <CollapseContainer
+            key={item.exerciseName}
+            exerciseName={item.exerciseName}
+            exerciseVideo={item.exerciseVideoName}
+            collapseOpenContent={
+              <>
+                <UserExerciseCollapseOpen
+                  title={Strings.Sets}
+                  exerciseName={item.exerciseName}
+                  setsData={item.exerciseSets}
+                />
+                <UserExerciseCollapseOpen
+                  title={Strings.Notes}
+                  exerciseName={item.exerciseName}
+                  backgroundColor="#F6FAFD"
+                  notesData={item.exerciseNotes}
+                />
+              </>
+            }
+          />
         )}
       ></FlatList>
     </SafeAreaView>

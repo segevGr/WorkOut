@@ -11,19 +11,19 @@ import { Strings } from "../../assets/strings/Strings";
 import OptionContainer from "../optionContainer/OptionContainer";
 import CollapseHeader from "../collapseHeader/CollapseHeader";
 import VideoContainer from "../videoContainer/VideoContainer";
-import ExerciseCollapseOpen from "../exerciseCollapseOpen/ExerciseCollapseOpen";
+import UserExerciseCollapseOpen from "../collapseOpen/UserExerciseCollapseOpen";
 
-const ExerciseOption = ({ exerciseData }) => {
-  const exerciseName = exerciseData.exerciseName;
-
+const CollapseContainer = ({
+  exerciseName,
+  collapseOpenContent,
+  exerciseVideo,
+}) => {
   const [isCollapsed, setCollapsed] = useState(true);
   const [collapseImage, setCollapseImage] = useState(faChevronDown);
 
   const handlePress = () => {
     setCollapsed(!isCollapsed);
-    isCollapsed
-      ? setCollapseImage(faChevronUp)
-      : setCollapseImage(faChevronDown);
+    setCollapseImage(isCollapsed ? faChevronUp : faChevronDown);
   };
 
   return (
@@ -36,20 +36,10 @@ const ExerciseOption = ({ exerciseData }) => {
             exerciseName={exerciseName}
           />
           <Collapsible collapsed={isCollapsed}>
-            <ExerciseCollapseOpen
-              title={Strings.Sets}
-              exerciseName={exerciseName}
-              setsData={exerciseData.exerciseSets}
-            />
-            <ExerciseCollapseOpen
-              title={Strings.Notes}
-              exerciseName={exerciseName}
-              backgroundColor="#F6FAFD"
-              notesData={exerciseData.exerciseNotes}
-            />
-            <VideoContainer
-              videoSource={require("../../assets/videos/benchPress.mp4")}
-            />
+            {collapseOpenContent}
+            {exerciseVideo ? (
+              <VideoContainer videoSource={exerciseVideo} />
+            ) : null}
           </Collapsible>
         </>
       }
@@ -57,8 +47,10 @@ const ExerciseOption = ({ exerciseData }) => {
   );
 };
 
-ExerciseOption.prototype = {
-  exerciseData: PropTypes.object.isRequired,
+CollapseContainer.prototype = {
+  exerciseName: PropTypes.string.isRequired,
+  collapseOpenContent: PropTypes.node.isRequired,
+  exerciseVideo: PropTypes.string,
 };
 
-export default ExerciseOption;
+export default CollapseContainer;

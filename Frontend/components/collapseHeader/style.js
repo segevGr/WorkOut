@@ -11,6 +11,7 @@ const style = StyleSheet.create({
     width: "100%",
     flexDirection: "row",
     justifyContent: "space-between",
+    alignItems: "center",
   },
   exerciseTitle: {
     fontSize: scaleFontSize(25),
@@ -20,7 +21,6 @@ const style = StyleSheet.create({
   },
   collapseContainer: {
     paddingHorizontal: horizontalScale(15),
-    paddingVertical: verticalScale(10),
   },
 });
 
