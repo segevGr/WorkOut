@@ -31,7 +31,7 @@ const initialState = {
       containInWorkout: ["אימון B"],
     },
     {
-      exerciseName: "לחיצת זין",
+      exerciseName: "לחיצת משהו",
       exerciseSets: `סט ראשון: 10 קילו 4 חזרות\nסט שני: 20 קילו 6 חזרות`,
       exerciseNotes: "bla bla bla",
       exerciseVideoName: require("../../assets/videos/benchPress.mp4"),

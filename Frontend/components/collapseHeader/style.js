@@ -18,6 +18,7 @@ const style = StyleSheet.create({
     paddingHorizontal: horizontalScale(15),
     paddingVertical: verticalScale(10),
     fontFamily: getFontFamily("Manrope", "500"),
+    textAlign: "right",
   },
   collapseContainer: {
     paddingHorizontal: horizontalScale(15),

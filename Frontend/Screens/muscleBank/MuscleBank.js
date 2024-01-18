@@ -57,6 +57,7 @@ const MuscleBank = ({ navigation }) => {
                   <BankExerciseCollapseOpen
                     title={Strings.Highlights}
                     exerciseData={item.highlights}
+                    backgroundColor="#F6FAFD"
                   />
                 </>
               }
