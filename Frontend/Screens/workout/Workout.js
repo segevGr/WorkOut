@@ -13,8 +13,8 @@ const Workout = ({ navigation }) => {
   const workoutsList = useSelector((state) => state.workoutsList);
   const workoutName = workoutsList.selectedWorkout;
 
-  let exerciseList = useSelector((state) => state.exerciseList);
-  exerciseList = exerciseList.exercises.filter((exercise) =>
+  let userExerciseList = useSelector((state) => state.userExerciseList);
+  userExerciseList = userExerciseList.exercises.filter((exercise) =>
     exercise.containInWorkout.includes(workoutName)
   );
 
@@ -50,7 +50,7 @@ const Workout = ({ navigation }) => {
           </>
         }
         showsVerticalScrollIndicator={false}
-        data={exerciseList}
+        data={userExerciseList}
         renderItem={({ item }) => (
           <ExerciseOption key={item.exerciseName} exerciseData={item} />
         )}

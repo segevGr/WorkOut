@@ -9,7 +9,8 @@ import style from "./style";
 import { Strings } from "../../assets/strings/Strings";
 
 import OptionContainer from "../optionContainer/OptionContainer";
-import ExerciseCollapseClose from "../exerciseCollapseClose/ExerciseCollapseClose";
+import CollapseHeader from "../collapseHeader/CollapseHeader";
+import VideoContainer from "../videoContainer/VideoContainer";
 import ExerciseCollapseOpen from "../exerciseCollapseOpen/ExerciseCollapseOpen";
 
 const ExerciseOption = ({ exerciseData }) => {
@@ -29,7 +30,7 @@ const ExerciseOption = ({ exerciseData }) => {
     <OptionContainer
       content={
         <>
-          <ExerciseCollapseClose
+          <CollapseHeader
             handlePress={handlePress}
             collapseImage={collapseImage}
             exerciseName={exerciseName}
@@ -46,17 +47,8 @@ const ExerciseOption = ({ exerciseData }) => {
               backgroundColor="#F6FAFD"
               notesData={exerciseData.exerciseNotes}
             />
-            <OptionContainer
-              containerStyle={style.videoContainer}
-              content={
-                <>
-                  <Video
-                    source={require("../../assets/videos/benchPress.mp4")}
-                    style={style.video}
-                    useNativeControls
-                  />
-                </>
-              }
+            <VideoContainer
+              videoSource={require("../../assets/videos/benchPress.mp4")}
             />
           </Collapsible>
         </>

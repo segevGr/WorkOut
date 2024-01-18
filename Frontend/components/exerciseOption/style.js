@@ -28,16 +28,6 @@ const style = StyleSheet.create({
     height: verticalScale(130),
     borderRadius: horizontalScale(10),
   },
-  videoContainer: {
-    marginHorizontal: horizontalScale(10),
-    marginVertical: verticalScale(5),
-  },
-  video: {
-    width: "100%",
-    height: verticalScale(130),
-    borderRadius: horizontalScale(10),
-    paddingBottom: 0,
-  },
 });
 
 export default style;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   SafeAreaView,
   View,
@@ -9,6 +9,8 @@ import {
 } from "react-native";
 
 import { useDispatch, useSelector } from "react-redux";
+import { updateSelectedCategory } from "../../redux/reducers/MusclesBankList";
+
 import { Routes } from "../../navigation/Routes";
 
 import Header from "../../components/header/Header";
@@ -20,7 +22,6 @@ import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import globalStyle from "../../assets/styles/globalStyle";
 import style from "./style";
 import { horizontalScale } from "../../assets/styles/scaling";
-import { updateSelectedCategory } from "../../redux/reducers/MusclesBankList";
 
 const MusclesBank = ({ navigation }) => {
   const musclesList = useSelector((state) => state.musclesBankList.categories);

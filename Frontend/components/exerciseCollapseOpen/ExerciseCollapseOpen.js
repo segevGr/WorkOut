@@ -13,7 +13,7 @@ import { scaleFontSize } from "../../assets/styles/scaling";
 import {
   updateExerciseNotes,
   updateExerciseSets,
-} from "../../redux/reducers/ExerciseList";
+} from "../../redux/reducers/UserExerciseList";
 
 const ExerciseCollapseOpen = ({
   title,

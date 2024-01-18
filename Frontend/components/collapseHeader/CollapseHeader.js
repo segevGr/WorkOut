@@ -7,11 +7,7 @@ import { horizontalScale } from "../../assets/styles/scaling";
 
 import style from "./style";
 
-const ExerciseCollapseClose = ({
-  handlePress,
-  collapseImage,
-  exerciseName,
-}) => {
+const CollapseHeader = ({ handlePress, collapseImage, exerciseName }) => {
   return (
     <TouchableOpacity onPress={() => handlePress()} style={style.containerView}>
       <View style={style.collapseContainer}>
@@ -22,10 +18,10 @@ const ExerciseCollapseClose = ({
   );
 };
 
-ExerciseCollapseClose.prototype = {
+CollapseHeader.prototype = {
   handlePress: PropTypes.func.isRequired,
   collapseImage: PropTypes.object.isRequired,
   exerciseName: PropTypes.string.isRequired,
 };
 
-export default ExerciseCollapseClose;
+export default CollapseHeader;

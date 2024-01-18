@@ -5,15 +5,14 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import WorkoutsList from "./reducers/WorkoutsList";
 import ExerciseList from "./reducers/ExerciseList";
+import UserExerciseList from "./reducers/UserExerciseList";
 import MusclesBankList from "./reducers/MusclesBankList";
-import ChestExercises from "./reducers/musclesExercise/ChestExercises";
 
 const rootReducer = combineReducers({
   workoutsList: WorkoutsList,
   exerciseList: ExerciseList,
+  userExerciseList: UserExerciseList,
   musclesBankList: MusclesBankList,
-
-  chestExercises: ChestExercises,
 });
 
 const configuration = {
