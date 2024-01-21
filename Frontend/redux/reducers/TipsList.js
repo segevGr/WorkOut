@@ -4,15 +4,15 @@ const initialState = {
   categories: [
     {
       tipCategory: "אימונים",
-      tipImage: require("../../assets/icons/muscles/Six-pack.png"),
+      tipImage: require("../../assets/icons/tips/workout.png"),
     },
     {
       tipCategory: "תזונה",
-      tipImage: require("../../assets/icons/muscles/back.png"),
+      tipImage: require("../../assets/icons/tips/meal.png"),
     },
     {
       tipCategory: "כללי",
-      tipImage: require("../../assets/icons/muscles/chest.png"),
+      tipImage: require("../../assets/icons/tips/general.png"),
     },
   ],
   selectedCategory: null,
