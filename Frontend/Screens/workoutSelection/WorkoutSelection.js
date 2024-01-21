@@ -5,10 +5,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateSelectedWorkout } from "../../redux/reducers/WorkoutsList";
 
 import { Routes } from "../../navigation/Routes";
-import globalStyle from "../../assets/styles/globalStyle";
 
 import Header from "../../components/header/Header";
 import WorkOutOption from "../../components/workoutOption/WorkoutOption";
+
+import globalStyle from "../../assets/styles/globalStyle";
 
 const WorkoutSelection = ({ navigation }) => {
   const workoutsList = useSelector((state) => state.workoutsList);

@@ -1,12 +1,5 @@
-import React, { useEffect } from "react";
-import {
-  SafeAreaView,
-  View,
-  Text,
-  Image,
-  FlatList,
-  TouchableOpacity,
-} from "react-native";
+import React from "react";
+import { SafeAreaView, FlatList } from "react-native";
 
 import { useDispatch, useSelector } from "react-redux";
 import { updateSelectedCategory } from "../../redux/reducers/MusclesBankList";
@@ -15,9 +8,9 @@ import { Routes } from "../../navigation/Routes";
 
 import Header from "../../components/header/Header";
 import OptionContainer from "../../components/optionContainer/OptionContainer";
+import CategoryContainer from "../../components/categoryContainer/CategoryContainer";
 
 import globalStyle from "../../assets/styles/globalStyle";
-import CategoryContainer from "../../components/categoryContainer/CategoryContainer";
 
 const MusclesBank = ({ navigation }) => {
   const musclesList = useSelector((state) => state.musclesBankList.categories);
