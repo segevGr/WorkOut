@@ -1,17 +1,12 @@
 import React, { useState } from "react";
 import Collapsible from "react-native-collapsible";
 
-import { Video } from "expo-av";
 import PropTypes from "prop-types";
 import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
-
-import style from "./style";
-import { Strings } from "../../assets/strings/Strings";
 
 import OptionContainer from "../optionContainer/OptionContainer";
 import CollapseHeader from "../collapseHeader/CollapseHeader";
 import VideoContainer from "../videoContainer/VideoContainer";
-import UserExerciseCollapseOpen from "../collapseOpen/UserExerciseCollapseOpen";
 
 const CollapseContainer = ({
   exerciseName,

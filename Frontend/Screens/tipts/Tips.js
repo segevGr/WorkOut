@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
   SafeAreaView,
   View,
@@ -16,12 +16,8 @@ import { Routes } from "../../navigation/Routes";
 import Header from "../../components/header/Header";
 import OptionContainer from "../../components/optionContainer/OptionContainer";
 
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
-
 import globalStyle from "../../assets/styles/globalStyle";
-import style from "./style";
-import { horizontalScale } from "../../assets/styles/scaling";
+import CategoryContainer from "../../components/categoryContainer/CategoryContainer";
 
 const Tips = ({ navigation }) => {
   const tipsCategoriesList = useSelector((state) => state.tipsList.categories);
@@ -41,35 +37,18 @@ const Tips = ({ navigation }) => {
   return (
     <SafeAreaView style={globalStyle.background}>
       <Header title={"טיפים לתהליך"} backPress={() => navigation.goBack()} />
-      {tipsCategoriesList.map((item) => {
+      {tipsCategoriesList.map((tip) => {
         return (
           <OptionContainer
-            key={item.tipCategory}
+            key={tip.tipCategory}
             content={
               <>
-                <View style={style.TipContainer}>
-                  <View style={style.imageContainer}>
-                    <Image
-                      source={item.tipImage}
-                      resizeMode="contain"
-                      style={style.image}
-                    />
-                  </View>
-                  <View style={style.textContainer}>
-                    <Text style={style.primaryText}>{item.tipCategory}</Text>
-                    <Text style={style.secondaryText}>
-                      {getSecondaryText(item.tipCategory)}
-                    </Text>
-                  </View>
-                  <TouchableOpacity
-                    onPress={() => navigateToMuscle(item.tipCategory)}
-                  >
-                    <FontAwesomeIcon
-                      icon={faChevronRight}
-                      size={horizontalScale(24)}
-                    />
-                  </TouchableOpacity>
-                </View>
+                <CategoryContainer
+                  image={tip.tipImage}
+                  primaryText={tip.tipCategory}
+                  secondaryText={getSecondaryText(tip.tipCategory)}
+                  onPress={() => navigateToMuscle(tip.tipCategory)}
+                />
               </>
             }
           />
