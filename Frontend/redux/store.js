@@ -7,12 +7,14 @@ import WorkoutsList from "./reducers/WorkoutsList";
 import ExerciseList from "./reducers/ExerciseList";
 import UserExerciseList from "./reducers/UserExerciseList";
 import MusclesBankList from "./reducers/MusclesBankList";
+import TipsList from "./reducers/TipsList";
 
 const rootReducer = combineReducers({
   workoutsList: WorkoutsList,
   exerciseList: ExerciseList,
   userExerciseList: UserExerciseList,
   musclesBankList: MusclesBankList,
+  tipsList: TipsList,
 });
 
 const configuration = {
@@ -35,4 +37,4 @@ const store = configureStore({
 
 export default store;
 export const persister = persistStore(store);
-// persister.purge();
+persister.purge();
