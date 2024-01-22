@@ -14,7 +14,7 @@ import { updateSelectedCategory } from "../../redux/reducers/TipsList";
 import { Routes } from "../../navigation/Routes";
 
 import Header from "../../components/header/Header";
-import OptionContainer from "../../components/optionContainer/OptionContainer";
+import BorderContainer from "../../components/borderContainer/BorderContainer";
 
 import globalStyle from "../../assets/styles/globalStyle";
 import CategoryContainer from "../../components/categoryContainer/CategoryContainer";
@@ -39,7 +39,7 @@ const Tips = ({ navigation }) => {
       <Header title={"טיפים לתהליך"} backPress={() => navigation.goBack()} />
       {tipsCategoriesList.map((tip) => {
         return (
-          <OptionContainer
+          <BorderContainer
             key={tip.tipCategory}
             content={
               <>

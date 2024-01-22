@@ -7,7 +7,7 @@ import { updateSelectedCategory } from "../../redux/reducers/MusclesBankList";
 import { Routes } from "../../navigation/Routes";
 
 import Header from "../../components/header/Header";
-import OptionContainer from "../../components/optionContainer/OptionContainer";
+import BorderContainer from "../../components/borderContainer/BorderContainer";
 import CategoryContainer from "../../components/categoryContainer/CategoryContainer";
 
 import globalStyle from "../../assets/styles/globalStyle";
@@ -36,7 +36,7 @@ const MusclesBank = ({ navigation }) => {
         showsVerticalScrollIndicator={false}
         data={musclesList}
         renderItem={({ item }) => (
-          <OptionContainer
+          <BorderContainer
             key={item.muscleName}
             content={
               <>

@@ -2,12 +2,12 @@ import React from "react";
 import { Text, View, Image, Pressable } from "react-native";
 import style from "./style";
 import PropTypes from "prop-types";
-import OptionContainer from "../optionContainer/OptionContainer";
+import BorderContainer from "../borderContainer/BorderContainer";
 
 const WorkOutOption = ({ workoutName, picture, navigatePress }) => {
   return (
     <Pressable onPress={navigatePress}>
-      <OptionContainer
+      <BorderContainer
         content={
           <>
             <Image
@@ -20,7 +20,7 @@ const WorkOutOption = ({ workoutName, picture, navigatePress }) => {
             </View>
           </>
         }
-      ></OptionContainer>
+      ></BorderContainer>
     </Pressable>
   );
 };

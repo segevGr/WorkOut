@@ -4,7 +4,7 @@ import Collapsible from "react-native-collapsible";
 import PropTypes from "prop-types";
 import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 
-import OptionContainer from "../optionContainer/OptionContainer";
+import BorderContainer from "../borderContainer/BorderContainer";
 import CollapseHeader from "../collapseHeader/CollapseHeader";
 import VideoContainer from "../videoContainer/VideoContainer";
 
@@ -22,7 +22,7 @@ const CollapseContainer = ({
   };
 
   return (
-    <OptionContainer
+    <BorderContainer
       content={
         <>
           <CollapseHeader
@@ -38,7 +38,7 @@ const CollapseContainer = ({
           </Collapsible>
         </>
       }
-    ></OptionContainer>
+    ></BorderContainer>
   );
 };
 

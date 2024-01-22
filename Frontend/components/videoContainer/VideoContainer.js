@@ -5,11 +5,11 @@ import PropTypes from "prop-types";
 
 import style from "./style";
 
-import OptionContainer from "../optionContainer/OptionContainer";
+import BorderContainer from "../borderContainer/BorderContainer";
 
 const VideoContainer = ({ videoSource }) => {
   return (
-    <OptionContainer
+    <BorderContainer
       containerStyle={style.videoContainer}
       content={
         <>

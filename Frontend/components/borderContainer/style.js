@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 import { horizontalScale, verticalScale } from "../../assets/styles/scaling";
 
 const style = StyleSheet.create({
-  optionContainer: {
+  container: {
     flexDirection: "column",
     borderColor: "#E5F0FA",
     borderRadius: horizontalScale(10),

@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faPencil, faCheck } from "@fortawesome/free-solid-svg-icons";
 
 import style from "./style";
-import OptionContainer from "../optionContainer/OptionContainer";
+import BorderContainer from "../borderContainer/BorderContainer";
 import { scaleFontSize } from "../../assets/styles/scaling";
 import {
   updateExerciseNotes,
@@ -18,7 +18,7 @@ import {
 const BankExerciseCollapseOpen = ({ title, exerciseData, backgroundColor }) => {
   return (
     <View>
-      <OptionContainer
+      <BorderContainer
         containerStyle={{
           ...style.innerContainer,
           backgroundColor: backgroundColor,
