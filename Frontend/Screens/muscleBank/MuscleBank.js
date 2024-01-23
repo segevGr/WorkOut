@@ -34,7 +34,7 @@ const MuscleBank = ({ navigation }) => {
         ListHeaderComponent={
           <>
             <Header
-              title={`תרגילים ל${categoryName}`}
+              title={`${Strings.MuscleBankTitle}${categoryName}`}
               backPress={() => navigateBack()}
             />
           </>

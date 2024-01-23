@@ -14,6 +14,7 @@ const style = StyleSheet.create({
     alignItems: "center",
   },
   title: {
+    flex: 1,
     fontSize: scaleFontSize(25),
     paddingHorizontal: horizontalScale(15),
     paddingVertical: verticalScale(10),

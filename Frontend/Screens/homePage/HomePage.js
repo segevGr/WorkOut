@@ -7,8 +7,11 @@ import {
   SafeAreaView,
 } from "react-native";
 
-import Header from "../../components/header/Header";
 import { Routes } from "../../navigation/Routes";
+
+import Header from "../../components/header/Header";
+
+import { Strings } from "../../assets/strings/Strings";
 import style from "./style";
 
 const HomePage = ({ navigation }) => {
@@ -20,34 +23,37 @@ const HomePage = ({ navigation }) => {
       style={style.background}
     >
       <SafeAreaView style={{ flex: 1 }}>
-        <Header title={`ברוך הבא ${username}`} textColor={"#FFF"} />
+        <Header
+          title={`${Strings.WelcomeMessage} ${username}`}
+          textColor={"#FFF"}
+        />
         <View style={style.optionsContainer}>
           <TouchableOpacity
             onPress={() => navigation.navigate(Routes.WorkoutSelection)}
           >
-            <Text style={style.optionText}>האימונים שלי</Text>
+            <Text style={style.optionText}>{Strings.MyWorkouts}</Text>
           </TouchableOpacity>
           <TouchableOpacity>
-            <Text style={style.optionText}>התפריט שלי</Text>
+            <Text style={style.optionText}>{Strings.MyMenu}</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => navigation.navigate(Routes.MusclesBank)}
           >
-            <Text style={style.optionText}>בנק תרגילים</Text>
+            <Text style={style.optionText}>{Strings.ExercisesBank}</Text>
           </TouchableOpacity>
           <TouchableOpacity>
-            <Text style={style.optionText}>בנק תחליפים</Text>
+            <Text style={style.optionText}>{Strings.MenuBank}</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => navigation.navigate(Routes.TipsCategories)}
           >
-            <Text style={style.optionText}>טיפים</Text>
+            <Text style={style.optionText}>{Strings.Tips}</Text>
           </TouchableOpacity>
           <TouchableOpacity>
-            <Text style={style.optionText}>התנתקות</Text>
+            <Text style={style.optionText}>{Strings.LogOut}</Text>
           </TouchableOpacity>
         </View>
-        <Text style={style.versionDetails}>MyWorkout v1.0.0</Text>
+        <Text style={style.versionDetails}>{Strings.Version}</Text>
       </SafeAreaView>
     </ImageBackground>
   );

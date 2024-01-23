@@ -27,7 +27,7 @@ const CollapseContainer = ({ name, collapseOpenContent, media, mediaType }) => {
             name={name}
           />
           <Collapsible collapsed={isCollapsed}>
-            {collapseOpenContent}
+            {collapseOpenContent ? collapseOpenContent : null}
             {media ? (
               <InnerMediaContainer mediaSource={media} mediaType={mediaType} />
             ) : null}
@@ -40,7 +40,7 @@ const CollapseContainer = ({ name, collapseOpenContent, media, mediaType }) => {
 
 CollapseContainer.prototype = {
   name: PropTypes.string.isRequired,
-  collapseOpenContent: PropTypes.node.isRequired,
+  collapseOpenContent: PropTypes.node,
   media: PropTypes.string,
   mediaType: PropTypes.string,
 };

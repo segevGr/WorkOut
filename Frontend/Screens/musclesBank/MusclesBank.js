@@ -10,6 +10,7 @@ import Header from "../../components/header/Header";
 import BorderContainer from "../../components/borderContainer/BorderContainer";
 import CategoryContainer from "../../components/categoryContainer/CategoryContainer";
 
+import { Strings } from "../../assets/strings/Strings";
 import globalStyle from "../../assets/styles/globalStyle";
 
 const MusclesBank = ({ navigation }) => {
@@ -28,7 +29,7 @@ const MusclesBank = ({ navigation }) => {
         ListHeaderComponent={
           <>
             <Header
-              title={"בנק תרגילים"}
+              title={Strings.BankTitle}
               backPress={() => navigation.goBack()}
             />
           </>
@@ -43,7 +44,7 @@ const MusclesBank = ({ navigation }) => {
                 <CategoryContainer
                   image={item.muscleImage}
                   primaryText={item.muscleName}
-                  secondaryText={`למעבר לתרגילי ${item.muscleName}`}
+                  secondaryText={`${Strings.GoToMuscleMessage} ${item.muscleName}`}
                   onPress={() => navigateToMuscle(item.muscleName)}
                 />
               </>

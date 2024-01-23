@@ -9,6 +9,7 @@ import { Routes } from "../../navigation/Routes";
 import Header from "../../components/header/Header";
 import WorkOutOption from "../../components/workoutOption/WorkoutOption";
 
+import { Strings } from "../../assets/strings/Strings";
 import globalStyle from "../../assets/styles/globalStyle";
 
 const WorkoutSelection = ({ navigation }) => {
@@ -25,7 +26,10 @@ const WorkoutSelection = ({ navigation }) => {
       <FlatList
         ListHeaderComponent={
           <>
-            <Header title={"אימונים"} backPress={() => navigation.goBack()} />
+            <Header
+              title={Strings.WorkOuts}
+              backPress={() => navigation.goBack()}
+            />
           </>
         }
         showsVerticalScrollIndicator={false}

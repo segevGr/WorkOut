@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  SafeAreaView,
-  View,
-  Text,
-  Image,
-  FlatList,
-  TouchableOpacity,
-} from "react-native";
+import { SafeAreaView } from "react-native";
 
 import { useDispatch, useSelector } from "react-redux";
 import { updateSelectedCategory } from "../../redux/reducers/TipsList";
@@ -15,9 +8,10 @@ import { Routes } from "../../navigation/Routes";
 
 import Header from "../../components/header/Header";
 import BorderContainer from "../../components/borderContainer/BorderContainer";
-
-import globalStyle from "../../assets/styles/globalStyle";
 import CategoryContainer from "../../components/categoryContainer/CategoryContainer";
+
+import { Strings } from "../../assets/strings/Strings";
+import globalStyle from "../../assets/styles/globalStyle";
 
 const TipsCategories = ({ navigation }) => {
   const tipsCategoriesList = useSelector((state) => state.tipsList.categories);
@@ -25,8 +19,8 @@ const TipsCategories = ({ navigation }) => {
 
   const getSecondaryText = (category) => {
     return category === "כללי"
-      ? "למעבר לטיפים כלליים"
-      : `למעבר לטיפים בנושא ${category}`;
+      ? Strings.GoToGeneralTips
+      : `${Strings.GoToTips} ${category}`;
   };
 
   const navigateToTips = (selectedCategory) => {
@@ -36,7 +30,10 @@ const TipsCategories = ({ navigation }) => {
 
   return (
     <SafeAreaView style={globalStyle.background}>
-      <Header title={"טיפים לתהליך"} backPress={() => navigation.goBack()} />
+      <Header
+        title={Strings.TipsCategoriesTitle}
+        backPress={() => navigation.goBack()}
+      />
       {tipsCategoriesList.map((tip) => {
         return (
           <BorderContainer
