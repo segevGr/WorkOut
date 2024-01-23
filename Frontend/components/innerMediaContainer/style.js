@@ -6,11 +6,11 @@ import {
 } from "../../assets/styles/scaling";
 
 const style = StyleSheet.create({
-  videoContainer: {
+  container: {
     marginHorizontal: horizontalScale(10),
     marginVertical: verticalScale(5),
   },
-  video: {
+  media: {
     width: "100%",
     height: verticalScale(130),
     borderRadius: horizontalScale(10),

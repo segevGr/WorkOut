@@ -6,7 +6,7 @@ import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 
 import BorderContainer from "../borderContainer/BorderContainer";
 import CollapseHeader from "../collapseHeader/CollapseHeader";
-import VideoContainer from "../videoContainer/VideoContainer";
+import InnerMediaContainer from "../innerMediaContainer/InnerMediaContainer";
 
 const CollapseContainer = ({
   exerciseName,
@@ -33,7 +33,10 @@ const CollapseContainer = ({
           <Collapsible collapsed={isCollapsed}>
             {collapseOpenContent}
             {exerciseVideo ? (
-              <VideoContainer videoSource={exerciseVideo} />
+              <InnerMediaContainer
+                mediaSource={exerciseVideo}
+                mediaType={"video"}
+              />
             ) : null}
           </Collapsible>
         </>

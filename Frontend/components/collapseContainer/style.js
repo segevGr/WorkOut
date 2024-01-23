@@ -23,11 +23,6 @@ const style = StyleSheet.create({
     fontSize: scaleFontSize(16),
   },
   notesContainer: { backgroundColor: "#F6FAFD" },
-  videoContainer: {
-    width: "100%",
-    height: verticalScale(130),
-    borderRadius: horizontalScale(10),
-  },
 });
 
 export default style;
