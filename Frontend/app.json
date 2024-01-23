@@ -11,7 +11,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "MyWorkOut"
@@ -29,6 +31,9 @@
       "eas": {
         "projectId": "83812e00-8f31-44fd-a296-60240748f17d"
       }
-    }
+    },
+    "plugins": [
+      "expo-font"
+    ]
   }
 }

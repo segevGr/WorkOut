@@ -1,5 +1,10 @@
 import React from "react";
-import { Text, SafeAreaView, KeyboardAvoidingView } from "react-native";
+import {
+  Text,
+  SafeAreaView,
+  KeyboardAvoidingView,
+  Platform,
+} from "react-native";
 import { Provider } from "react-redux";
 
 import { NavigationContainer } from "@react-navigation/native";
