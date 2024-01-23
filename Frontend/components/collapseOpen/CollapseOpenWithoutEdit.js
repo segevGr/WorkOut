@@ -1,21 +1,12 @@
-import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity } from "react-native";
-
-import { useSelector } from "react-redux";
+import React from "react";
+import { View, Text } from "react-native";
 
 import PropTypes from "prop-types";
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { faPencil, faCheck } from "@fortawesome/free-solid-svg-icons";
 
 import style from "./style";
 import BorderContainer from "../borderContainer/BorderContainer";
-import { scaleFontSize } from "../../assets/styles/scaling";
-import {
-  updateExerciseNotes,
-  updateExerciseSets,
-} from "../../redux/reducers/UserExerciseList";
 
-const BankExerciseCollapseOpen = ({ title, exerciseData, backgroundColor }) => {
+const CollapseOpenWithoutEdit = ({ title, exerciseData, backgroundColor }) => {
   return (
     <View>
       <BorderContainer
@@ -36,14 +27,14 @@ const BankExerciseCollapseOpen = ({ title, exerciseData, backgroundColor }) => {
   );
 };
 
-BankExerciseCollapseOpen.defaultProps = {
+CollapseOpenWithoutEdit.defaultProps = {
   backgroundColor: "#FFFFFF",
 };
 
-BankExerciseCollapseOpen.prototype = {
+CollapseOpenWithoutEdit.prototype = {
   title: PropTypes.string.isRequired,
   exerciseData: PropTypes.string.isRequired,
   backgroundColor: PropTypes.string,
 };
 
-export default BankExerciseCollapseOpen;
+export default CollapseOpenWithoutEdit;

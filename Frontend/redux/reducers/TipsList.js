@@ -15,7 +15,47 @@ const initialState = {
       tipImage: require("../../assets/icons/tips/general.png"),
     },
   ],
-  selectedCategory: null,
+  selectedCategory: {
+    categoryName: null,
+    tips: [
+      {
+        name: "מאזן קלורי",
+        category: "תזונה",
+        mediaType: "image",
+        tipMedia: require("../../assets/tips/calorieBalance.png"),
+      },
+      {
+        name: "סיבות לעלייה דרסטית במשקל בזמן קצר",
+        category: "תזונה",
+        mediaType: "image",
+        tipMedia: require("../../assets/tips/weightChange.png"),
+      },
+      {
+        name: "למה אתם לא יורדים באחוזי השומן?",
+        category: "תזונה",
+        mediaType: "image",
+        tipMedia: require("../../assets/tips/fatPercentage.png"),
+      },
+      {
+        name: "למה לא להוריד ארוחות מהתפריט כדי לזרז את התהליך",
+        category: "תזונה",
+        mediaType: "image",
+        tipMedia: require("../../assets/tips/meals.png"),
+      },
+      {
+        name: "הסוד לקוביות בבטן",
+        category: "תזונה",
+        mediaType: "image",
+        tipMedia: require("../../assets/tips/SixPack.png"),
+      },
+      {
+        name: "האם אפשרי לרדת בשומן ולעלות בשריר בו זמנית?",
+        category: "תזונה",
+        mediaType: "image",
+        tipMedia: require("../../assets/tips/LoseFatGaiMuscle.png"),
+      },
+    ],
+  },
 };
 
 export const TipsList = createSlice({
@@ -23,7 +63,7 @@ export const TipsList = createSlice({
   initialState: initialState,
   reducers: {
     updateSelectedCategory: (state, action) => {
-      state.selectedCategory = action.payload;
+      state.selectedCategory.categoryName = action.payload;
     },
   },
 });

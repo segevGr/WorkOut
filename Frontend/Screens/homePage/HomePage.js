@@ -38,7 +38,9 @@ const HomePage = ({ navigation }) => {
           <TouchableOpacity>
             <Text style={style.optionText}>בנק תחליפים</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate(Routes.Tips)}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate(Routes.TipsCategories)}
+          >
             <Text style={style.optionText}>טיפים</Text>
           </TouchableOpacity>
           <TouchableOpacity>

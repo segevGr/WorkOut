@@ -19,7 +19,7 @@ import BorderContainer from "../../components/borderContainer/BorderContainer";
 import globalStyle from "../../assets/styles/globalStyle";
 import CategoryContainer from "../../components/categoryContainer/CategoryContainer";
 
-const Tips = ({ navigation }) => {
+const TipsCategories = ({ navigation }) => {
   const tipsCategoriesList = useSelector((state) => state.tipsList.categories);
   const dispatch = useDispatch();
 
@@ -29,9 +29,9 @@ const Tips = ({ navigation }) => {
       : `למעבר לטיפים בנושא ${category}`;
   };
 
-  const navigateToMuscle = (selectedCategory) => {
+  const navigateToTips = (selectedCategory) => {
     dispatch(updateSelectedCategory(selectedCategory));
-    navigation.navigate(Routes.MuscleBank);
+    navigation.navigate(Routes.Tips);
   };
 
   return (
@@ -47,7 +47,7 @@ const Tips = ({ navigation }) => {
                   image={tip.tipImage}
                   primaryText={tip.tipCategory}
                   secondaryText={getSecondaryText(tip.tipCategory)}
-                  onPress={() => navigateToMuscle(tip.tipCategory)}
+                  onPress={() => navigateToTips(tip.tipCategory)}
                 />
               </>
             }
@@ -58,4 +58,4 @@ const Tips = ({ navigation }) => {
   );
 };
 
-export default Tips;
+export default TipsCategories;

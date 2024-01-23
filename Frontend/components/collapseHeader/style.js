@@ -13,7 +13,7 @@ const style = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
   },
-  exerciseTitle: {
+  title: {
     fontSize: scaleFontSize(25),
     paddingHorizontal: horizontalScale(15),
     paddingVertical: verticalScale(10),

@@ -33,8 +33,9 @@ const Workout = ({ navigation }) => {
         renderItem={({ item }) => (
           <CollapseContainer
             key={item.exerciseName}
-            exerciseName={item.exerciseName}
-            exerciseVideo={item.exerciseVideoName}
+            name={item.exerciseName}
+            media={item.exerciseVideoName}
+            mediaType={"video"}
             collapseOpenContent={
               <>
                 <UserExerciseCollapseOpen

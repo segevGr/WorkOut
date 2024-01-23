@@ -1,16 +1,14 @@
 import React from "react";
-import { SafeAreaView, View, Text, Image, FlatList } from "react-native";
+import { SafeAreaView, FlatList } from "react-native";
 
 import { useDispatch, useSelector } from "react-redux";
 import { updateSelectedCategory } from "../../redux/reducers/MusclesBankList";
 
 import Header from "../../components/header/Header";
 import CollapseContainer from "../../components/collapseContainer/CollapseContainer";
+import CollapseOpenWithoutEdit from "../../components/collapseOpen/CollapseOpenWithoutEdit";
 
 import globalStyle from "../../assets/styles/globalStyle";
-import style from "./style";
-import { horizontalScale } from "../../assets/styles/scaling";
-import BankExerciseCollapseOpen from "../../components/collapseOpen/BankExerciseCollapseOpen";
 import { Strings } from "../../assets/strings/Strings";
 
 const MuscleBank = ({ navigation }) => {
@@ -46,15 +44,16 @@ const MuscleBank = ({ navigation }) => {
         renderItem={({ item }) => {
           return (
             <CollapseContainer
-              exerciseName={item.exerciseName}
-              exerciseVideo={item.exerciseVideo}
+              name={item.exerciseName}
+              media={item.exerciseVideo}
+              mediaType={"video"}
               collapseOpenContent={
                 <>
-                  <BankExerciseCollapseOpen
+                  <CollapseOpenWithoutEdit
                     title={Strings.WorksOn}
                     exerciseData={item.workOn}
                   />
-                  <BankExerciseCollapseOpen
+                  <CollapseOpenWithoutEdit
                     title={Strings.Highlights}
                     exerciseData={item.highlights}
                     backgroundColor="#F6FAFD"

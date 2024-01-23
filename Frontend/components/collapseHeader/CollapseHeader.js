@@ -7,13 +7,13 @@ import { horizontalScale } from "../../assets/styles/scaling";
 
 import style from "./style";
 
-const CollapseHeader = ({ handlePress, collapseImage, exerciseName }) => {
+const CollapseHeader = ({ handlePress, collapseImage, name }) => {
   return (
     <TouchableOpacity onPress={() => handlePress()} style={style.containerView}>
       <View style={style.collapseContainer}>
         <FontAwesomeIcon icon={collapseImage} size={horizontalScale(25)} />
       </View>
-      <Text style={style.exerciseTitle}>{exerciseName}</Text>
+      <Text style={style.title}>{name}</Text>
     </TouchableOpacity>
   );
 };
@@ -21,7 +21,7 @@ const CollapseHeader = ({ handlePress, collapseImage, exerciseName }) => {
 CollapseHeader.prototype = {
   handlePress: PropTypes.func.isRequired,
   collapseImage: PropTypes.object.isRequired,
-  exerciseName: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
 };
 
 export default CollapseHeader;

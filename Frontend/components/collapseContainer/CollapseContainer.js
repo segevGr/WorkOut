@@ -8,11 +8,7 @@ import BorderContainer from "../borderContainer/BorderContainer";
 import CollapseHeader from "../collapseHeader/CollapseHeader";
 import InnerMediaContainer from "../innerMediaContainer/InnerMediaContainer";
 
-const CollapseContainer = ({
-  exerciseName,
-  collapseOpenContent,
-  exerciseVideo,
-}) => {
+const CollapseContainer = ({ name, collapseOpenContent, media, mediaType }) => {
   const [isCollapsed, setCollapsed] = useState(true);
   const [collapseImage, setCollapseImage] = useState(faChevronDown);
 
@@ -28,15 +24,12 @@ const CollapseContainer = ({
           <CollapseHeader
             handlePress={handlePress}
             collapseImage={collapseImage}
-            exerciseName={exerciseName}
+            name={name}
           />
           <Collapsible collapsed={isCollapsed}>
             {collapseOpenContent}
-            {exerciseVideo ? (
-              <InnerMediaContainer
-                mediaSource={exerciseVideo}
-                mediaType={"video"}
-              />
+            {media ? (
+              <InnerMediaContainer mediaSource={media} mediaType={mediaType} />
             ) : null}
           </Collapsible>
         </>
@@ -46,9 +39,10 @@ const CollapseContainer = ({
 };
 
 CollapseContainer.prototype = {
-  exerciseName: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   collapseOpenContent: PropTypes.node.isRequired,
-  exerciseVideo: PropTypes.string,
+  media: PropTypes.string,
+  mediaType: PropTypes.string,
 };
 
 export default CollapseContainer;

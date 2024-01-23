@@ -1,4 +1,5 @@
 import React from "react";
+import { Image } from "react-native";
 
 import { Video } from "expo-av";
 import PropTypes from "prop-types";
@@ -15,7 +16,9 @@ const InnerMediaContainer = ({ mediaType, mediaSource }) => {
         <>
           {mediaType === "video" ? (
             <Video source={mediaSource} style={style.media} useNativeControls />
-          ) : null}
+          ) : (
+            <Image source={mediaSource} style={style.media} />
+          )}
         </>
       }
     />
