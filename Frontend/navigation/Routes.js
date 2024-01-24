@@ -6,4 +6,5 @@ export const Routes = {
   MuscleBank: "MuscleBank",
   TipsCategories: "TipsCategories",
   Tips: "Tips",
+  MenuBankList: "MenuBankList",
 };

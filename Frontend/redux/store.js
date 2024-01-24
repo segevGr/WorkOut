@@ -8,6 +8,7 @@ import ExerciseList from "./reducers/ExerciseList";
 import UserExerciseList from "./reducers/UserExerciseList";
 import MusclesBankList from "./reducers/MusclesBankList";
 import TipsList from "./reducers/TipsList";
+import MenuBankList from "./reducers/MenuBankList";
 
 const rootReducer = combineReducers({
   workoutsList: WorkoutsList,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   userExerciseList: UserExerciseList,
   musclesBankList: MusclesBankList,
   tipsList: TipsList,
+  menuBankList: MenuBankList,
 });
 
 const configuration = {

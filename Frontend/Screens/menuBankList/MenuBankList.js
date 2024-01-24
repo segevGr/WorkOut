@@ -13,15 +13,11 @@ import CategoryContainer from "../../components/categoryContainer/CategoryContai
 import { Strings } from "../../assets/strings/Strings";
 import globalStyle from "../../assets/styles/globalStyle";
 
-const TipsCategories = ({ navigation }) => {
-  const tipsCategoriesList = useSelector((state) => state.tipsList.categories);
+const MenuBankList = ({ navigation }) => {
+  const menuCategoriesList = useSelector(
+    (state) => state.menuBankList.categories
+  );
   const dispatch = useDispatch();
-
-  const getSecondaryText = (category) => {
-    return category === "כללי"
-      ? Strings.TipsGeneralSecondaryText
-      : `${Strings.TipsSecondaryText} ${category}`;
-  };
 
   const navigateToTips = (selectedCategory) => {
     dispatch(updateSelectedCategory(selectedCategory));
@@ -31,20 +27,20 @@ const TipsCategories = ({ navigation }) => {
   return (
     <SafeAreaView style={globalStyle.background}>
       <Header
-        title={Strings.TipsCategoriesTitle}
+        title={Strings.MenuCategoriesTitle}
         backPress={() => navigation.goBack()}
       />
-      {tipsCategoriesList.map((tip) => {
+      {menuCategoriesList.map((category) => {
         return (
           <BorderContainer
-            key={tip.tipCategory}
+            key={category.menuCategory}
             content={
               <>
                 <CategoryContainer
-                  image={tip.tipImage}
-                  primaryText={tip.tipCategory}
-                  secondaryText={getSecondaryText(tip.tipCategory)}
-                  onPress={() => navigateToTips(tip.tipCategory)}
+                  image={category.menuImage}
+                  primaryText={category.menuCategory}
+                  secondaryText={`${Strings.MenuSecondaryText} ${category.menuCategory}`}
+                  onPress={() => navigateToTips(category.menuCategory)}
                 />
               </>
             }
@@ -55,4 +51,4 @@ const TipsCategories = ({ navigation }) => {
   );
 };
 
-export default TipsCategories;
+export default MenuBankList;
