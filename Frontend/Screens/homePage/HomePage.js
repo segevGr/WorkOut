@@ -33,7 +33,9 @@ const HomePage = ({ navigation }) => {
           >
             <Text style={style.optionText}>{Strings.MyWorkouts}</Text>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate(Routes.MyMenusList)}
+          >
             <Text style={style.optionText}>{Strings.MyMenu}</Text>
           </TouchableOpacity>
           <TouchableOpacity

@@ -9,6 +9,7 @@ import MuscleBank from "../Screens/muscleBank/MuscleBank";
 import TipsCategories from "../Screens/tipsCategories/TipsCategories";
 import Tips from "../Screens/tips/Tips";
 import MenuBankList from "../Screens/menuBankList/MenuBankList";
+import MyMenusList from "../Screens/myMenusList/MyMenusList";
 
 const Stack = createStackNavigator();
 
@@ -29,6 +30,7 @@ const MainNavigation = () => {
       <Stack.Screen name={Routes.TipsCategories} component={TipsCategories} />
       <Stack.Screen name={Routes.Tips} component={Tips} />
       <Stack.Screen name={Routes.MenuBankList} component={MenuBankList} />
+      <Stack.Screen name={Routes.MyMenusList} component={MyMenusList} />
     </Stack.Navigator>
   );
 };

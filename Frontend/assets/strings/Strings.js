@@ -2,7 +2,7 @@ export const Strings = {
   //Home Page Options
   WelcomeMessage: "ברוך הבא",
   MyWorkouts: "האימונים שלי",
-  MyMenu: "התפריט שלי",
+  MyMenu: "התפריטים שלי",
   ExercisesBank: "בנק תרגילים",
   MenuBank: "בנק תחליפים לתפריט",
   Tips: "טיפים",

@@ -7,4 +7,5 @@ export const Routes = {
   TipsCategories: "TipsCategories",
   Tips: "Tips",
   MenuBankList: "MenuBankList",
+  MyMenusList: "MyMenusList",
 };
