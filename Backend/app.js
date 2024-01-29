@@ -1,7 +1,7 @@
 // imports
 const express = require("express");
 const morgan = require("morgan");
-const userRouter = require("./routes/userRoutes");
+const MusclesRouter = require("./routes/Muscles");
 
 const app = express();
 
@@ -17,6 +17,6 @@ if (process.env.NODE_ENV === "development") {
 app.use(express.json());
 
 // routes
-app.use("/api/users", userRouter);
+app.use("/api/muscles", MusclesRouter);
 
 module.exports = app;

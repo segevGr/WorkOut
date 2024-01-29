@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
-dotenv.config({ path: "./config.env" });
 
+dotenv.config({ path: "./config.env" });
 const app = require("./app");
 
 const DB = process.env.DATABASE.replace(
@@ -16,22 +16,6 @@ mongoose
   .catch((err) => {
     console.error("Error connecting to the database:", err.message);
   });
-
-const menuBankListSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: [true, "Menu item must have a name"],
-    unique: true,
-  },
-  category: {
-    type: String,
-    required: [true, "Menu item must have a name"],
-  },
-  //   also can set default value by:
-  // default: "some value"
-});
-
-const MenuBankList = mongoose.model("MenuBankList", menuBankListSchema);
 
 const port = process.env.PORT;
 app.listen(port, () => {
