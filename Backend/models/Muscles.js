@@ -5,6 +5,7 @@ const muscles = new mongoose.Schema({
     type: String,
     required: [true, "Muscle name must have a name"],
     unique: true,
+    trim: true,
   },
 });
 

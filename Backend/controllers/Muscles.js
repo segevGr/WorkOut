@@ -2,7 +2,13 @@ const Muscles = require("../models/Muscles");
 
 exports.getAllMuscles = async (req, res) => {
   try {
-    const muscles = await Muscles.find();
+    const queryObj = { ...req.query };
+    const excludedFields = ["page", "sort", "limit", "fields"];
+    excludedFields.forEach((el) => delete queryObj[el]);
+    const query = Muscles.find(queryObj);
+
+    const muscles = await query;
+
     res.status(200).json({
       status: "success",
       results: muscles.length,
