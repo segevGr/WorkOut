@@ -1,7 +1,9 @@
 // imports
 const express = require("express");
 const morgan = require("morgan");
+
 const MusclesRouter = require("./routes/Muscles");
+const ExercisesRouter = require("./routes/Exercises");
 
 const app = express();
 
@@ -18,5 +20,6 @@ app.use(express.json());
 
 // routes
 app.use("/api/muscles", MusclesRouter);
+app.use("/api/exercises", ExercisesRouter);
 
 module.exports = app;

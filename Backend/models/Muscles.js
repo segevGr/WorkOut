@@ -2,13 +2,13 @@ const mongoose = require("mongoose");
 
 const muscles = new mongoose.Schema(
   {
-    name: {
+    muscleName: {
       type: String,
-      required: [true, "Muscle must to have a name"],
+      required: [true, "Muscle must to have a muscleName"],
       unique: true,
       trim: true,
     },
-    image: {
+    muscleImage: {
       type: String,
       required: [true, "Muscle must to have an image"],
       unique: true,
@@ -21,9 +21,9 @@ const muscles = new mongoose.Schema(
   }
 );
 
-muscles.virtual("VirtualTest").get(function () {
-  return this.name;
-});
+// muscles.virtual("VirtualTest").get(function () {
+//   return this.name;
+// });
 
 const Muscles = mongoose.model("Muscles", muscles);
 
