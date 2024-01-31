@@ -18,12 +18,12 @@ import Indexes from "../../assets/icons/muscles/Indexes";
 const MusclesBank = ({ navigation }) => {
   // const musclesList = useSelector((state) => state.musclesBankList.categories);
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // const navigateToMuscle = (selectedCategory) => {
-  //   dispatch(updateSelectedCategory(selectedCategory));
-  //   navigation.navigate(Routes.MuscleBank);
-  // };
+  const navigateToMuscle = (selectedCategory) => {
+    dispatch(updateSelectedCategory(selectedCategory));
+    navigation.navigate(Routes.MuscleBank);
+  };
 
   const [musclesList, setMusclesList] = useState();
   const getMuscles = async () => {
@@ -54,14 +54,14 @@ const MusclesBank = ({ navigation }) => {
         renderItem={({ item }) => {
           return (
             <BorderContainer
-              key={item.name}
+              key={item.muscleName}
               content={
                 <>
                   <CategoryContainer
-                    image={Indexes[item.image]}
-                    primaryText={item.name}
-                    secondaryText={`${Strings.GoToMuscleMessage} ${item.name}`}
-                    onPress={() => navigateToMuscle(item.name)}
+                    image={Indexes[item.muscleImage]}
+                    primaryText={item.muscleName}
+                    secondaryText={`${Strings.GoToMuscleMessage} ${item.muscleName}`}
+                    onPress={() => navigateToMuscle(item.muscleName)}
                   />
                 </>
               }
