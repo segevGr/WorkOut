@@ -4,7 +4,7 @@ const initialState = {
   categories: [
     {
       muscleName: "בטן",
-      muscleImage: require("../../assets/icons/muscles/Six-pack.png"),
+      muscleImage: require("../../assets/icons/muscles/sixPack.png"),
     },
     {
       muscleName: "גב",
@@ -24,7 +24,7 @@ const initialState = {
     },
     {
       muscleName: "כתפיים",
-      muscleImage: require("../../assets/icons/muscles/Shoulder.png"),
+      muscleImage: require("../../assets/icons/muscles/shoulder.png"),
     },
     {
       muscleName: "רגליים",
