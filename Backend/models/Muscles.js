@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const muscles = new mongoose.Schema(
+const musclesSchema = new mongoose.Schema(
   {
     muscleName: {
       type: String,
@@ -14,17 +14,17 @@ const muscles = new mongoose.Schema(
       unique: true,
       trim: true,
     },
-  },
-  {
-    toJSON: { virtuals: true },
-    toObject: { virtuals: true },
   }
+  // {
+  //   toJSON: { virtuals: true },
+  //   toObject: { virtuals: true },
+  // }
 );
 
 // muscles.virtual("VirtualTest").get(function () {
 //   return this.name;
 // });
 
-const Muscles = mongoose.model("Muscles", muscles);
+const Muscles = mongoose.model("Muscles", musclesSchema);
 
 module.exports = Muscles;

@@ -3,16 +3,15 @@ const ExercisesController = require("../controllers/Exercises");
 
 const router = express.Router();
 
-// router
-//   .route("/")
-//   .get(MusclesController.getAllMuscles)
-//   .post(MusclesController.createMuscle);
+router
+  .route("/")
+  .get(ExercisesController.getAllExercises)
+  .post(ExercisesController.createExercises);
 
-// router
-//   .route("/:id")
-//   .get(MusclesController.getMuscleById)
-//   .patch(MusclesController.updateMuscle)
-//   .delete(MusclesController.deleteMuscle);
-// router.route("/name/:name").get(MusclesController.getMuscleByName);
+router
+  .route("/:id")
+  .get(ExercisesController.getExercisesById)
+  .patch(ExercisesController.updateExercise)
+  .delete(ExercisesController.deleteExercise);
 
 module.exports = router;

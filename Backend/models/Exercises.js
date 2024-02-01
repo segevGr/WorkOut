@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const MusclesController = require("../controllers/Muscles");
 
 const exercisesSchema = new mongoose.Schema(
   {
@@ -12,6 +13,9 @@ const exercisesSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Muscles",
       required: [true, "Exercise must belong to a muscle group"],
+    },
+    muscleGroupName: {
+      type: String,
     },
     workOn: {
       type: String,
@@ -28,12 +32,19 @@ const exercisesSchema = new mongoose.Schema(
       required: [true, "Exercise must to have a video"],
       trim: true,
     },
-  },
-  {
-    toJSON: { virtuals: true },
-    toObject: { virtuals: true },
   }
+  // {
+  //   toJSON: { virtuals: true },
+  //   toObject: { virtuals: true },
+  // }
 );
+
+exercisesSchema.pre("save", async function (next) {
+  this.muscleGroupName = await MusclesController.getMuscleNameById(
+    this.muscleGroup
+  );
+  next();
+});
 
 const Exercises = mongoose.model("Exercises", exercisesSchema);
 

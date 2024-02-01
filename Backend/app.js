@@ -10,12 +10,24 @@ const app = express();
 // middlewares
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
-
-  app.use((req, res, next) => {
-    console.log(new Date().toISOString());
-    next();
-  });
 }
+
+app.use((req, res, next) => {
+  const israelTimeZone = "Asia/Jerusalem";
+  const formattedDate = new Date().toLocaleString("en-US", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    timeZone: israelTimeZone,
+    hour12: false,
+  });
+
+  console.log(`${formattedDate.replace(",", "")}, `);
+  next();
+});
 app.use(express.json());
 
 // routes

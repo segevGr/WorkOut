@@ -1,13 +1,14 @@
 const Muscles = require("../models/Muscles");
+const APIFeatures = require("../utils/APIFeatures");
 
 exports.getAllMuscles = async (req, res) => {
   try {
-    const queryObj = { ...req.query };
-    const excludedFields = ["page", "sort", "limit", "fields"];
-    excludedFields.forEach((el) => delete queryObj[el]);
-    const query = Muscles.find(queryObj);
-
-    const muscles = await query;
+    const features = new APIFeatures(Muscles.find(), req.query)
+      .filter()
+      .sort()
+      .limitFields()
+      .paginate();
+    const muscles = await features.query;
 
     res.status(200).json({
       status: "success",
@@ -15,6 +16,7 @@ exports.getAllMuscles = async (req, res) => {
       data: { muscles },
     });
   } catch (err) {
+    console.log(err);
     res.status(500).json({
       status: "fail",
       message: err,
@@ -41,6 +43,16 @@ exports.getMuscleById = async (req, res) => {
       status: "fail",
       message: err,
     });
+  }
+};
+
+exports.getMuscleNameById = async (muscleID) => {
+  try {
+    const muscle = await Muscles.findById(muscleID);
+    const result = muscle ? muscle.muscleName : "Muscle not found";
+    return result;
+  } catch (err) {
+    return err;
   }
 };
 
