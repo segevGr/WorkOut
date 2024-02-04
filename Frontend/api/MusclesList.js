@@ -2,7 +2,6 @@ import { IP } from "./IP";
 
 export const getMusclesList = async () => {
   try {
-    console.log(IP);
     const response = await fetch(`http://${IP}/api/muscles`, {
       method: "GET",
     });
