@@ -1,7 +1,9 @@
+import { IP } from "./IP";
+
 export const getExercisesListByMuscle = async (muscleName) => {
   try {
     const response = await fetch(
-      `http://192.168.137.1:8000/api/exercises?muscleGroupName=${muscleName}`,
+      `http://${IP}/api/exercises?muscleGroupName=${muscleName}`,
       {
         method: "GET",
       }
