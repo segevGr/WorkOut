@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { SafeAreaView, FlatList } from "react-native";
 
 import { useDispatch, useSelector } from "react-redux";
-import { updateSelectedCategory } from "../../redux/reducers/MusclesBankList";
+import { updateSelectedCategory } from "../../redux/reducers/MusclesList";
 
 import { Routes } from "../../navigation/Routes";
 
@@ -10,19 +10,22 @@ import Header from "../../components/header/Header";
 import BorderContainer from "../../components/borderContainer/BorderContainer";
 import CategoryContainer from "../../components/categoryContainer/CategoryContainer";
 
+import { getMusclesList } from "../../api/MusclesList";
+
 import { Strings } from "../../assets/strings/Strings";
 import globalStyle from "../../assets/styles/globalStyle";
-import { getMusclesList } from "../../api/muscles";
 import Indexes from "../../assets/icons/muscles/Indexes";
 
-const MusclesBank = ({ navigation }) => {
-  // const musclesList = useSelector((state) => state.musclesBankList.categories);
+const MusclesList = ({ navigation }) => {
+  // const musclesList = useSelector((state) => state.MusclesList.categories);
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const navigateToMuscle = (selectedCategory) => {
-    dispatch(updateSelectedCategory(selectedCategory));
-    navigation.navigate(Routes.MuscleBank);
+  const navigateToMuscle = (selectedMuscle) => {
+    // dispatch(updateSelectedCategory(selectedMuscle));
+    navigation.navigate(Routes.MuscleExercisesBank, {
+      selectedMuscle: selectedMuscle,
+    });
   };
 
   const [musclesList, setMusclesList] = useState();
@@ -34,6 +37,7 @@ const MusclesBank = ({ navigation }) => {
       console.error("🚀 ~ fetchData ~ error:", error);
     }
   };
+
   useEffect(() => {
     getMuscles();
   }, []);
@@ -73,4 +77,4 @@ const MusclesBank = ({ navigation }) => {
   );
 };
 
-export default MusclesBank;
+export default MusclesList;

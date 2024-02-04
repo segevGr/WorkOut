@@ -38,8 +38,8 @@ const initialState = {
   selectedCategory: null,
 };
 
-export const MusclesBankList = createSlice({
-  name: "MusclesBankList",
+export const MusclesList = createSlice({
+  name: "MusclesList",
   initialState: initialState,
   reducers: {
     updateSelectedCategory: (state, action) => {
@@ -48,5 +48,5 @@ export const MusclesBankList = createSlice({
   },
 });
 
-export const { updateSelectedCategory } = MusclesBankList.actions;
-export default MusclesBankList.reducer;
+export const { updateSelectedCategory } = MusclesList.actions;
+export default MusclesList.reducer;
