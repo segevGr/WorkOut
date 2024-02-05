@@ -2,6 +2,8 @@
 const express = require("express");
 const morgan = require("morgan");
 
+const AppError = require("./utils/AppError");
+const globalErrorHandler = require("./controllers/Error");
 const MusclesRouter = require("./routes/Muscles");
 const ExercisesRouter = require("./routes/Exercises");
 
@@ -12,6 +14,7 @@ if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
 
+// log middleware
 app.use((req, res, next) => {
   const israelTimeZone = "Asia/Jerusalem";
   const formattedDate = new Date().toLocaleString("en-US", {
@@ -33,5 +36,11 @@ app.use(express.json());
 // routes
 app.use("/api/muscles", MusclesRouter);
 app.use("/api/exercises", ExercisesRouter);
+
+app.all("*", (req, res, next) => {
+  next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
+});
+
+app.use(globalErrorHandler);
 
 module.exports = app;
