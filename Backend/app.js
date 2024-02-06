@@ -10,9 +10,7 @@ const ExercisesRouter = require("./routes/Exercises");
 const app = express();
 
 // middlewares
-if (process.env.NODE_ENV === "development") {
-  app.use(morgan("dev"));
-}
+app.use(morgan("dev"));
 
 // log middleware
 app.use((req, res, next) => {

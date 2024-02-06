@@ -1,8 +1,9 @@
 const Exercises = require("../models/Exercises");
+const AppError = require("../utils/AppError");
 const APIFeatures = require("../utils/APIFeatures");
 const catchAsync = require("../utils/catchAsync");
 
-exports.getAllExercises = catchAsync(async (req, res) => {
+exports.getAllExercises = catchAsync(async (req, res, next) => {
   const features = new APIFeatures(Exercises.find(), req.query)
     .filter()
     .sort()
@@ -17,7 +18,7 @@ exports.getAllExercises = catchAsync(async (req, res) => {
   });
 });
 
-exports.getExercisesById = catchAsync(async (req, res) => {
+exports.getExercisesById = catchAsync(async (req, res, next) => {
   const exercise = await Exercises.findById(req.params.id);
   if (!exercise) {
     return next(new AppError("No muscle found with that ID", 404));
@@ -29,7 +30,7 @@ exports.getExercisesById = catchAsync(async (req, res) => {
   });
 });
 
-exports.createExercises = catchAsync(async (req, res) => {
+exports.createExercises = catchAsync(async (req, res, next) => {
   console.log(req.body);
   const addedExercises = await Exercises.create(req.body);
   res.status(201).json({
@@ -40,7 +41,7 @@ exports.createExercises = catchAsync(async (req, res) => {
   });
 });
 
-exports.updateExercise = catchAsync(async (req, res) => {
+exports.updateExercise = catchAsync(async (req, res, next) => {
   const exercise = await Exercises.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
     runValidators: true,
@@ -56,7 +57,7 @@ exports.updateExercise = catchAsync(async (req, res) => {
   });
 });
 
-exports.deleteExercise = catchAsync(async (req, res) => {
+exports.deleteExercise = catchAsync(async (req, res, next) => {
   const exercise = await Exercises.findByIdAndDelete(req.params.id);
   if (!exercise) {
     return next(new AppError("No muscle found with that ID", 404));
