@@ -4,8 +4,10 @@ const morgan = require("morgan");
 
 const AppError = require("./utils/AppError");
 const globalErrorHandler = require("./controllers/Error");
+
 const MusclesRouter = require("./routes/Muscles");
 const ExercisesRouter = require("./routes/Exercises");
+const UsersRouter = require("./routes/Users");
 
 const app = express();
 
@@ -34,6 +36,7 @@ app.use(express.json());
 // routes
 app.use("/api/muscles", MusclesRouter);
 app.use("/api/exercises", ExercisesRouter);
+app.use("/api/users", UsersRouter);
 
 app.all("*", (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));

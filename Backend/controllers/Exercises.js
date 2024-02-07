@@ -31,7 +31,6 @@ exports.getExercisesById = catchAsync(async (req, res, next) => {
 });
 
 exports.createExercises = catchAsync(async (req, res, next) => {
-  console.log(req.body);
   const addedExercises = await Exercises.create(req.body);
   res.status(201).json({
     status: "success",
