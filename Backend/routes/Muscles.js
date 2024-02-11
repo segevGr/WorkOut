@@ -1,12 +1,13 @@
 const express = require("express");
 const MusclesController = require("../controllers/Muscles");
+const authController = require("../controllers/authController");
 
 const router = express.Router();
 
 router
   .route("/")
   .get(MusclesController.getAllMuscles)
-  .post(MusclesController.createMuscle);
+  .post(authController.protect, MusclesController.createMuscle);
 
 router
   .route("/:id")
