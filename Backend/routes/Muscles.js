@@ -13,7 +13,11 @@ router
   .route("/:id")
   .get(MusclesController.getMuscleById)
   .patch(MusclesController.updateMuscle)
-  .delete(MusclesController.deleteMuscle);
+  .delete(
+    authController.protect,
+    authController.restrictTo("admin"),
+    MusclesController.deleteMuscle
+  );
 router.route("/name/:name").get(MusclesController.getMuscleByName);
 
 module.exports = router;
