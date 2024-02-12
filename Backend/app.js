@@ -1,6 +1,11 @@
 // imports
 const express = require("express");
 const morgan = require("morgan");
+const rateLimit = require("express-rate-limit");
+const helmet = require("helmet");
+const mongoSanitize = require("express-mongo-sanitize");
+const xss = require("xss-clean");
+const hpp = require("hpp");
 
 const AppError = require("./utils/AppError");
 const globalErrorHandler = require("./controllers/Error");
@@ -11,8 +16,16 @@ const UsersRouter = require("./routes/Users");
 
 const app = express();
 
-// middlewares
+app.use(helmet());
+
 app.use(morgan("dev"));
+
+const limiter = rateLimit({
+  max: 100,
+  windowMs: 60 * 60 * 1000,
+  message: "Too many requests from this IP, please try again later.",
+});
+app.use("/api", limiter);
 
 // log middleware
 app.use((req, res, next) => {
@@ -31,7 +44,25 @@ app.use((req, res, next) => {
   console.log(`${formattedDate.replace(",", "")}, `);
   next();
 });
-app.use(express.json());
+
+app.use(express.json({ limit: "10kb" }));
+app.use(mongoSanitize());
+app.use(xss());
+ap.use(
+  hpp({
+    whitelist: [
+      "name",
+      "email",
+      "active",
+      "muscleName",
+      "exerciseName",
+      "muscleGroup",
+      "workOn",
+      "highlights",
+      "muscleGroupName",
+    ],
+  })
+);
 
 // routes
 app.use("/api/muscles", MusclesRouter);
