@@ -103,13 +103,14 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
     return next(new AppError("There is no user with that email", 404));
   }
 
-  const resetToken = user.createPasswordResetToken();
+  const resetToken = user.createResetToken();
 
   await user.save({ validateBeforeSave: false });
 
-  const resetURL = `${req.protocol}://${req.get.host}/api/users/resetPassword/${resetToken}`;
-  const message =
-    "Please use the following URL to reset your password:\n\n" + resetURL;
+  const resetURL = `${req.protocol}://${req.get(
+    "host"
+  )}/api/users/resetPassword/${resetToken}`;
+  const message = `Please use the following URL to reset your password:${resetURL}`;
 
   try {
     await sendEmail({
@@ -126,6 +127,7 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
     user.passwordResetToken = undefined;
     await user.save({ validateBeforeSave: false });
 
+    console.log(err);
     return next(new AppError("Email could not be sent.", 500));
   }
 });
