@@ -48,7 +48,7 @@ app.use((req, res, next) => {
 app.use(express.json({ limit: "10kb" }));
 app.use(mongoSanitize());
 app.use(xss());
-ap.use(
+app.use(
   hpp({
     whitelist: [
       "name",
