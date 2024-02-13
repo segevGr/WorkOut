@@ -14,11 +14,22 @@ import MyMenusList from "../Screens/myMenusList/MyMenusList";
 
 const Stack = createStackNavigator();
 
-const MainNavigation = () => {
+export const NonAuthenticated = () => {
   return (
     <Stack.Navigator
       screenOptions={{ headerShown: false }}
       initialRouteName={Routes.Login}
+    >
+      <Stack.Screen name={Routes.Login} component={Login} />
+    </Stack.Navigator>
+  );
+};
+
+export const Authenticated = () => {
+  return (
+    <Stack.Navigator
+      screenOptions={{ headerShown: false }}
+      initialRouteName={Routes.HomePage}
     >
       <Stack.Screen
         name={Routes.WorkoutSelection}
@@ -39,4 +50,3 @@ const MainNavigation = () => {
     </Stack.Navigator>
   );
 };
-export default MainNavigation;

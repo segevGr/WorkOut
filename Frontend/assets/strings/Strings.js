@@ -7,6 +7,14 @@ export const Strings = {
   passwordPlaceholder: "אנא הזן את הסיסמה",
   loginBtn: "התחברות",
 
+  //Login alerts
+  wrongDetails: "שם משתמש או סיסמה לא נכונים",
+  wrongDetailsSummary: "אנא הזינו פרטים נכונים",
+  missingDetails: "אנא מלאו את כל השדות הנדרשים",
+  somethingWrong: "משהו השתבש",
+  welcomeAlert: "ברוכים הבאים!",
+  welcomeAlertSummary: "מיד תועברו לעמוד האישי",
+
   //Home Page
   WelcomeMessage: "ברוך הבא",
   MyWorkouts: "האימונים שלי",

@@ -8,7 +8,8 @@ import {
 import { Provider } from "react-redux";
 
 import { NavigationContainer } from "@react-navigation/native";
-import MainNavigation from "./navigation/MainNavigation";
+import RootNavigation from "./navigation/RootNavigation";
+
 import store from "./redux/store";
 import { useFonts } from "expo-font";
 import { StatusBar } from "expo-status-bar";
@@ -46,7 +47,7 @@ const App = () => {
         style={{ flex: 1 }}
       >
         <NavigationContainer>
-          <MainNavigation />
+          <RootNavigation />
         </NavigationContainer>
       </KeyboardAvoidingView>
     </Provider>

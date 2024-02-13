@@ -1,7 +1,18 @@
 import React, { useState } from "react";
-import { SafeAreaView, ScrollView, Pressable, View, Text } from "react-native";
+import {
+  SafeAreaView,
+  TouchableOpacity,
+  View,
+  Text,
+  Alert,
+  Keyboard,
+} from "react-native";
+
+import { Routes } from "../../navigation/Routes";
 
 import LoginInput from "../../components/loginInput/LoginInput";
+
+import { tryLogin } from "../../api/Login";
 
 import { Strings } from "../../assets/strings/Strings";
 import style from "./style";
@@ -15,10 +26,33 @@ const Login = ({ navigation }) => {
     return email === "" || password === "";
   };
 
-  const submitLogin = () => {
-    console.log("ttt");
+  const showAlert = (title, message) => {
+    Alert.alert(
+      title,
+      message,
+      [
+        {
+          text: "OK",
+          onPress: () => null,
+          style: "cancel",
+        },
+      ],
+      { cancelable: false }
+    );
+  };
+
+  const submitLogin = async () => {
+    Keyboard.dismiss();
+    const result = await tryLogin(email, password);
+    if (!result.success) {
+      showAlert(result.message, Strings.wrongDetailsSummary);
+      return;
+    }
+    showAlert(result.message, Strings.welcomeAlertSummary);
+    navigation.navigate(Routes.HomePage);
     return;
   };
+
   return (
     <SafeAreaView style={globalStyle.background}>
       <View style={style.container}>
@@ -37,7 +71,7 @@ const Login = ({ navigation }) => {
             onChangeText={(value) => setPassword(value)}
           />
         </View>
-        <Pressable
+        <TouchableOpacity
           disabled={isLoginFormEmpty()}
           style={
             isLoginFormEmpty()
@@ -47,7 +81,7 @@ const Login = ({ navigation }) => {
           onPress={() => submitLogin()}
         >
           <Text style={style.loginBtnText}>{Strings.loginBtn}</Text>
-        </Pressable>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
