@@ -16,7 +16,6 @@ import { StatusBar } from "expo-status-bar";
 
 const App = () => {
   let [fontsLoaded] = useFonts({
-    "Montserrat-Bold": require("./assets/fonts/Montserrat-Bold.ttf"),
     "Heebo-Black": require("./assets/fonts/Heebo-Black.ttf"),
     "Heebo-Bold": require("./assets/fonts/Heebo-Bold.ttf"),
     "Heebo-ExtraBold": require("./assets/fonts/Heebo-ExtraBold.ttf"),
