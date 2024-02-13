@@ -15,17 +15,17 @@ export const tryLogin = async (email, password) => {
     });
 
     if (response.status === 401) {
-      return { success: false, message: Strings.wrongDetails };
+      return { success: false, message: Strings.WrongDetails };
     } else if (response.status === 400) {
-      return { success: false, message: Strings.missingDetails };
+      return { success: false, message: Strings.MissingDetails };
     } else if (!response.ok) {
-      return { success: false, message: Strings.somethingWrong };
+      return { success: false, message: Strings.SomethingWrong };
     }
 
     const data = await response.json();
     return {
       success: true,
-      message: Strings.welcomeAlert,
+      message: Strings.WelcomeAlert,
       token: data.token,
       user: data.data.user,
     };

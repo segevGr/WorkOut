@@ -5,9 +5,17 @@ import {
   ImageBackground,
   TouchableOpacity,
   SafeAreaView,
+  Alert,
 } from "react-native";
 
 import { Routes } from "../../navigation/Routes";
+
+import { useDispatch, useSelector } from "react-redux";
+import {
+  updateLogIn,
+  updateToken,
+  updateUser,
+} from "../../redux/reducers/UserDetails";
 
 import Header from "../../components/header/Header";
 
@@ -15,7 +23,29 @@ import { Strings } from "../../assets/strings/Strings";
 import style from "./style";
 
 const HomePage = ({ navigation }) => {
-  const username = "שגב";
+  const dispatch = useDispatch();
+  const username = useSelector((state) => state.userDetails.user.name);
+
+  const showLogOutAlert = () => {
+    Alert.alert(Strings.LogOutTitle, null, [
+      {
+        text: Strings.Yes,
+        onPress: () => doLogOut(),
+        style: "default",
+      },
+      {
+        text: Strings.No,
+        onPress: () => null,
+        style: "cancel",
+      },
+    ]);
+  };
+
+  const doLogOut = () => {
+    dispatch(updateLogIn(false));
+    dispatch(updateToken(null));
+    dispatch(updateUser(null));
+  };
 
   return (
     <ImageBackground
@@ -53,7 +83,7 @@ const HomePage = ({ navigation }) => {
           >
             <Text style={style.optionText}>{Strings.Tips}</Text>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => showLogOutAlert()}>
             <Text style={style.optionText}>{Strings.LogOut}</Text>
           </TouchableOpacity>
         </View>

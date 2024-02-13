@@ -9,18 +9,25 @@ import {
 } from "react-native";
 
 import { Routes } from "../../navigation/Routes";
+import { useDispatch, useSelector } from "react-redux";
 
 import LoginInput from "../../components/loginInput/LoginInput";
-
 import { tryLogin } from "../../api/Login";
 
 import { Strings } from "../../assets/strings/Strings";
 import style from "./style";
 import globalStyle from "../../assets/styles/globalStyle";
+import {
+  updateLogIn,
+  updateToken,
+  updateUser,
+} from "../../redux/reducers/UserDetails";
 
 const Login = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const dispatch = useDispatch();
 
   const isLoginFormEmpty = () => {
     return email === "" || password === "";
@@ -34,7 +41,7 @@ const Login = ({ navigation }) => {
         {
           text: "OK",
           onPress: () => null,
-          style: "cancel",
+          style: "default",
         },
       ],
       { cancelable: false }
@@ -45,10 +52,13 @@ const Login = ({ navigation }) => {
     Keyboard.dismiss();
     const result = await tryLogin(email, password);
     if (!result.success) {
-      showAlert(result.message, Strings.wrongDetailsSummary);
+      showAlert(result.message, Strings.WrongDetailsSummary);
       return;
     }
-    showAlert(result.message, Strings.welcomeAlertSummary);
+    showAlert(result.message, Strings.WelcomeAlertSummary);
+    dispatch(updateToken(result.token));
+    dispatch(updateUser(result.user));
+    dispatch(updateLogIn(true));
     navigation.navigate(Routes.HomePage);
     return;
   };
@@ -59,14 +69,14 @@ const Login = ({ navigation }) => {
         <Text style={style.welcomeHeader}>{Strings.Welcome}</Text>
         <View style={style.inputsContainer}>
           <LoginInput
-            label={Strings.mailLabel}
-            placeholder={Strings.mailPlaceholder}
+            label={Strings.MailLabel}
+            placeholder={Strings.MailPlaceholder}
             keyboardType={"email-address"}
             onChangeText={(value) => setEmail(value)}
           />
           <LoginInput
-            label={Strings.passwordLabel}
-            placeholder={Strings.passwordPlaceholder}
+            label={Strings.PasswordLabel}
+            placeholder={Strings.PasswordPlaceholder}
             secureTextEntry={true}
             onChangeText={(value) => setPassword(value)}
           />
@@ -80,7 +90,7 @@ const Login = ({ navigation }) => {
           }
           onPress={() => submitLogin()}
         >
-          <Text style={style.loginBtnText}>{Strings.loginBtn}</Text>
+          <Text style={style.loginBtnText}>{Strings.LoginBtn}</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

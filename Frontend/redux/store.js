@@ -3,6 +3,7 @@ import { logger } from "redux-logger";
 import { persistReducer, persistStore } from "redux-persist";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
+import UserDetails from "./reducers/UserDetails";
 import WorkoutsList from "./reducers/WorkoutsList";
 // import ExerciseList from "./reducers/ExerciseList";
 import UserExerciseList from "./reducers/UserExerciseList";
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   // MusclesList: MusclesList,
   tipsList: TipsList,
   menuBankList: MenuBankList,
+  userDetails: UserDetails,
 });
 
 const configuration = {

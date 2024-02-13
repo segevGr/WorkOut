@@ -1,19 +1,26 @@
 export const Strings = {
+  //Global words
+  Yes: "כן",
+  No: "לא",
+
   //Login page
   Welcome: "ברוך הבא!",
-  mailLabel: "כתובת דואר אלקטרוני",
-  mailPlaceholder: "אנא הזן את כתובת דואר האלקטרוני",
-  passwordLabel: "סיסמה",
-  passwordPlaceholder: "אנא הזן את הסיסמה",
-  loginBtn: "התחברות",
+  MailLabel: "כתובת דואר אלקטרוני",
+  MailPlaceholder: "אנא הזן את כתובת דואר האלקטרוני",
+  PasswordLabel: "סיסמה",
+  PasswordPlaceholder: "אנא הזן את הסיסמה",
+  LoginBtn: "התחברות",
 
   //Login alerts
-  wrongDetails: "שם משתמש או סיסמה לא נכונים",
-  wrongDetailsSummary: "אנא הזינו פרטים נכונים",
-  missingDetails: "אנא מלאו את כל השדות הנדרשים",
-  somethingWrong: "משהו השתבש",
-  welcomeAlert: "ברוכים הבאים!",
-  welcomeAlertSummary: "מיד תועברו לעמוד האישי",
+  WrongDetails: "שם משתמש או סיסמה לא נכונים",
+  WrongDetailsSummary: "אנא הזינו פרטים נכונים",
+  MissingDetails: "אנא מלאו את כל השדות הנדרשים",
+  SomethingWrong: "משהו השתבש",
+  WelcomeAlert: "ברוכים הבאים!",
+  WelcomeAlertSummary: "מיד תועברו לעמוד האישי",
+
+  //Logout alert
+  LogOutTitle: "האם אתה בטוח שאתה רוצה להתנתק?",
 
   //Home Page
   WelcomeMessage: "ברוך הבא",
