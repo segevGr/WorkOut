@@ -1,4 +1,5 @@
 export const Routes = {
+  Login: "Login",
   HomePage: "HomePage",
   Workout: "Workout",
   WorkoutSelection: "WorkoutSelection",

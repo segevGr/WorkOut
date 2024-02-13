@@ -1,9 +1,10 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import { Routes } from "./Routes";
 
+import HomePage from "../Screens/homePage/HomePage";
+import Login from "../Screens/login/Login";
 import WorkoutSelection from "../Screens/workoutSelection/WorkoutSelection";
 import Workout from "../Screens/workout/Workout";
-import HomePage from "../Screens/homePage/HomePage";
 import MusclesList from "../Screens/musclesList/MusclesList";
 import MuscleExercisesBank from "../Screens/muscleExercisesBank/MuscleExercisesBank";
 import TipsCategories from "../Screens/tipsCategories/TipsCategories";
@@ -17,14 +18,15 @@ const MainNavigation = () => {
   return (
     <Stack.Navigator
       screenOptions={{ headerShown: false }}
-      initialRouteName={Routes.HomePage}
+      initialRouteName={Routes.Login}
     >
       <Stack.Screen
         name={Routes.WorkoutSelection}
         component={WorkoutSelection}
       />
-      <Stack.Screen name={Routes.Workout} component={Workout} />
+      <Stack.Screen name={Routes.Login} component={Login} />
       <Stack.Screen name={Routes.HomePage} component={HomePage} />
+      <Stack.Screen name={Routes.Workout} component={Workout} />
       <Stack.Screen name={Routes.MusclesList} component={MusclesList} />
       <Stack.Screen
         name={Routes.MuscleExercisesBank}

@@ -1,5 +1,13 @@
 export const Strings = {
-  //Home Page Options
+  //Login page
+  Welcome: "ברוך הבא!",
+  mailLabel: "כתובת דואר אלקטרוני",
+  mailPlaceholder: "אנא הזן את כתובת דואר האלקטרוני",
+  passwordLabel: "סיסמה",
+  passwordPlaceholder: "אנא הזן את הסיסמה",
+  loginBtn: "התחברות",
+
+  //Home Page
   WelcomeMessage: "ברוך הבא",
   MyWorkouts: "האימונים שלי",
   MyMenu: "התפריטים שלי",
