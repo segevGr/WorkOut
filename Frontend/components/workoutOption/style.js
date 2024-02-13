@@ -17,8 +17,8 @@ const style = StyleSheet.create({
     alignItems: "center",
   },
   workoutDetails: {
-    fontSize: scaleFontSize(30),
-    fontFamily: getFontFamily("Manrope", "700"),
+    fontSize: scaleFontSize(25),
+    fontFamily: getFontFamily("Heebo", "700"),
   },
 });
 

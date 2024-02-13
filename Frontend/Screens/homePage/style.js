@@ -12,18 +12,19 @@ const style = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    marginTop: verticalScale(40),
   },
   optionText: {
     color: "#FFF",
     fontSize: scaleFontSize(28),
-    fontFamily: getFontFamily("Manrope", "700"),
+    fontFamily: getFontFamily("Heebo", "500"),
     marginBottom: verticalScale(40),
   },
   versionDetails: {
     color: "#FFF",
     textAlign: "center",
     fontSize: scaleFontSize(16),
-    fontFamily: getFontFamily("Manrope", "400"),
+    fontFamily: getFontFamily("Heebo", "300"),
     marginBottom: verticalScale(20),
   },
 });

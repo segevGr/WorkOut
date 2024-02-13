@@ -22,9 +22,9 @@ const style = StyleSheet.create({
     padding: horizontalScale(5),
   },
   title: {
-    fontSize: scaleFontSize(25),
+    fontSize: scaleFontSize(23),
     padding: horizontalScale(5),
-    fontFamily: getFontFamily("Montserrat", "700"),
+    fontFamily: getFontFamily("Heebo", "700"),
   },
   optionsButtonContainer: {
     marginRight: horizontalScale(28),

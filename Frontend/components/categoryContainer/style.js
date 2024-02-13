@@ -30,12 +30,12 @@ const style = StyleSheet.create({
     alignItems: "flex-end",
   },
   primaryText: {
-    fontFamily: getFontFamily("Manrope", "700"),
+    fontFamily: getFontFamily("Heebo", "700"),
     fontSize: scaleFontSize(25),
   },
   secondaryText: {
     color: "#4A6375",
-    fontFamily: getFontFamily("Manrope", "400"),
+    fontFamily: getFontFamily("Heebo", "400"),
     fontSize: scaleFontSize(16),
   },
 });
