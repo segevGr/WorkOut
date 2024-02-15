@@ -1,23 +1,32 @@
 const express = require("express");
 const MusclesController = require("../controllers/MusclesController");
-const authController = require("../controllers/authController");
+const AuthController = require("../controllers/AuthController");
 
 const router = express.Router();
 
 router
   .route("/")
   .get(MusclesController.getAllMuscles)
-  .post(authController.protect, MusclesController.createMuscle);
+  .post(
+    AuthController.protect,
+    AuthController.restrictTo("admin"),
+    MusclesController.createMuscle
+  );
 
 router
   .route("/:id")
   .get(MusclesController.getMuscleById)
-  .patch(MusclesController.updateMuscle)
+  .patch(
+    AuthController.protect,
+    AuthController.restrictTo("admin"),
+    MusclesController.updateMuscle
+  )
   .delete(
-    authController.protect,
-    authController.restrictTo("admin"),
+    AuthController.protect,
+    AuthController.restrictTo("admin"),
     MusclesController.deleteMuscle
   );
+
 router.route("/name/:name").get(MusclesController.getMuscleByName);
 
 module.exports = router;
