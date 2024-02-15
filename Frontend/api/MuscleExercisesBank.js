@@ -1,4 +1,4 @@
-import { URL } from "./Server";
+import { URL } from "./ServerConfig";
 
 export const getExercisesListByMuscle = async (muscleName) => {
   try {

@@ -1,4 +1,4 @@
-import { URL } from "./Server";
+import { URL } from "./ServerConfig";
 import { Strings } from "../assets/strings/Strings";
 
 export const tryLogin = async (email, password) => {
