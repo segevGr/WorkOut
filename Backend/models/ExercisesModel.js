@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const MusclesController = require("../controllers/Muscles");
+const MusclesController = require("../controllers/MusclesController");
 
 const exercisesSchema = new mongoose.Schema(
   {

@@ -1,4 +1,4 @@
-const Muscles = require("../models/Muscles");
+const Muscles = require("../models/MusclesModel");
 const AppError = require("../utils/AppError");
 const APIFeatures = require("../utils/APIFeatures");
 const catchAsync = require("../utils/catchAsync");

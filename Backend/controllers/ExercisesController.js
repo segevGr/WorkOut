@@ -1,4 +1,4 @@
-const Exercises = require("../models/Exercises");
+const Exercises = require("../models/ExercisesModel");
 const AppError = require("../utils/AppError");
 const APIFeatures = require("../utils/APIFeatures");
 const catchAsync = require("../utils/catchAsync");

@@ -1,5 +1,5 @@
 const express = require("express");
-const MusclesController = require("../controllers/Muscles");
+const MusclesController = require("../controllers/MusclesController");
 const authController = require("../controllers/authController");
 
 const router = express.Router();

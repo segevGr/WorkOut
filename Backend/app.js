@@ -8,11 +8,11 @@ const xss = require("xss-clean");
 const hpp = require("hpp");
 
 const AppError = require("./utils/AppError");
-const globalErrorHandler = require("./controllers/Error");
+const globalErrorHandler = require("./controllers/ErrorController");
 
-const MusclesRouter = require("./routes/Muscles");
-const ExercisesRouter = require("./routes/Exercises");
-const UsersRouter = require("./routes/Users");
+const MusclesRouter = require("./routes/MusclesRouter");
+const ExercisesRouter = require("./routes/ExercisesRouter");
+const UsersRouter = require("./routes/UsersRouter");
 
 const app = express();
 
