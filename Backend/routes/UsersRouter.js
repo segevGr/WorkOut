@@ -13,52 +13,25 @@ router.route("/login").post(AuthController.login);
 router.route("/forgotPassword").post(AuthController.forgotPassword);
 router.route("/resetPassword/:token").patch(AuthController.resetPassword);
 
-router
-  .route("/updateMyPassword")
-  .patch(AuthController.protect, AuthController.updatePassword);
+router.use(AuthController.protect);
+
+router.route("/updateMyPassword").patch(AuthController.updatePassword);
+router.route("/me").get(usersController.getMe, usersController.getUserById);
+router.route("/updateMe").patch(usersController.updateMe);
+
+router.use(AuthController.restrictTo("admin"));
 
 router
   .route("/")
-  .get(
-    AuthController.protect,
-    AuthController.restrictTo("admin"),
-    usersController.withoutInactive,
-    usersController.getAllUsers
-  );
-router
-  .route("/includeInactive")
-  .get(
-    AuthController.protect,
-    AuthController.restrictTo("admin"),
-    usersController.getAllUsers
-  );
+  .get(usersController.withoutInactive, usersController.getAllUsers);
 
-router
-  .route("/me")
-  .get(
-    AuthController.protect,
-    usersController.getMe,
-    usersController.getUserById
-  );
-router
-  .route("/updateMe")
-  .patch(AuthController.protect, usersController.updateMe);
+router.route("/includeInactive").get(usersController.getAllUsers);
 
 router
   .route("/:id")
-  .get(AuthController.protect, usersController.getUserById)
-  .delete(
-    AuthController.protect,
-    AuthController.restrictTo("admin"),
-    usersController.deleteUser
-  );
+  .get(usersController.getUserById)
+  .delete(usersController.deleteUser);
 
-router
-  .route("/deactivateUser/:id")
-  .delete(
-    AuthController.protect,
-    AuthController.restrictTo("admin"),
-    usersController.deactivateUser
-  );
+router.route("/deactivateUser/:id").delete(usersController.deactivateUser);
 
 module.exports = router;
