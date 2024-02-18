@@ -31,11 +31,11 @@ exports.getMuscleById = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.getMuscleNameById = async (muscleID) => {
+exports.getMuscleNameById = catchAsync(async (muscleID) => {
   const muscle = await Muscles.findById(muscleID);
   const result = muscle ? muscle.muscleName : "Muscle not found";
   return result;
-};
+});
 
 exports.getMuscleByName = catchAsync(async (req, res, next) => {
   const muscle = await Muscles.findOne({ muscleName: req.params.name });

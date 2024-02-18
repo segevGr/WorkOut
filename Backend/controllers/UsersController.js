@@ -34,6 +34,12 @@ exports.getAllUsers = catchAsync(async (req, res, next) => {
   });
 });
 
+exports.getUserById = catchAsync(async (muscleID) => {
+  const muscle = await Users.findById(muscleID).populate("workouts");
+  const result = muscle ? muscle.muscleName : "Muscle not found";
+  return result;
+});
+
 exports.updateMe = catchAsync(async (req, res, next) => {
   if (req.body.password || req.body.passwordConfirm) {
     return next(new AppError("This route is not for password update", 400));

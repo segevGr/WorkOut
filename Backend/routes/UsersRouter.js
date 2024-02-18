@@ -36,6 +36,7 @@ router
 
 router
   .route("/:id")
+  .get(AuthController.protect, usersController.getUserById)
   .delete(
     AuthController.protect,
     AuthController.restrictTo("admin"),
