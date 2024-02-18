@@ -35,6 +35,14 @@ router
   .patch(AuthController.protect, usersController.updateMe);
 
 router
+  .route("/:id")
+  .delete(
+    AuthController.protect,
+    AuthController.restrictTo("admin"),
+    usersController.deleteUser
+  );
+
+router
   .route("/deactivateUser/:id")
   .delete(
     AuthController.protect,

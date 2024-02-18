@@ -2,6 +2,7 @@ const Users = require("../models/UsersModel");
 const AppError = require("../utils/AppError");
 const APIFeatures = require("../utils/APIFeatures");
 const catchAsync = require("../utils/catchAsync");
+const factory = require("./HandlerFactory");
 
 const filterObj = (obj, ...allowedFields) => {
   const returnedObj = {};
@@ -65,3 +66,5 @@ exports.deactivateUser = catchAsync(async (req, res, next) => {
     data: null,
   });
 });
+
+exports.deleteUser = factory.deleteOne(Users);

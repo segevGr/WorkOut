@@ -2,6 +2,7 @@ const Exercises = require("../models/ExercisesModel");
 const AppError = require("../utils/AppError");
 const APIFeatures = require("../utils/APIFeatures");
 const catchAsync = require("../utils/catchAsync");
+const factory = require("./HandlerFactory");
 
 exports.getAllExercises = catchAsync(async (req, res, next) => {
   const features = new APIFeatures(Exercises.find(), req.query)
@@ -56,13 +57,4 @@ exports.updateExercise = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.deleteExercise = catchAsync(async (req, res, next) => {
-  const exercise = await Exercises.findByIdAndDelete(req.params.id);
-  if (!exercise) {
-    return next(new AppError("No muscle found with that ID", 404));
-  }
-  res.status(204).json({
-    status: "success",
-    data: null,
-  });
-});
+exports.deleteExercise = factory.deleteOne(Exercises);

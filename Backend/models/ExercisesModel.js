@@ -40,6 +40,14 @@ exercisesSchema.pre("save", async function (next) {
   next();
 });
 
+// exercisesSchema.pre(/^find/, function (next) {
+//   this.populate({
+//     path: "muscleGroup",
+//     select: "muscleName",
+//   });
+//   next();
+// });
+
 const Exercises = mongoose.model("Exercises", exercisesSchema);
 
 module.exports = Exercises;
