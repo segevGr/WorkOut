@@ -52,6 +52,8 @@ const usersSchema = new mongoose.Schema(
   }
 );
 
+usersSchema.indexes({ active: 1 });
+
 usersSchema.virtual("workouts", {
   ref: "Workouts",
   foreignField: "user",
