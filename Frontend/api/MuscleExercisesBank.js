@@ -1,17 +1,16 @@
 import { URL } from "./ServerConfig";
+import { handleApiResponse } from "./../utils/ApiUtils";
 
-export const getExercisesListByMuscle = async (muscleName) => {
-  try {
-    const response = await fetch(
-      `${URL}/api/exercises?muscleGroupName=${muscleName}`,
-      {
-        method: "GET",
-      }
-    );
-    const data = await response.json();
-    return data.data.exercises;
-  } catch (error) {
-    console.error("Error in getMusclesList:", error.message);
-    throw error;
-  }
+export const getExercisesListByMuscle = async (userToken, muscleName) => {
+  const response = await fetch(
+    `${URL}/api/exercises?muscleGroupName=${muscleName}`,
+    {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${userToken}`,
+      },
+    }
+  );
+  const data = await handleApiResponse(response);
+  return data.data.exercises;
 };

@@ -9,41 +9,32 @@ import CollapseContainer from "../../components/collapseContainer/CollapseContai
 import CollapseOpenWithoutEdit from "../../components/collapseOpen/CollapseOpenWithoutEdit";
 
 import { getExercisesListByMuscle } from "../../api/MuscleExercisesBank";
+import getUserToken from "../../hooks/getToken";
 
 import globalStyle from "../../assets/styles/globalStyle";
 import { Strings } from "../../assets/strings/Strings";
 import Indexes from "../../assets/videos/Indexes";
 
 const MuscleExercisesBank = ({ navigation, route }) => {
-  // const dispatch = useDispatch();
-  // const categoryName = useSelector(
-  //   (state) => state.MusclesList.selectedCategory
-  // );
-
-  // let exercisesList = useSelector((state) => state.exerciseList.exercises);
-
-  // exercisesList = exercisesList.filter((exercise) =>
-  //   exercise.category.includes(categoryName)
-  // );
+  const userToken = getUserToken();
 
   const muscleName = route.params.selectedMuscle;
   const navigateBack = () => {
     navigation.goBack();
-    // dispatch(updateSelectedCategory(null));
   };
 
   const [exercisesList, setExercisesList] = useState();
-  const getExercises = async () => {
+  const getExercises = async (userToken) => {
     try {
-      const results = await getExercisesListByMuscle(muscleName);
+      const results = await getExercisesListByMuscle(userToken, muscleName);
       setExercisesList(results);
     } catch (error) {
-      console.error("🚀 ~ fetchData ~ error:", error);
+      console.error(`Error in getExercisesListByMuscle: [${error}]`);
     }
   };
 
   useEffect(() => {
-    getExercises();
+    getExercises(userToken);
   }, []);
 
   return (

@@ -11,36 +11,34 @@ import BorderContainer from "../../components/borderContainer/BorderContainer";
 import CategoryContainer from "../../components/categoryContainer/CategoryContainer";
 
 import { getMusclesList } from "../../api/MusclesList";
+import getUserToken from "../../hooks/getToken";
 
 import { Strings } from "../../assets/strings/Strings";
 import globalStyle from "../../assets/styles/globalStyle";
 import Indexes from "../../assets/icons/muscles/Indexes";
 
 const MusclesList = ({ navigation }) => {
-  // const musclesList = useSelector((state) => state.MusclesList.categories);
-
-  // const dispatch = useDispatch();
+  const userToken = getUserToken();
 
   const navigateToMuscle = (selectedMuscle) => {
-    // dispatch(updateSelectedCategory(selectedMuscle));
     navigation.navigate(Routes.MuscleExercisesBank, {
       selectedMuscle: selectedMuscle,
     });
   };
 
   const [musclesList, setMusclesList] = useState();
-  const getMuscles = async () => {
+  const getMuscles = async (userToken) => {
     try {
-      const results = await getMusclesList();
+      const results = await getMusclesList(userToken);
       setMusclesList(results);
     } catch (error) {
-      console.error("🚀 ~ fetchData ~ error:", error);
+      console.error(`Error in getMusclesList: [${error}]`);
     }
   };
 
   useEffect(() => {
-    getMuscles();
-  }, []);
+    getMuscles(userToken);
+  }, [userToken]);
 
   return (
     <SafeAreaView style={globalStyle.background}>
