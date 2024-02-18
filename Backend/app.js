@@ -13,6 +13,7 @@ const globalErrorHandler = require("./controllers/ErrorController");
 const MusclesRouter = require("./routes/MusclesRouter");
 const ExercisesRouter = require("./routes/ExercisesRouter");
 const UsersRouter = require("./routes/UsersRouter");
+const WorkoutsRouter = require("./routes/WorkoutsRouter");
 
 const app = express();
 
@@ -68,6 +69,7 @@ app.use(
 app.use("/api/muscles", MusclesRouter);
 app.use("/api/exercises", ExercisesRouter);
 app.use("/api/users", UsersRouter);
+app.use("/api/workouts", WorkoutsRouter);
 
 app.all("*", (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
