@@ -1,35 +1,7 @@
 const Muscles = require("../models/MusclesModel");
 const AppError = require("../utils/AppError");
-const APIFeatures = require("../utils/APIFeatures");
 const catchAsync = require("../utils/catchAsync");
 const factory = require("./HandlerFactory");
-
-exports.getAllMuscles = catchAsync(async (req, res, next) => {
-  const features = new APIFeatures(Muscles.find(), req.query)
-    .filter()
-    .sort()
-    .limitFields()
-    .paginate();
-  const muscles = await features.query;
-
-  res.status(200).json({
-    status: "success",
-    results: muscles.length,
-    data: { muscles },
-  });
-});
-
-exports.getMuscleById = catchAsync(async (req, res, next) => {
-  const muscle = await Muscles.findById(req.params.id);
-  if (!muscle) {
-    return next(new AppError("No muscle found with that ID", 404));
-  }
-  res.status(200).json({
-    status: "success",
-    results: muscle.length,
-    data: { muscle },
-  });
-});
 
 exports.getMuscleNameById = catchAsync(async (muscleID) => {
   const muscle = await Muscles.findById(muscleID);
@@ -49,30 +21,8 @@ exports.getMuscleByName = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.createMuscle = catchAsync(async (req, res, next) => {
-  const addedMuscle = await Muscles.create(req.body);
-  res.status(201).json({
-    status: "success",
-    data: {
-      addedMuscle,
-    },
-  });
-});
-
-exports.updateMuscle = catchAsync(async (req, res, next) => {
-  const muscle = await Muscles.findByIdAndUpdate(req.params.id, req.body, {
-    new: true,
-    runValidators: true,
-  });
-  if (!muscle) {
-    return next(new AppError("No muscle found with that ID", 404));
-  }
-  res.status(200).json({
-    status: "success",
-    data: {
-      muscle,
-    },
-  });
-});
-
-exports.deleteMuscle = factory.deleteOne(Muscles);
+exports.getAllMuscles = factory.getAll(Muscles, "muscles");
+exports.getMuscleById = factory.getOne(Muscles, "muscles");
+exports.createMuscle = factory.createOne(Muscles, "muscles");
+exports.updateMuscle = factory.updateOne(Muscles, "muscles");
+exports.deleteMuscle = factory.deleteOne(Muscles, "muscles");

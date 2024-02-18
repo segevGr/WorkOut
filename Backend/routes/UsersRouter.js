@@ -1,8 +1,11 @@
 const express = require("express");
 const usersController = require("../controllers/UsersController");
 const AuthController = require("../controllers/AuthController");
+const WorkoutsRouter = require("../routes/WorkoutsRouter");
 
 const router = express.Router();
+
+router.use("/:userId/workouts", WorkoutsRouter);
 
 router.route("/signup").post(AuthController.signup);
 router.route("/login").post(AuthController.login);
@@ -30,6 +33,13 @@ router
     usersController.getAllUsers
   );
 
+router
+  .route("/me")
+  .get(
+    AuthController.protect,
+    usersController.getMe,
+    usersController.getUserById
+  );
 router
   .route("/updateMe")
   .patch(AuthController.protect, usersController.updateMe);

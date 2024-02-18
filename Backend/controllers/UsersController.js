@@ -1,6 +1,5 @@
 const Users = require("../models/UsersModel");
 const AppError = require("../utils/AppError");
-const APIFeatures = require("../utils/APIFeatures");
 const catchAsync = require("../utils/catchAsync");
 const factory = require("./HandlerFactory");
 
@@ -17,27 +16,6 @@ const filterObj = (obj, ...allowedFields) => {
 exports.withoutInactive = catchAsync(async (req, res, next) => {
   req.query = { ...{ active: true } };
   next();
-});
-
-exports.getAllUsers = catchAsync(async (req, res, next) => {
-  const features = new APIFeatures(Users.find(), req.query)
-    .filter()
-    .sort()
-    .limitFields()
-    .paginate();
-  const users = await features.query;
-
-  res.status(200).json({
-    status: "success",
-    results: users.length,
-    data: { users },
-  });
-});
-
-exports.getUserById = catchAsync(async (muscleID) => {
-  const muscle = await Users.findById(muscleID).populate("workouts");
-  const result = muscle ? muscle.muscleName : "Muscle not found";
-  return result;
 });
 
 exports.updateMe = catchAsync(async (req, res, next) => {
@@ -58,14 +36,7 @@ exports.updateMe = catchAsync(async (req, res, next) => {
 });
 
 exports.deactivateUser = catchAsync(async (req, res, next) => {
-  const user = await Users.findByIdAndUpdate(
-    req.params.id,
-    { active: false },
-    {
-      new: true,
-      runValidators: true,
-    }
-  );
+  const user = await Users.findByIdAndUpdate(req.params.id, { active: false });
 
   res.status(204).json({
     status: "success",
@@ -73,4 +44,11 @@ exports.deactivateUser = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.deleteUser = factory.deleteOne(Users);
+exports.getMe = (req, res, next) => {
+  req.params.id = req.user.id;
+  next();
+};
+
+exports.getAllUsers = factory.getAll(Users, "users");
+exports.getUserById = factory.getOne(Users, "users", { path: "workouts" });
+exports.deleteUser = factory.deleteOne(Users, "users");
