@@ -2,7 +2,7 @@ export const Routes = {
   Login: "Login",
   HomePage: "HomePage",
   Workout: "Workout",
-  WorkoutSelection: "WorkoutSelection",
+  MyWorkoutsList: "MyWorkoutsList",
   MusclesList: "MusclesList",
   MuscleExercisesBank: "MuscleExercisesBank",
   TipsCategories: "TipsCategories",

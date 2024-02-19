@@ -59,7 +59,7 @@ const HomePage = ({ navigation }) => {
         />
         <View style={style.optionsContainer}>
           <TouchableOpacity
-            onPress={() => navigation.navigate(Routes.WorkoutSelection)}
+            onPress={() => navigation.navigate(Routes.MyWorkoutsList)}
           >
             <Text style={style.optionText}>{Strings.MyWorkouts}</Text>
           </TouchableOpacity>

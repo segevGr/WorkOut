@@ -27,7 +27,7 @@ const MusclesList = ({ navigation }) => {
     });
   };
 
-  const [musclesList, setMusclesList] = useState();
+  const [musclesList, setMusclesList] = useState([]);
   const getMuscles = async (userToken) => {
     try {
       const results = await getMusclesList(userToken);

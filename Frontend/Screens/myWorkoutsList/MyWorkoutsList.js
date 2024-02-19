@@ -1,23 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { SafeAreaView, FlatList } from "react-native";
 
-import { useDispatch, useSelector } from "react-redux";
-import { updateSelectedWorkout } from "../../redux/reducers/WorkoutsList";
-
 import { Routes } from "../../navigation/Routes";
+import getUserToken from "../../hooks/getToken";
+import getUserId from "../../hooks/getUserId";
+import { getMyWorkoutsList } from "../../api/MyWorkoutsList";
 
 import Header from "../../components/header/Header";
 import WorkOutOption from "../../components/workoutOption/WorkoutOption";
 
 import { Strings } from "../../assets/strings/Strings";
 import globalStyle from "../../assets/styles/globalStyle";
+import Indexes from "../../assets/workouts/Indexes";
 
-const WorkoutSelection = ({ navigation }) => {
-  const workoutsList = useSelector((state) => state.workoutsList);
-  const dispatch = useDispatch();
+const MyWorkoutsList = ({ navigation }) => {
+  const userToken = getUserToken();
+  const userId = getUserId();
+
+  const [workoutsList, setWorkoutsList] = useState([]);
+  const getMyWorkouts = async (userToken) => {
+    try {
+      const results = await getMyWorkoutsList(userToken, userId);
+      setWorkoutsList(results);
+    } catch (error) {
+      console.error(`Error in getMyWorkouts: [${error}]`);
+    }
+  };
+
+  useEffect(() => {
+    getMyWorkouts(userToken, userId);
+  }, [userToken, userId]);
 
   const navigateToWorkout = (workoutName) => {
-    dispatch(updateSelectedWorkout(workoutName));
     navigation.navigate(Routes.Workout);
   };
 
@@ -33,12 +47,12 @@ const WorkoutSelection = ({ navigation }) => {
           </>
         }
         showsVerticalScrollIndicator={false}
-        data={workoutsList.WorkOutTypes}
+        data={workoutsList}
         renderItem={({ item }) => (
           <WorkOutOption
-            key={item.workoutName}
+            key={item._id}
             workoutName={item.workoutName}
-            picture={item.picture}
+            picture={Indexes[item.workoutImage]}
             navigatePress={() => navigateToWorkout(item.workoutName)}
           />
         )}
@@ -47,4 +61,4 @@ const WorkoutSelection = ({ navigation }) => {
   );
 };
 
-export default WorkoutSelection;
+export default MyWorkoutsList;

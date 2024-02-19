@@ -3,7 +3,7 @@ import { Routes } from "./Routes";
 
 import HomePage from "../Screens/homePage/HomePage";
 import Login from "../Screens/login/Login";
-import WorkoutSelection from "../Screens/workoutSelection/WorkoutSelection";
+import MyWorkoutsList from "../Screens/myWorkoutsList/MyWorkoutsList";
 import Workout from "../Screens/workout/Workout";
 import MusclesList from "../Screens/musclesList/MusclesList";
 import MuscleExercisesBank from "../Screens/muscleExercisesBank/MuscleExercisesBank";
@@ -31,10 +31,7 @@ export const Authenticated = () => {
       screenOptions={{ headerShown: false }}
       initialRouteName={Routes.HomePage}
     >
-      <Stack.Screen
-        name={Routes.WorkoutSelection}
-        component={WorkoutSelection}
-      />
+      <Stack.Screen name={Routes.MyWorkoutsList} component={MyWorkoutsList} />
       <Stack.Screen name={Routes.HomePage} component={HomePage} />
       <Stack.Screen name={Routes.Workout} component={Workout} />
       <Stack.Screen name={Routes.MusclesList} component={MusclesList} />

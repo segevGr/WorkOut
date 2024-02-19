@@ -23,7 +23,7 @@ const MuscleExercisesBank = ({ navigation, route }) => {
     navigation.goBack();
   };
 
-  const [exercisesList, setExercisesList] = useState();
+  const [exercisesList, setExercisesList] = useState([]);
   const getExercises = async (userToken) => {
     try {
       const results = await getExercisesListByMuscle(userToken, muscleId);
