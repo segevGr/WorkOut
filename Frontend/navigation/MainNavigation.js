@@ -35,7 +35,6 @@ export const Authenticated = () => {
         name={Routes.WorkoutSelection}
         component={WorkoutSelection}
       />
-      <Stack.Screen name={Routes.Login} component={Login} />
       <Stack.Screen name={Routes.HomePage} component={HomePage} />
       <Stack.Screen name={Routes.Workout} component={Workout} />
       <Stack.Screen name={Routes.MusclesList} component={MusclesList} />
