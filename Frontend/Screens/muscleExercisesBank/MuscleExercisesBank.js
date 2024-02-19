@@ -18,7 +18,7 @@ import Indexes from "../../assets/videos/Indexes";
 const MuscleExercisesBank = ({ navigation, route }) => {
   const userToken = getUserToken();
 
-  const muscleName = route.params.selectedMuscle;
+  const { muscleId, muscleName } = route.params;
   const navigateBack = () => {
     navigation.goBack();
   };
@@ -26,7 +26,7 @@ const MuscleExercisesBank = ({ navigation, route }) => {
   const [exercisesList, setExercisesList] = useState();
   const getExercises = async (userToken) => {
     try {
-      const results = await getExercisesListByMuscle(userToken, muscleName);
+      const results = await getExercisesListByMuscle(userToken, muscleId);
       setExercisesList(results);
     } catch (error) {
       console.error(`Error in getExercisesListByMuscle: [${error}]`);

@@ -20,9 +20,10 @@ import Indexes from "../../assets/icons/muscles/Indexes";
 const MusclesList = ({ navigation }) => {
   const userToken = getUserToken();
 
-  const navigateToMuscle = (selectedMuscle) => {
+  const navigateToMuscle = (muscleId, muscleName) => {
     navigation.navigate(Routes.MuscleExercisesBank, {
-      selectedMuscle: selectedMuscle,
+      muscleId,
+      muscleName,
     });
   };
 
@@ -63,7 +64,7 @@ const MusclesList = ({ navigation }) => {
                     image={Indexes[item.muscleImage]}
                     primaryText={item.muscleName}
                     secondaryText={`${Strings.GoToMuscleMessage} ${item.muscleName}`}
-                    onPress={() => navigateToMuscle(item.muscleName)}
+                    onPress={() => navigateToMuscle(item._id, item.muscleName)}
                   />
                 </>
               }
