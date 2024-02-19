@@ -22,7 +22,7 @@ exports.getMuscleByName = catchAsync(async (req, res, next) => {
 });
 
 exports.getAllMuscles = factory.getAll(Muscles, "muscles");
-exports.getMuscleById = factory.getOne(Muscles, "muscles");
-exports.createMuscle = factory.createOne(Muscles, "muscles");
-exports.updateMuscle = factory.updateOne(Muscles, "muscles");
-exports.deleteMuscle = factory.deleteOne(Muscles, "muscles");
+exports.getMuscleById = factory.getOne(Muscles, "muscle");
+exports.createMuscle = factory.createOne(Muscles, "muscle");
+exports.updateMuscle = factory.updateOne(Muscles, "muscle");
+exports.deleteMuscle = factory.deleteOne(Muscles, "muscle");

@@ -50,5 +50,5 @@ exports.getMe = (req, res, next) => {
 };
 
 exports.getAllUsers = factory.getAll(Users, "users");
-exports.getUserById = factory.getOne(Users, "users", { path: "workouts" });
-exports.deleteUser = factory.deleteOne(Users, "users");
+exports.getUserById = factory.getOne(Users, "user", { path: "workouts" });
+exports.deleteUser = factory.deleteOne(Users, "user");
