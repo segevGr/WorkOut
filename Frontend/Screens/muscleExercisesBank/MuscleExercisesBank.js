@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { SafeAreaView, FlatList } from "react-native";
 
-// import { useDispatch, useSelector } from "react-redux";
-// import { updateSelectedCategory } from "../../redux/reducers/MusclesList";
-
 import Header from "../../components/header/Header";
 import CollapseContainer from "../../components/collapseContainer/CollapseContainer";
 import CollapseOpenWithoutEdit from "../../components/collapseOpen/CollapseOpenWithoutEdit";

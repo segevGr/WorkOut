@@ -4,7 +4,7 @@ import { SafeAreaView, FlatList } from "react-native";
 import { Routes } from "../../navigation/Routes";
 import getUserToken from "../../hooks/getToken";
 import getUserId from "../../hooks/getUserId";
-import { getMyWorkoutsList } from "../../api/MyWorkoutsList";
+import { getMyWorkoutsList } from "../../api/MyWorkouts";
 
 import Header from "../../components/header/Header";
 import WorkOutOption from "../../components/workoutOption/WorkoutOption";
@@ -20,8 +20,7 @@ const MyWorkoutsList = ({ navigation }) => {
   const [workoutsList, setWorkoutsList] = useState([]);
   const getMyWorkouts = async (userToken) => {
     try {
-      const results = await getMyWorkoutsList(userToken, userId);
-      setWorkoutsList(results);
+      setWorkoutsList(await getMyWorkoutsList(userToken, userId));
     } catch (error) {
       console.error(`Error in getMyWorkouts: [${error}]`);
     }
@@ -31,8 +30,8 @@ const MyWorkoutsList = ({ navigation }) => {
     getMyWorkouts(userToken, userId);
   }, [userToken, userId]);
 
-  const navigateToWorkout = (workoutName) => {
-    navigation.navigate(Routes.Workout);
+  const navigateToWorkout = (workoutName, workoutId) => {
+    navigation.navigate(Routes.Workout, { workoutName, workoutId });
   };
 
   return (
@@ -53,7 +52,7 @@ const MyWorkoutsList = ({ navigation }) => {
             key={item._id}
             workoutName={item.workoutName}
             picture={Indexes[item.workoutImage]}
-            navigatePress={() => navigateToWorkout(item.workoutName)}
+            navigatePress={() => navigateToWorkout(item.workoutName, item._id)}
           />
         )}
       />

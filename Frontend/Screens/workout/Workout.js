@@ -1,23 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { SafeAreaView, FlatList } from "react-native";
 
-import { useSelector } from "react-redux";
-
-import globalStyle from "../../assets/styles/globalStyle";
+import getUserToken from "../../hooks/getToken";
+import { getWorkoutExercises } from "../../api/MyWorkouts";
 
 import Header from "../../components/header/Header";
 import CollapseContainer from "../../components/collapseContainer/CollapseContainer";
 import UserExerciseCollapseOpen from "../../components/collapseOpen/UserExerciseCollapseOpen";
+
+import globalStyle from "../../assets/styles/globalStyle";
 import { Strings } from "../../assets/strings/Strings";
+import Indexes from "../../assets/videos/Indexes";
 
-const Workout = ({ navigation }) => {
-  const workoutsList = useSelector((state) => state.workoutsList);
-  const workoutName = workoutsList.selectedWorkout;
+const Workout = ({ navigation, route }) => {
+  const userToken = getUserToken();
+  const { workoutName, workoutId } = route.params;
 
-  let userExerciseList = useSelector((state) => state.userExerciseList);
-  userExerciseList = userExerciseList.exercises.filter((exercise) =>
-    exercise.containInWorkout.includes(workoutName)
-  );
+  const [exerciseList, setExerciseList] = useState([]);
+  const getExercises = async (userToken) => {
+    try {
+      setExerciseList(await getWorkoutExercises(userToken, workoutId));
+    } catch (error) {
+      console.error(`Error in getWorkoutExercises: [${error}]`);
+    }
+  };
+
+  useEffect(() => {
+    getExercises(userToken);
+  }, [userToken]);
 
   return (
     <SafeAreaView style={globalStyle.background}>
@@ -28,25 +38,25 @@ const Workout = ({ navigation }) => {
           </>
         }
         showsVerticalScrollIndicator={false}
-        data={userExerciseList}
+        data={exerciseList}
         renderItem={({ item }) => (
           <CollapseContainer
-            key={item.exerciseName}
-            name={item.exerciseName}
-            media={item.exerciseVideoName}
+            key={item._id}
+            name={item.exerciseId.exerciseName}
+            media={Indexes[item.exerciseId.exerciseVideo]}
             mediaType={"video"}
             collapseOpenContent={
               <>
                 <UserExerciseCollapseOpen
                   title={Strings.Sets}
-                  exerciseName={item.exerciseName}
-                  setsData={item.exerciseSets}
+                  exerciseName={item.exerciseId.exerciseName}
+                  setsData={item.sets}
                 />
                 <UserExerciseCollapseOpen
                   title={Strings.Notes}
-                  exerciseName={item.exerciseName}
+                  exerciseName={item.exerciseId.exerciseName}
                   backgroundColor="#F6FAFD"
-                  notesData={item.exerciseNotes}
+                  notesData={item.notes}
                 />
               </>
             }
