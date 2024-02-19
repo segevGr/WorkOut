@@ -10,17 +10,6 @@ router
   .get(WorkoutsController.getAllWorkouts)
   .post(WorkoutsController.createWorkout);
 
-router.route("/:id");
-//   .get(WorkoutsController.getWorkoutsById)
-//   .patch(
-//     AuthController.protect,
-//     AuthController.restrictTo("admin"),
-//     WorkoutsController.updateWorkouts
-//   )
-//   .delete(
-//     AuthController.protect,
-//     AuthController.restrictTo("admin"),
-//     WorkoutsController.deleteWorkouts
-//   );
+router.route("/:id").get(WorkoutsController.getWorkoutsById);
 
 module.exports = router;
