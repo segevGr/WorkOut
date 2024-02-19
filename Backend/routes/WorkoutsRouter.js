@@ -12,4 +12,7 @@ router
 
 router.route("/:id").get(WorkoutsController.getWorkoutsById);
 
+router
+  .route("/:workoutId/exercise/:exerciseId")
+  .patch(WorkoutsController.updateExerciseFromWorkout);
 module.exports = router;
