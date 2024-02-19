@@ -1,6 +1,5 @@
 import { URL } from "./ServerConfig";
 import { handleApiResponse } from "./../utils/ApiUtils";
-// import { Strings } from "../assets/strings/Strings";
 
 export const tryLogin = async (email, password) => {
   const response = await fetch(`${URL}/api/users/login`, {

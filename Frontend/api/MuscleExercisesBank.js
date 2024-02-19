@@ -1,16 +1,12 @@
 import { URL } from "./ServerConfig";
-import { handleApiResponse } from "./../utils/ApiUtils";
+import { handleApiResponse, handleGetRequests } from "./../utils/ApiUtils";
 
 export const getExercisesListByMuscle = async (userToken, muscleName) => {
-  const response = await fetch(
+  const response = await handleGetRequests(
     `${URL}/api/exercises?muscleGroupName=${muscleName}`,
-    {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${userToken}`,
-      },
-    }
+    userToken
   );
+
   const data = await handleApiResponse(response);
   return data.data.exercises;
 };

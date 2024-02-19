@@ -9,3 +9,17 @@ export async function handleApiResponse(response) {
   }
   return response.json();
 }
+
+export async function handleGetRequests(reqUrl, token) {
+  const headers = {
+    Authorization: `Bearer ${token}`,
+  };
+
+  const options = {
+    method: "GET",
+    headers,
+  };
+
+  const response = await fetch(reqUrl, options);
+  return response;
+}
