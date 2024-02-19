@@ -1,9 +1,10 @@
 import { URL } from "./ServerConfig";
-import { handleApiResponse, handleGetRequests } from "./../utils/ApiUtils";
+import { handleApiResponse, handleRequests } from "./../utils/ApiUtils";
 
 export const getExercisesListByMuscle = async (userToken, muscleId) => {
-  const response = await handleGetRequests(
+  const response = await handleRequests(
     `${URL}/api/exercises?muscleGroup=${muscleId}`,
+    "GET",
     userToken
   );
 

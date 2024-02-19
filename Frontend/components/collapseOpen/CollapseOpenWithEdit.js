@@ -1,33 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
 
-import { useDispatch } from "react-redux";
+import { updateMyExercise } from "../../api/MyWorkouts";
 
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faPencil, faCheck } from "@fortawesome/free-solid-svg-icons";
 
-import style from "./style";
 import BorderContainer from "../borderContainer/BorderContainer";
+import style from "./style";
 import { scaleFontSize } from "../../assets/styles/scaling";
-import {
-  updateExerciseNotes,
-  updateExerciseSets,
-} from "../../redux/reducers/UserExerciseList";
+import { Strings } from "../../assets/strings/Strings";
 
-const UserExerciseCollapseOpen = ({
-  title,
-  exerciseName,
+const CollapseOpenWithEdit = ({
+  userToken,
+  workoutId,
+  exerciseId,
   backgroundColor,
   setsData,
   notesData,
 }) => {
-  const dispatch = useDispatch();
-
   const isSets = setsData ? true : false;
-  const placeHolder = isSets ? "הכנס את הסטים שלך" : "הכנס הערות";
+  const placeHolder = isSets
+    ? Strings.SetsPlaceholder
+    : Strings.NotesPlaceholder;
+  const title = isSets ? Strings.Sets : Strings.Notes;
 
-  const [isEditingSets, setIsEditingSets] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const inputRef = useRef(null);
+
   const [notesValue, setNotesValue] = useState(isSets ? null : notesData);
   const [setsValue, setSetsValue] = useState(isSets ? setsData : null);
 
@@ -35,22 +36,22 @@ const UserExerciseCollapseOpen = ({
     isSets ? setSetsValue(value) : setNotesValue(value);
   };
 
-  const submitChanges = () => {
-    isSets
-      ? dispatch(
-          updateExerciseSets({
-            exerciseName: exerciseName,
-            exerciseSets: setsValue,
-          })
-        )
-      : dispatch(
-          updateExerciseNotes({
-            exerciseName: exerciseName,
-            exerciseNotes: notesValue,
-          })
-        );
+  useEffect(() => {
+    if (isEditing && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [isEditing]);
 
-    setIsEditingSets(false);
+  const submitChanges = async () => {
+    const body = isSets ? { sets: setsValue } : { notes: notesValue };
+
+    try {
+      await updateMyExercise(userToken, workoutId, exerciseId, body);
+    } catch (error) {
+      console.error(`Error in updateMyExercise: [${error}]`);
+    }
+
+    setIsEditing(false);
   };
 
   return (
@@ -63,7 +64,7 @@ const UserExerciseCollapseOpen = ({
         content={
           <>
             <View style={style.contentContainer}>
-              {isEditingSets ? (
+              {isEditing ? (
                 <>
                   <View style={style.titleContainer}>
                     <TouchableOpacity onPress={() => submitChanges()}>
@@ -75,6 +76,7 @@ const UserExerciseCollapseOpen = ({
                     <Text style={style.textsTitle}>{title}</Text>
                   </View>
                   <TextInput
+                    ref={inputRef}
                     style={style.content}
                     placeholder={placeHolder}
                     value={isSets ? setsValue : notesValue}
@@ -85,7 +87,7 @@ const UserExerciseCollapseOpen = ({
               ) : (
                 <>
                   <View style={style.titleContainer}>
-                    <TouchableOpacity onPress={() => setIsEditingSets(true)}>
+                    <TouchableOpacity onPress={() => setIsEditing(true)}>
                       <FontAwesomeIcon
                         icon={faPencil}
                         size={scaleFontSize(22)}
@@ -106,18 +108,19 @@ const UserExerciseCollapseOpen = ({
   );
 };
 
-UserExerciseCollapseOpen.defaultProps = {
+CollapseOpenWithEdit.defaultProps = {
   backgroundColor: "#FFFFFF",
   setsData: null,
   notesData: null,
 };
 
-UserExerciseCollapseOpen.prototype = {
-  title: PropTypes.string.isRequired,
-  exerciseName: PropTypes.string.isRequired,
+CollapseOpenWithEdit.prototype = {
+  userToken: PropTypes.string.isRequired,
+  workoutId: PropTypes.string.isRequired,
+  exerciseId: PropTypes.string.isRequired,
   backgroundColor: PropTypes.string,
   setsData: PropTypes.object,
   notesData: PropTypes.string,
 };
 
-export default UserExerciseCollapseOpen;
+export default CollapseOpenWithEdit;

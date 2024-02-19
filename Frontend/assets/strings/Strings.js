@@ -2,7 +2,7 @@ export const Strings = {
   //Global words
   Yes: "כן",
   No: "לא",
-  error: "שגיאה!",
+  Error: "שגיאה!",
 
   //Login page
   Welcome: "ברוך הבא!",
@@ -35,7 +35,9 @@ export const Strings = {
 
   //Workout
   Sets: "סטים:",
+  SetsPlaceholder: "הכנס את הסטים שלך",
   Notes: "הערות:",
+  NotesPlaceholder: "הכנס הערות",
   WorksOn: "התרגיל עובד על:",
   Highlights: "דגשים לתרגיל:",
   BankTitle: "בנק תרגילים",

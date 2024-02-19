@@ -6,7 +6,7 @@ import { getWorkoutExercises } from "../../api/MyWorkouts";
 
 import Header from "../../components/header/Header";
 import CollapseContainer from "../../components/collapseContainer/CollapseContainer";
-import UserExerciseCollapseOpen from "../../components/collapseOpen/UserExerciseCollapseOpen";
+import CollapseOpenWithEdit from "../../components/collapseOpen/CollapseOpenWithEdit";
 
 import globalStyle from "../../assets/styles/globalStyle";
 import { Strings } from "../../assets/strings/Strings";
@@ -47,14 +47,16 @@ const Workout = ({ navigation, route }) => {
             mediaType={"video"}
             collapseOpenContent={
               <>
-                <UserExerciseCollapseOpen
-                  title={Strings.Sets}
-                  exerciseName={item.exerciseId.exerciseName}
+                <CollapseOpenWithEdit
+                  userToken={userToken}
+                  workoutId={workoutId}
+                  exerciseId={item._id}
                   setsData={item.sets}
                 />
-                <UserExerciseCollapseOpen
-                  title={Strings.Notes}
-                  exerciseName={item.exerciseId.exerciseName}
+                <CollapseOpenWithEdit
+                  userToken={userToken}
+                  workoutId={workoutId}
+                  exerciseId={item._id}
                   backgroundColor="#F6FAFD"
                   notesData={item.notes}
                 />

@@ -65,11 +65,11 @@ const Login = ({ navigation }) => {
 
   const handleLoginError = (error) => {
     if (error.statusCode === 401) {
-      showAlert(Strings.error, Strings.WrongDetailsSummary);
+      showAlert(Strings.Error, Strings.WrongDetailsSummary);
     } else if (error.statusCode === 400) {
-      showAlert(Strings.error, Strings.MissingDetails);
+      showAlert(Strings.Error, Strings.MissingDetails);
     } else if (!error.statusCode.ok) {
-      showAlert(Strings.error, Strings.MissingDetails);
+      showAlert(Strings.Error, Strings.MissingDetails);
     }
     console.error(`Error in tryLogin: [${error}]`);
   };

@@ -1,8 +1,8 @@
 import { URL } from "./ServerConfig";
-import { handleApiResponse, handleGetRequests } from "./../utils/ApiUtils";
+import { handleApiResponse, handleRequests } from "./../utils/ApiUtils";
 
 export const getMusclesList = async (userToken) => {
-  const response = await handleGetRequests(`${URL}/api/muscles`, userToken);
+  const response = await handleRequests(`${URL}/api/muscles`, "GET", userToken);
 
   const data = await handleApiResponse(response);
   return data.data.muscles;
