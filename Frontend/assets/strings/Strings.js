@@ -2,6 +2,7 @@ export const Strings = {
   //Global words
   Yes: "כן",
   No: "לא",
+  error: "שגיאה!",
 
   //Login page
   Welcome: "ברוך הבא!",

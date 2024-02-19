@@ -49,18 +49,29 @@ const Login = ({ navigation }) => {
   };
 
   const submitLogin = async () => {
-    Keyboard.dismiss();
-    const result = await tryLogin(email, password);
-    if (!result.success) {
-      showAlert(result.message, Strings.WrongDetailsSummary);
+    try {
+      Keyboard.dismiss();
+      const result = await tryLogin(email, password);
+      showAlert(Strings.WelcomeAlert, Strings.WelcomeAlertSummary);
+      dispatch(updateToken(result.token));
+      dispatch(updateUser(result.user));
+      dispatch(updateLogIn(true));
+      navigation.navigate(Routes.HomePage);
       return;
+    } catch (error) {
+      handleLoginError(error);
     }
-    showAlert(result.message, Strings.WelcomeAlertSummary);
-    dispatch(updateToken(result.token));
-    dispatch(updateUser(result.user));
-    dispatch(updateLogIn(true));
-    navigation.navigate(Routes.HomePage);
-    return;
+  };
+
+  const handleLoginError = (error) => {
+    if (error.statusCode === 401) {
+      showAlert(Strings.error, Strings.WrongDetailsSummary);
+    } else if (error.statusCode === 400) {
+      showAlert(Strings.error, Strings.MissingDetails);
+    } else if (!error.statusCode.ok) {
+      showAlert(Strings.error, Strings.MissingDetails);
+    }
+    console.error(`Error in tryLogin: [${error}]`);
   };
 
   return (

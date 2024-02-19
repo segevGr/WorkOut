@@ -1,7 +1,11 @@
+import { ApiError } from "./ApiError";
+
 export async function handleApiResponse(response) {
   if (!response.ok) {
     const errorData = await response.json();
-    throw new Error(errorData.message);
+    const errorMessage = errorData.message || "Unknown error";
+    const statusCode = response.status;
+    throw new ApiError(errorMessage, statusCode);
   }
   return response.json();
 }
