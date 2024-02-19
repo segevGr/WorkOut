@@ -2,7 +2,7 @@ import React from "react";
 import { SafeAreaView, FlatList } from "react-native";
 
 import { useDispatch, useSelector } from "react-redux";
-import { updateSelectedWorkout } from "../../redux/reducers/WorkoutsList";
+// import { updateSelectedWorkout } from "../../redux/reducers/WorkoutsList";
 
 import { Routes } from "../../navigation/Routes";
 
@@ -13,7 +13,8 @@ import { Strings } from "../../assets/strings/Strings";
 import globalStyle from "../../assets/styles/globalStyle";
 
 const MyMenusList = ({ navigation }) => {
-  const workoutsList = useSelector((state) => state.workoutsList);
+  // const workoutsList = useSelector((state) => state.workoutsList);
+  const workoutsList = [];
   const dispatch = useDispatch();
 
   const navigateToWorkout = (workoutName) => {

@@ -4,18 +4,12 @@ import { persistReducer, persistStore } from "redux-persist";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import UserDetails from "./reducers/UserDetails";
-import WorkoutsList from "./reducers/WorkoutsList";
-// import ExerciseList from "./reducers/ExerciseList";
 import UserExerciseList from "./reducers/UserExerciseList";
-// import MusclesList from "./reducers/MusclesList";
 import TipsList from "./reducers/TipsList";
 import MenuBankList from "./reducers/MenuBankList";
 
 const rootReducer = combineReducers({
-  workoutsList: WorkoutsList,
-  // exerciseList: ExerciseList,
   userExerciseList: UserExerciseList,
-  // MusclesList: MusclesList,
   tipsList: TipsList,
   menuBankList: MenuBankList,
   userDetails: UserDetails,

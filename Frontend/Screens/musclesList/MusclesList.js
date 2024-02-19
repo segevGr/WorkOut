@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { SafeAreaView, FlatList } from "react-native";
 
-import { useDispatch, useSelector } from "react-redux";
-import { updateSelectedCategory } from "../../redux/reducers/MusclesList";
-
 import { Routes } from "../../navigation/Routes";
 
 import Header from "../../components/header/Header";
