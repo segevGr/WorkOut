@@ -96,7 +96,7 @@ const CollapseOpenWithEdit = ({
                     <Text style={style.textsTitle}>{title}</Text>
                   </View>
                   <Text style={style.content}>
-                    {isSets ? setsData : notesValue}
+                    {isSets ? setsValue : notesValue}
                   </Text>
                 </>
               )}
