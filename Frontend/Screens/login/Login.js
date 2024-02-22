@@ -51,7 +51,7 @@ const Login = ({ navigation }) => {
   const submitLogin = async () => {
     try {
       Keyboard.dismiss();
-      const result = await tryLogin(email, password);
+      const result = await tryLogin(email.trim(), password);
       showAlert(Strings.WelcomeAlert, Strings.WelcomeAlertSummary);
       dispatch(updateToken(result.token));
       dispatch(updateUser(result.user));
