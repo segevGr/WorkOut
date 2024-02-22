@@ -45,6 +45,7 @@ export default Strings = {
   MuscleBankTitle: "תרגילים ל",
   WorkOuts: "אימונים",
   DeleteWorkoutAlertTitle: "האם אתה בטוח שאתה רוצה למחוק את ***?",
+  DeleteWorkoutAlertContent: "כל הנתונים עבור אימון זה ימחקו!",
 
   //Tips
   TipsCategoriesTitle: "טיפים לתהליך",

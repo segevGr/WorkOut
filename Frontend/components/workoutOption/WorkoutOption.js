@@ -29,7 +29,7 @@ const WorkOutOption = ({
   const showDeleteAlert = () => {
     ShowAlert({
       title: Strings.DeleteWorkoutAlertTitle.replace("***", workoutName),
-      message: null,
+      message: Strings.DeleteWorkoutAlertContent,
       btnText: Strings.Yes,
       pressFunc: async () => {
         try {
