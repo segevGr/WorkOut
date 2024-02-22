@@ -11,6 +11,16 @@ export const getMyWorkoutsList = async (userToken, userId) => {
   return data.data.workouts;
 };
 
+export const deleteWorkoutFromList = async (userToken, workoutId) => {
+  const response = await handleRequests(
+    `${URL}/api/workouts/${workoutId}`,
+    "DELETE",
+    userToken
+  );
+  const data = await handleApiResponse(response);
+  return;
+};
+
 export const getWorkoutExercises = async (userToken, workoutId) => {
   const response = await handleRequests(
     `${URL}/api/workouts/${workoutId}`,

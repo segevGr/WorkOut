@@ -10,7 +10,10 @@ router
   .get(WorkoutsController.getAllWorkouts)
   .post(WorkoutsController.createWorkout);
 
-router.route("/:id").get(WorkoutsController.getWorkoutsById);
+router
+  .route("/:id")
+  .get(WorkoutsController.getWorkoutsById)
+  .delete(WorkoutsController.deleteWorkout);
 
 router
   .route("/:workoutId/exercise/:exerciseId")

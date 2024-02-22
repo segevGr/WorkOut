@@ -1,6 +1,10 @@
 import React from "react";
 import { Text, View, Image, Pressable, TouchableOpacity } from "react-native";
 
+import getUserToken from "../../hooks/getToken";
+import getUserId from "../../hooks/getUserId";
+import { deleteWorkoutFromList } from "../../api/MyWorkouts";
+
 import PropTypes from "prop-types";
 import BorderContainer from "../borderContainer/BorderContainer";
 import ShowAlert from "../../utils/ShowAlert";
@@ -12,13 +16,31 @@ import style from "./style";
 import { horizontalScale } from "../../assets/styles/scaling";
 import Strings from "../../assets/strings/Strings";
 
-const WorkOutOption = ({ workoutName, picture, navigatePress }) => {
+const WorkOutOption = ({
+  workoutName,
+  workoutId,
+  userToken,
+  picture,
+  navigatePress,
+  setWorkoutsList,
+}) => {
+  getUserId();
+  getUserToken;
   const showDeleteAlert = () => {
     ShowAlert({
       title: Strings.DeleteWorkoutAlertTitle.replace("***", workoutName),
       message: null,
       btnText: Strings.Yes,
-      pressFunc: () => null,
+      pressFunc: async () => {
+        try {
+          await deleteWorkoutFromList(userToken, workoutId);
+          setWorkoutsList((prevList) =>
+            prevList.filter((workout) => workout._id !== workoutId)
+          );
+        } catch (error) {
+          console.error(`Error in deleteWorkoutFromList: [${error}]`);
+        }
+      },
       cancelText: Strings.No,
     });
   };
@@ -55,6 +77,7 @@ const WorkOutOption = ({ workoutName, picture, navigatePress }) => {
 
 WorkOutOption.prototype = {
   workoutName: PropTypes.string.isRequired,
+  workoutId: PropTypes.string.isRequired,
   picture: PropTypes.object.isRequired,
   navigatePress: PropTypes.func.isRequired,
 };

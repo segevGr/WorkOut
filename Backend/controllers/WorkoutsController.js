@@ -8,8 +8,8 @@ exports.getWorkoutsById = factory.getOne(Workouts, "workout", {
   path: "exercises.exerciseId",
   select: "exerciseName highlights exerciseVideo",
 });
+exports.deleteWorkout = factory.deleteOne(Workouts, "workout");
 exports.createWorkout = factory.createOne(Workouts, "workout");
-
 exports.updateExerciseFromWorkout = catchAsync(async (req, res, next) => {
   const workoutId = req.params.workoutId;
   const exerciseId = req.params.exerciseId;

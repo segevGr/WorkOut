@@ -54,7 +54,10 @@ const MyWorkoutsList = ({ navigation }) => {
           <WorkOutOption
             key={item._id}
             workoutName={item.workoutName}
+            workoutId={item._id}
+            userToken={userToken}
             picture={Indexes[item.workoutImage]}
+            setWorkoutsList={setWorkoutsList}
             navigatePress={() => navigateToWorkout(item.workoutName, item._id)}
           />
         )}

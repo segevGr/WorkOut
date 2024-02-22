@@ -4,11 +4,9 @@ import {
   TouchableOpacity,
   View,
   Text,
-  Alert,
   Keyboard,
 } from "react-native";
 
-import { Routes } from "../../navigation/Routes";
 import { useDispatch, useSelector } from "react-redux";
 
 import LoginInput from "../../components/loginInput/LoginInput";
@@ -24,7 +22,7 @@ import {
 } from "../../redux/reducers/UserDetails";
 import ShowAlert from "../../utils/ShowAlert";
 
-const Login = ({ navigation }) => {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 

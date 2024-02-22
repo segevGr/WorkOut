@@ -7,6 +7,9 @@ export async function handleApiResponse(response) {
     const statusCode = response.status;
     throw new ApiError(errorMessage, statusCode);
   }
+  if (response.status === 204) {
+    return;
+  }
   return response.json();
 }
 
