@@ -20,6 +20,10 @@ const style = StyleSheet.create({
     fontSize: scaleFontSize(25),
     fontFamily: getFontFamily("Heebo", "700"),
   },
+  deleteButton: {
+    position: "absolute",
+    padding: 13,
+  },
 });
 
 export default style;

@@ -1,4 +1,4 @@
-export const Strings = {
+export default Strings = {
   //Global words
   Yes: "כן",
   No: "לא",
@@ -14,7 +14,7 @@ export const Strings = {
 
   //Login alerts
   WrongDetails: "שם משתמש או סיסמה לא נכונים",
-  WrongDetailsSummary: "אנא הזינו פרטים נכונים",
+  WrongDetailsSummary: "אנא וודאו שהזנתם נכון את הנתונים",
   MissingDetails: "אנא מלאו את כל השדות הנדרשים",
   SomethingWrong: "משהו השתבש",
   WelcomeAlert: "ברוכים הבאים!",
@@ -44,6 +44,7 @@ export const Strings = {
   GoToMuscleMessage: "למעבר לתרגילי",
   MuscleBankTitle: "תרגילים ל",
   WorkOuts: "אימונים",
+  DeleteWorkoutAlertTitle: "האם אתה בטוח שאתה רוצה למחוק את ***?",
 
   //Tips
   TipsCategoriesTitle: "טיפים לתהליך",

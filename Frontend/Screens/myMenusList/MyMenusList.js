@@ -9,7 +9,7 @@ import { Routes } from "../../navigation/Routes";
 import Header from "../../components/header/Header";
 import WorkOutOption from "../../components/workoutOption/WorkoutOption";
 
-import { Strings } from "../../assets/strings/Strings";
+import Strings from "../../assets/strings/Strings";
 import globalStyle from "../../assets/styles/globalStyle";
 
 const MyMenusList = ({ navigation }) => {

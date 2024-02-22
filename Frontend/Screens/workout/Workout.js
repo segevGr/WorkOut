@@ -9,7 +9,7 @@ import CollapseContainer from "../../components/collapseContainer/CollapseContai
 import CollapseOpenWithEdit from "../../components/collapseOpen/CollapseOpenWithEdit";
 
 import globalStyle from "../../assets/styles/globalStyle";
-import { Strings } from "../../assets/strings/Strings";
+import Strings from "../../assets/strings/Strings";
 import Indexes from "../../assets/videos/Indexes";
 
 const Workout = ({ navigation, route }) => {

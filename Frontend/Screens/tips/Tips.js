@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import Header from "../../components/header/Header";
 import CollapseContainer from "../../components/collapseContainer/CollapseContainer";
 
-import { Strings } from "../../assets/strings/Strings";
+import Strings from "../../assets/strings/Strings";
 import globalStyle from "../../assets/styles/globalStyle";
 
 const Tips = ({ navigation }) => {

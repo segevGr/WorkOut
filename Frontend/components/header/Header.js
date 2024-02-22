@@ -3,12 +3,18 @@ import { Text, TouchableOpacity, View } from "react-native";
 
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { faArrowLeftLong, faBars } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
 
 import style from "./style";
 import { horizontalScale } from "../../assets/styles/scaling";
 
-const Header = ({ title, backPress, optionButtonFunction, textColor }) => {
+const Header = ({
+  title,
+  backPress,
+  optionButtonIcon,
+  optionButtonFunction,
+  textColor,
+}) => {
   return (
     <View style={style.headerContainer}>
       <View style={style.headerItemsContainer}>
@@ -24,16 +30,19 @@ const Header = ({ title, backPress, optionButtonFunction, textColor }) => {
           ) : null}
         </View>
         <Text style={{ ...style.title, color: textColor }}>{title}</Text>
-        <View style={style.optionsButtonContainer}>
-          {optionButtonFunction ? (
-            <TouchableOpacity>
-              <FontAwesomeIcon
-                icon={faBars}
-                size={horizontalScale(25)}
-                color={textColor}
-              />
-            </TouchableOpacity>
-          ) : null}
+        <View
+          style={{
+            ...style.optionsButtonContainer,
+            ...(optionButtonIcon ? {} : { opacity: 0 }),
+          }}
+        >
+          <TouchableOpacity>
+            <FontAwesomeIcon
+              icon={optionButtonIcon ? optionButtonIcon : faArrowLeftLong}
+              size={horizontalScale(25)}
+              color={textColor}
+            />
+          </TouchableOpacity>
         </View>
       </View>
       <View style={style.divider} />
@@ -48,6 +57,7 @@ Header.defaultProps = {
 Header.prototype = {
   title: PropTypes.string.isRequired,
   backPress: PropTypes.func,
+  optionButtonIcon: PropTypes.func,
   optionButtonFunction: PropTypes.func,
   textColor: PropTypes.string,
 };

@@ -9,7 +9,9 @@ import { getMyWorkoutsList } from "../../api/MyWorkouts";
 import Header from "../../components/header/Header";
 import WorkOutOption from "../../components/workoutOption/WorkoutOption";
 
-import { Strings } from "../../assets/strings/Strings";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+
+import Strings from "../../assets/strings/Strings";
 import globalStyle from "../../assets/styles/globalStyle";
 import Indexes from "../../assets/workouts/Indexes";
 
@@ -42,6 +44,7 @@ const MyWorkoutsList = ({ navigation }) => {
             <Header
               title={Strings.WorkOuts}
               backPress={() => navigation.goBack()}
+              optionButtonIcon={faPlus}
             />
           </>
         }

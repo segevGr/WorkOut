@@ -14,7 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import LoginInput from "../../components/loginInput/LoginInput";
 import { tryLogin } from "../../api/Login";
 
-import { Strings } from "../../assets/strings/Strings";
+import Strings from "../../assets/strings/Strings";
 import style from "./style";
 import globalStyle from "../../assets/styles/globalStyle";
 import {
@@ -22,6 +22,7 @@ import {
   updateToken,
   updateUser,
 } from "../../redux/reducers/UserDetails";
+import ShowAlert from "../../utils/ShowAlert";
 
 const Login = ({ navigation }) => {
   const [email, setEmail] = useState("");
@@ -33,30 +34,20 @@ const Login = ({ navigation }) => {
     return email === "" || password === "";
   };
 
-  const showAlert = (title, message) => {
-    Alert.alert(
-      title,
-      message,
-      [
-        {
-          text: "OK",
-          onPress: () => null,
-          style: "default",
-        },
-      ],
-      { cancelable: false }
-    );
-  };
-
   const submitLogin = async () => {
     try {
       Keyboard.dismiss();
       const result = await tryLogin(email.trim(), password);
-      showAlert(Strings.WelcomeAlert, Strings.WelcomeAlertSummary);
+      ShowAlert({
+        title: Strings.WelcomeAlert,
+        message: Strings.WelcomeAlertSummary,
+        btnText: "OK",
+        pressFunc: null,
+        cancelable: false,
+      });
       dispatch(updateToken(result.token));
       dispatch(updateUser(result.user));
       dispatch(updateLogIn(true));
-      navigation.navigate(Routes.HomePage);
       return;
     } catch (error) {
       handleLoginError(error);
@@ -65,11 +56,29 @@ const Login = ({ navigation }) => {
 
   const handleLoginError = (error) => {
     if (error.statusCode === 401) {
-      showAlert(Strings.Error, Strings.WrongDetailsSummary);
+      ShowAlert({
+        title: Strings.WrongDetails,
+        message: Strings.WrongDetailsSummary,
+        btnText: "OK",
+        pressFunc: null,
+        cancelable: false,
+      });
     } else if (error.statusCode === 400) {
-      showAlert(Strings.Error, Strings.MissingDetails);
-    } else if (!error.statusCode.ok) {
-      showAlert(Strings.Error, Strings.MissingDetails);
+      ShowAlert({
+        title: Strings.Error,
+        message: Strings.MissingDetails,
+        btnText: "OK",
+        pressFunc: null,
+        cancelable: false,
+      });
+    } else {
+      ShowAlert({
+        title: Strings.Error,
+        message: Strings.SomethingWrong,
+        btnText: "OK",
+        pressFunc: null,
+        cancelable: false,
+      });
     }
     console.error(`Error in tryLogin: [${error}]`);
   };

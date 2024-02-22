@@ -10,7 +10,7 @@ import { faPencil, faCheck } from "@fortawesome/free-solid-svg-icons";
 import BorderContainer from "../borderContainer/BorderContainer";
 import style from "./style";
 import { scaleFontSize } from "../../assets/styles/scaling";
-import { Strings } from "../../assets/strings/Strings";
+import Strings from "../../assets/strings/Strings";
 
 const CollapseOpenWithEdit = ({
   userToken,

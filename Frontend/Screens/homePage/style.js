@@ -12,7 +12,7 @@ const style = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    marginTop: verticalScale(40),
+    // marginTop: verticalScale(30),
   },
   optionText: {
     color: "#FFF",

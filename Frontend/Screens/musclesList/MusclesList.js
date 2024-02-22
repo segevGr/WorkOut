@@ -10,7 +10,7 @@ import CategoryContainer from "../../components/categoryContainer/CategoryContai
 import { getMusclesList } from "../../api/MusclesList";
 import getUserToken from "../../hooks/getToken";
 
-import { Strings } from "../../assets/strings/Strings";
+import Strings from "../../assets/strings/Strings";
 import globalStyle from "../../assets/styles/globalStyle";
 import Indexes from "../../assets/icons/muscles/Indexes";
 

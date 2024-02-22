@@ -10,7 +10,7 @@ import Header from "../../components/header/Header";
 import BorderContainer from "../../components/borderContainer/BorderContainer";
 import CategoryContainer from "../../components/categoryContainer/CategoryContainer";
 
-import { Strings } from "../../assets/strings/Strings";
+import Strings from "../../assets/strings/Strings";
 import globalStyle from "../../assets/styles/globalStyle";
 
 const MenuBankList = ({ navigation }) => {

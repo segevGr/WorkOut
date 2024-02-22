@@ -5,7 +5,6 @@ import {
   ImageBackground,
   TouchableOpacity,
   SafeAreaView,
-  Alert,
 } from "react-native";
 
 import { Routes } from "../../navigation/Routes";
@@ -19,26 +18,22 @@ import {
 
 import Header from "../../components/header/Header";
 
-import { Strings } from "../../assets/strings/Strings";
+import Strings from "../../assets/strings/Strings";
 import style from "./style";
+import ShowAlert from "../../utils/ShowAlert";
 
 const HomePage = ({ navigation }) => {
   const dispatch = useDispatch();
   const username = useSelector((state) => state.userDetails.user.name);
 
   const showLogOutAlert = () => {
-    Alert.alert(Strings.LogOutTitle, null, [
-      {
-        text: Strings.Yes,
-        onPress: () => doLogOut(),
-        style: "default",
-      },
-      {
-        text: Strings.No,
-        onPress: () => null,
-        style: "cancel",
-      },
-    ]);
+    ShowAlert({
+      title: Strings.LogOutTitle,
+      message: null,
+      btnText: Strings.Yes,
+      pressFunc: () => doLogOut(),
+      cancelText: Strings.No,
+    });
   };
 
   const doLogOut = () => {
@@ -63,21 +58,21 @@ const HomePage = ({ navigation }) => {
           >
             <Text style={style.optionText}>{Strings.MyWorkouts}</Text>
           </TouchableOpacity>
-          <TouchableOpacity
+          {/* <TouchableOpacity
             onPress={() => navigation.navigate(Routes.MyMenusList)}
           >
             <Text style={style.optionText}>{Strings.MyMenu}</Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
           <TouchableOpacity
             onPress={() => navigation.navigate(Routes.MusclesList)}
           >
             <Text style={style.optionText}>{Strings.ExercisesBank}</Text>
           </TouchableOpacity>
-          <TouchableOpacity
+          {/* <TouchableOpacity
             onPress={() => navigation.navigate(Routes.MenuBankList)}
           >
             <Text style={style.optionText}>{Strings.MenuBank}</Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
           <TouchableOpacity
             onPress={() => navigation.navigate(Routes.TipsCategories)}
           >

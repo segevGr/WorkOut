@@ -9,7 +9,7 @@ import { getExercisesListByMuscle } from "../../api/MuscleExercisesBank";
 import getUserToken from "../../hooks/getToken";
 
 import globalStyle from "../../assets/styles/globalStyle";
-import { Strings } from "../../assets/strings/Strings";
+import Strings from "../../assets/strings/Strings";
 import Indexes from "../../assets/videos/Indexes";
 
 const MuscleExercisesBank = ({ navigation, route }) => {
