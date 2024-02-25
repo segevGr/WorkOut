@@ -7,7 +7,7 @@ import {
   Keyboard,
 } from "react-native";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import LoginInput from "../../components/loginInput/LoginInput";
 import { tryLogin } from "../../api/Login";
@@ -90,13 +90,13 @@ const Login = () => {
             label={Strings.MailLabel}
             placeholder={Strings.MailPlaceholder}
             keyboardType={"email-address"}
-            onChangeText={(value) => setEmail(value)}
+            onChangeText={setEmail}
           />
           <LoginInput
             label={Strings.PasswordLabel}
             placeholder={Strings.PasswordPlaceholder}
             secureTextEntry={true}
-            onChangeText={(value) => setPassword(value)}
+            onChangeText={setPassword}
           />
         </View>
         <TouchableOpacity

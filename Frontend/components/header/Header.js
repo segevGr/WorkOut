@@ -36,7 +36,7 @@ const Header = ({
             ...(optionButtonIcon ? {} : { opacity: 0 }),
           }}
         >
-          <TouchableOpacity>
+          <TouchableOpacity onPress={optionButtonFunction}>
             <FontAwesomeIcon
               icon={optionButtonIcon ? optionButtonIcon : faArrowLeftLong}
               size={horizontalScale(25)}

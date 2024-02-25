@@ -80,7 +80,7 @@ const CollapseOpenWithEdit = ({
                     style={style.content}
                     placeholder={placeHolder}
                     value={isSets ? setsValue : notesValue}
-                    onChangeText={(value) => setValues(value)}
+                    onChangeText={setValues}
                     multiline
                   />
                 </>

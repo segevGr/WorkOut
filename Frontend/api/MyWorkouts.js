@@ -46,3 +46,20 @@ export const updateMyExercise = async (
   await handleApiResponse(response);
   return;
 };
+
+export const createWorkout = async (
+  userToken,
+  user,
+  workoutName,
+  workoutImage
+) => {
+  const body = { workoutName, workoutImage, user };
+  const response = await handleRequests(
+    `${URL}/api/workouts/`,
+    "POST",
+    userToken,
+    body
+  );
+  const data = await handleApiResponse(response);
+  return data.status;
+};

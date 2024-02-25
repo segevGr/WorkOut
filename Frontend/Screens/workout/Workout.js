@@ -8,8 +8,9 @@ import Header from "../../components/header/Header";
 import CollapseContainer from "../../components/collapseContainer/CollapseContainer";
 import CollapseOpenWithEdit from "../../components/collapseOpen/CollapseOpenWithEdit";
 
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+
 import globalStyle from "../../assets/styles/globalStyle";
-import Strings from "../../assets/strings/Strings";
 import Indexes from "../../assets/videos/Indexes";
 
 const Workout = ({ navigation, route }) => {
@@ -34,7 +35,12 @@ const Workout = ({ navigation, route }) => {
       <FlatList
         ListHeaderComponent={
           <>
-            <Header title={workoutName} backPress={() => navigation.goBack()} />
+            <Header
+              title={workoutName}
+              backPress={() => navigation.goBack()}
+              optionButtonIcon={faPlus}
+              optionButtonFunction={() => setWorkoutDialogVisibility(true)}
+            />
           </>
         }
         showsVerticalScrollIndicator={false}

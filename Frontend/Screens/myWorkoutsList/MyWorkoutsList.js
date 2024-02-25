@@ -8,6 +8,7 @@ import { getMyWorkoutsList } from "../../api/MyWorkouts";
 
 import Header from "../../components/header/Header";
 import WorkOutOption from "../../components/workoutOption/WorkoutOption";
+import AddWorkoutDialog from "../../components/addWorkoutDialog/AddWorkoutDialog";
 
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
@@ -18,6 +19,9 @@ import Indexes from "../../assets/workouts/Indexes";
 const MyWorkoutsList = ({ navigation }) => {
   const userToken = getUserToken();
   const userId = getUserId();
+  const [renderScreen, setRenderScreen] = useState(false);
+
+  const [workoutDialogVisibility, setWorkoutDialogVisibility] = useState(false);
 
   const [workoutsList, setWorkoutsList] = useState([]);
   const getMyWorkouts = async (userToken) => {
@@ -30,7 +34,7 @@ const MyWorkoutsList = ({ navigation }) => {
 
   useEffect(() => {
     getMyWorkouts(userToken, userId);
-  }, [userToken, userId]);
+  }, [userToken, userId, renderScreen]);
 
   const navigateToWorkout = (workoutName, workoutId) => {
     navigation.navigate(Routes.Workout, { workoutName, workoutId });
@@ -38,6 +42,15 @@ const MyWorkoutsList = ({ navigation }) => {
 
   return (
     <SafeAreaView style={globalStyle.background}>
+      <AddWorkoutDialog
+        visible={workoutDialogVisibility}
+        onClose={() => {
+          setWorkoutDialogVisibility(false);
+          setRenderScreen(!renderScreen);
+        }}
+        userId={userId}
+        userToken={userToken}
+      />
       <FlatList
         ListHeaderComponent={
           <>
@@ -45,6 +58,7 @@ const MyWorkoutsList = ({ navigation }) => {
               title={Strings.WorkOuts}
               backPress={() => navigation.goBack()}
               optionButtonIcon={faPlus}
+              optionButtonFunction={() => setWorkoutDialogVisibility(true)}
             />
           </>
         }

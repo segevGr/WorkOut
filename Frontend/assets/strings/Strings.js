@@ -3,6 +3,8 @@ export default Strings = {
   Yes: "כן",
   No: "לא",
   Error: "שגיאה!",
+  Submit: "אישור",
+  Cancel: "ביטול",
 
   //Login page
   Welcome: "ברוך הבא!",
@@ -46,6 +48,9 @@ export default Strings = {
   WorkOuts: "אימונים",
   DeleteWorkoutAlertTitle: "האם אתה בטוח שאתה רוצה למחוק את ***?",
   DeleteWorkoutAlertContent: "כל הנתונים עבור אימון זה ימחקו!",
+
+  //New workout dialog
+  NewWorkoutDialogTitle: "אנא הכנס את שם האימון החדש",
 
   //Tips
   TipsCategoriesTitle: "טיפים לתהליך",
