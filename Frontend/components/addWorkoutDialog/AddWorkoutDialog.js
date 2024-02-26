@@ -38,6 +38,7 @@ const AddWorkoutDialog = ({ visible, onClose, userId, userToken }) => {
             style={style.input}
             onChangeText={setWorkoutName}
             value={workoutName}
+            autoFocus={true}
           />
           {showError && (
             <Text style={style.errorMsg}>{Strings.MissingDetails}</Text>

@@ -1,10 +1,10 @@
 import React from "react";
 import { View, Text } from "react-native";
-
 import PropTypes from "prop-types";
 
-import style from "./style";
 import BorderContainer from "../borderContainer/BorderContainer";
+
+import style from "./style";
 
 const CollapseOpenWithoutEdit = ({ title, exerciseData, backgroundColor }) => {
   return (

@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { SafeAreaView, FlatList } from "react-native";
 
+// External Libraries and Packages
+import { getExercisesList } from "../../api/MuscleExercisesBank";
+import getUserToken from "../../hooks/getToken";
+
+// Internal Components and Modules
 import Header from "../../components/header/Header";
 import CollapseContainer from "../../components/collapseContainer/CollapseContainer";
 import CollapseOpenWithoutEdit from "../../components/collapseOpen/CollapseOpenWithoutEdit";
 
-import { getExercisesListByMuscle } from "../../api/MuscleExercisesBank";
-import getUserToken from "../../hooks/getToken";
-
+// Assets
 import globalStyle from "../../assets/styles/globalStyle";
 import Strings from "../../assets/strings/Strings";
 import Indexes from "../../assets/videos/Indexes";
+import ExerciseBankItem from "../../components/exerciseBankItem/ExerciseBankItem";
 
 const MuscleExercisesBank = ({ navigation, route }) => {
   const userToken = getUserToken();
@@ -23,10 +27,10 @@ const MuscleExercisesBank = ({ navigation, route }) => {
   const [exercisesList, setExercisesList] = useState([]);
   const getExercises = async (userToken) => {
     try {
-      const results = await getExercisesListByMuscle(userToken, muscleId);
+      const results = await getExercisesList(userToken, muscleId);
       setExercisesList(results);
     } catch (error) {
-      console.error(`Error in getExercisesListByMuscle: [${error}]`);
+      console.error(`Error in getExercisesList: [${error}]`);
     }
   };
 
@@ -48,26 +52,7 @@ const MuscleExercisesBank = ({ navigation, route }) => {
         showsVerticalScrollIndicator={false}
         data={exercisesList}
         renderItem={({ item }) => {
-          return (
-            <CollapseContainer
-              name={item.exerciseName}
-              media={Indexes[item.exerciseVideo]}
-              mediaType={"video"}
-              collapseOpenContent={
-                <>
-                  <CollapseOpenWithoutEdit
-                    title={Strings.WorksOn}
-                    exerciseData={item.workOn}
-                  />
-                  <CollapseOpenWithoutEdit
-                    title={Strings.Highlights}
-                    exerciseData={item.highlights}
-                    backgroundColor="#F6FAFD"
-                  />
-                </>
-              }
-            />
-          );
+          return <ExerciseBankItem exercise={item} />;
         }}
       />
     </SafeAreaView>
