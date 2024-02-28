@@ -77,6 +77,7 @@ const Workout = ({ navigation, route }) => {
                     workoutId={workoutId}
                     exerciseId={item._id}
                     setsData={item.sets}
+                    isSets={true}
                   />
                   <CollapseOpenWithEdit
                     workoutId={workoutId}

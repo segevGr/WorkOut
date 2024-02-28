@@ -21,9 +21,9 @@ const CollapseOpenWithEdit = ({
   backgroundColor,
   setsData,
   notesData,
+  isSets,
 }) => {
   const userToken = getUserToken();
-  const isSets = setsData ? true : false;
   const placeHolder = isSets
     ? Strings.SetsPlaceholder
     : Strings.NotesPlaceholder;
@@ -116,6 +116,7 @@ CollapseOpenWithEdit.defaultProps = {
   backgroundColor: "#FFFFFF",
   setsData: null,
   notesData: null,
+  isSets: false,
 };
 
 CollapseOpenWithEdit.prototype = {
@@ -124,6 +125,7 @@ CollapseOpenWithEdit.prototype = {
   backgroundColor: PropTypes.string,
   setsData: PropTypes.object,
   notesData: PropTypes.string,
+  isSets: PropTypes.bool,
 };
 
 export default CollapseOpenWithEdit;
