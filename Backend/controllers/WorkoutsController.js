@@ -63,7 +63,14 @@ exports.addExerciseToWorkout = catchAsync(async (req, res, next) => {
     runValidators: true,
   };
 
-  const workout = await Workouts.findOneAndUpdate(filter, update, options);
+  const workout = await Workouts.findOneAndUpdate(
+    filter,
+    update,
+    options
+  ).populate({
+    path: "exercises.exerciseId",
+    select: "exerciseName highlights exerciseVideo",
+  });
 
   if (!workout) {
     return next(

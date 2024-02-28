@@ -1,5 +1,7 @@
 import { Alert } from "react-native";
 
+import Strings from "../assets/strings/Strings";
+
 export default showAlert = ({
   title,
   message,
@@ -25,4 +27,13 @@ const btnsArray = (btnText, pressFunc, cancelText) => {
       style: "default",
     });
   return arr;
+};
+
+export const somethingWrongAlert = () => {
+  showAlert({
+    title: Strings.SomethingWrong,
+    message: Strings.SomethingWrongSummery,
+    btnText: Strings.Submit,
+    pressFunc: null,
+  });
 };

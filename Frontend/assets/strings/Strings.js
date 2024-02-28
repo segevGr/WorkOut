@@ -5,6 +5,8 @@ export default Strings = {
   Error: "שגיאה!",
   Submit: "אישור",
   Cancel: "ביטול",
+  SomethingWrong: "משהו השתבש",
+  SomethingWrongSummery: "אנא נסו שוב מאוחר יותר",
 
   //Login page
   Welcome: "ברוך הבא!",
@@ -18,7 +20,6 @@ export default Strings = {
   WrongDetails: "שם משתמש או סיסמה לא נכונים",
   WrongDetailsSummary: "אנא וודאו שהזנתם נכון את הנתונים",
   MissingDetails: "אנא מלאו את כל השדות הנדרשים",
-  SomethingWrong: "משהו השתבש",
   WelcomeAlert: "ברוכים הבאים!",
   WelcomeAlertSummary: "מיד תועברו לעמוד האישי",
 

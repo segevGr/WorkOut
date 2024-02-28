@@ -2,13 +2,12 @@ import React, { useEffect, useState } from "react";
 import { SafeAreaView, FlatList } from "react-native";
 
 import { Routes } from "../../navigation/Routes";
-
+import getUserToken from "../../hooks/getToken";
+import { somethingWrongAlert } from "../../utils/ShowAlert";
+import { getMusclesList } from "../../api/MusclesList";
 import Header from "../../components/header/Header";
 import BorderContainer from "../../components/borderContainer/BorderContainer";
 import CategoryContainer from "../../components/categoryContainer/CategoryContainer";
-
-import { getMusclesList } from "../../api/MusclesList";
-import getUserToken from "../../hooks/getToken";
 
 import Strings from "../../assets/strings/Strings";
 import globalStyle from "../../assets/styles/globalStyle";
@@ -30,13 +29,14 @@ const MusclesList = ({ navigation }) => {
       const results = await getMusclesList(userToken);
       setMusclesList(results);
     } catch (error) {
+      somethingWrongAlert();
       console.error(`Error in getMusclesList: [${error}]`);
     }
   };
 
   useEffect(() => {
     getMuscles(userToken);
-  }, [userToken]);
+  }, []);
 
   return (
     <SafeAreaView style={globalStyle.background}>

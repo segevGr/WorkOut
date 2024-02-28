@@ -1,18 +1,42 @@
 import React from "react";
-import { View, FlatList } from "react-native";
+import { View, FlatList, Switch } from "react-native";
 import PropTypes from "prop-types";
 
-// External Libraries and Packages
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
+
+import getUserToken from "../../hooks/getToken";
+import { somethingWrongAlert } from "../../utils/ShowAlert";
 
 // Assets
 import ExerciseBankItem from "../exerciseBankItem/ExerciseBankItem";
+import style from "./style";
+import { addExerciseToWorkout } from "../../api/MyWorkouts";
 
 const WorkoutsBottomSheet = ({
   exercisesBankList,
   exerciseList,
+  setExerciseList,
   bottomSheetRef,
+  workoutId,
 }) => {
+  const userToken = getUserToken();
+
+  const toggleSwitch = async (value, exerciseId) => {
+    if (value === true) {
+      try {
+        const workout = await addExerciseToWorkout(
+          userToken,
+          workoutId,
+          exerciseId
+        );
+        setExerciseList(workout);
+      } catch (error) {
+        somethingWrongAlert();
+        console.error(`Error in addExerciseToWorkout: [${error}]`);
+      }
+    }
+  };
+
   return (
     <BottomSheet
       ref={bottomSheetRef}
@@ -28,11 +52,14 @@ const WorkoutsBottomSheet = ({
           data={exercisesBankList}
           renderItem={({ item }) => {
             return (
-              <View>
-                <ExerciseBankItem
-                  exercise={item}
-                  isSelected={exerciseList.includes(item._id)}
+              <View style={style.itemContainer}>
+                <Switch
+                  value={exerciseList.includes(item._id)}
+                  onValueChange={async (newValue) =>
+                    await toggleSwitch(newValue, item._id)
+                  }
                 />
+                <ExerciseBankItem exercise={item} />
               </View>
             );
           }}
@@ -45,7 +72,9 @@ const WorkoutsBottomSheet = ({
 ExerciseBankItem.prototype = {
   exercisesBankList: PropTypes.array.isRequired,
   exerciseList: PropTypes.array.isRequired,
+  setExerciseList: PropTypes.func.isRequired,
   bottomSheetRef: PropTypes.object.isRequired,
+  workoutId: PropTypes.string.isRequired,
 };
 
 export default WorkoutsBottomSheet;

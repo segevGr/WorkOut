@@ -1,25 +1,28 @@
 import React, { useEffect, useRef, useState } from "react";
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
-
-import { updateMyExercise } from "../../api/MyWorkouts";
-
 import PropTypes from "prop-types";
+
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faPencil, faCheck } from "@fortawesome/free-solid-svg-icons";
 
+import { updateMyExercise } from "../../api/MyWorkouts";
+import { somethingWrongAlert } from "../../utils/ShowAlert";
+import getUserToken from "../../hooks/getToken";
+
 import BorderContainer from "../borderContainer/BorderContainer";
+
 import style from "./style";
 import { scaleFontSize } from "../../assets/styles/scaling";
 import Strings from "../../assets/strings/Strings";
 
 const CollapseOpenWithEdit = ({
-  userToken,
   workoutId,
   exerciseId,
   backgroundColor,
   setsData,
   notesData,
 }) => {
+  const userToken = getUserToken();
   const isSets = setsData ? true : false;
   const placeHolder = isSets
     ? Strings.SetsPlaceholder
@@ -48,6 +51,7 @@ const CollapseOpenWithEdit = ({
     try {
       await updateMyExercise(userToken, workoutId, exerciseId, body);
     } catch (error) {
+      somethingWrongAlert();
       console.error(`Error in updateMyExercise: [${error}]`);
     }
 
@@ -115,7 +119,6 @@ CollapseOpenWithEdit.defaultProps = {
 };
 
 CollapseOpenWithEdit.prototype = {
-  userToken: PropTypes.string.isRequired,
   workoutId: PropTypes.string.isRequired,
   exerciseId: PropTypes.string.isRequired,
   backgroundColor: PropTypes.string,

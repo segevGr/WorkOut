@@ -1,9 +1,8 @@
 import React, { useEffect, useState, useRef } from "react";
-import { SafeAreaView, ScrollView, View, FlatList } from "react-native";
+import { SafeAreaView, ScrollView, View } from "react-native";
 
 // External Libraries and Packages
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 
 // Internal Components and Modules
 import getUserToken from "../../hooks/getToken";
@@ -13,6 +12,7 @@ import CollapseContainer from "../../components/collapseContainer/CollapseContai
 import CollapseOpenWithEdit from "../../components/collapseOpen/CollapseOpenWithEdit";
 import { getExercisesList } from "../../api/MuscleExercisesBank";
 import WorkoutsBottomSheet from "../../components/workoutsBottomSheet/WorkoutsBottomSheet";
+import { somethingWrongAlert } from "../../utils/ShowAlert";
 
 // Assets
 import globalStyle from "../../assets/styles/globalStyle";
@@ -29,6 +29,7 @@ const Workout = ({ navigation, route }) => {
     try {
       setExercisesBankList(await getExercisesList(userToken));
     } catch (error) {
+      somethingWrongAlert();
       console.error(`Error in getExercisesList: [${error}]`);
     }
   };
@@ -36,15 +37,17 @@ const Workout = ({ navigation, route }) => {
   const [exerciseList, setExerciseList] = useState([]);
   const getExercisesOfWorkout = async (userToken) => {
     try {
-      setExerciseList(await getWorkoutExercises(userToken, workoutId));
+      const workout = await getWorkoutExercises(userToken, workoutId);
+      setExerciseList(workout);
     } catch (error) {
+      somethingWrongAlert();
       console.error(`Error in getWorkoutExercises: [${error}]`);
     }
   };
 
   useEffect(() => {
     getExercisesOfWorkout(userToken);
-  }, [userToken]);
+  }, []);
 
   useEffect(() => {
     if (exercisesBankList.length > 0) {
@@ -71,13 +74,11 @@ const Workout = ({ navigation, route }) => {
               collapseOpenContent={
                 <>
                   <CollapseOpenWithEdit
-                    userToken={userToken}
                     workoutId={workoutId}
                     exerciseId={item._id}
                     setsData={item.sets}
                   />
                   <CollapseOpenWithEdit
-                    userToken={userToken}
                     workoutId={workoutId}
                     exerciseId={item._id}
                     backgroundColor="#F6FAFD"
@@ -92,7 +93,9 @@ const Workout = ({ navigation, route }) => {
       <WorkoutsBottomSheet
         exercisesBankList={exercisesBankList}
         exerciseList={exerciseList.map((item) => item.exerciseId._id)}
+        setExerciseList={setExerciseList}
         bottomSheetRef={bottomSheetRef}
+        workoutId={workoutId}
       />
     </SafeAreaView>
   );

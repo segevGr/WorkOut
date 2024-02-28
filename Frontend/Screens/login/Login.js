@@ -8,19 +8,20 @@ import {
 } from "react-native";
 
 import { useDispatch } from "react-redux";
-
-import LoginInput from "../../components/loginInput/LoginInput";
-import { tryLogin } from "../../api/Login";
-
-import Strings from "../../assets/strings/Strings";
-import style from "./style";
-import globalStyle from "../../assets/styles/globalStyle";
 import {
   updateLogIn,
   updateToken,
   updateUser,
 } from "../../redux/reducers/UserDetails";
-import ShowAlert from "../../utils/ShowAlert";
+
+import { tryLogin } from "../../api/Login";
+import ShowAlert, { somethingWrongAlert } from "../../utils/ShowAlert";
+
+import LoginInput from "../../components/loginInput/LoginInput";
+
+import style from "./style";
+import Strings from "../../assets/strings/Strings";
+import globalStyle from "../../assets/styles/globalStyle";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -39,9 +40,8 @@ const Login = () => {
       ShowAlert({
         title: Strings.WelcomeAlert,
         message: Strings.WelcomeAlertSummary,
-        btnText: "OK",
+        btnText: Strings.Submit,
         pressFunc: null,
-        cancelable: false,
       });
       dispatch(updateToken(result.token));
       dispatch(updateUser(result.user));
@@ -57,26 +57,18 @@ const Login = () => {
       ShowAlert({
         title: Strings.WrongDetails,
         message: Strings.WrongDetailsSummary,
-        btnText: "OK",
+        btnText: Strings.Submit,
         pressFunc: null,
-        cancelable: false,
       });
     } else if (error.statusCode === 400) {
       ShowAlert({
         title: Strings.Error,
         message: Strings.MissingDetails,
-        btnText: "OK",
+        btnText: Strings.Submit,
         pressFunc: null,
-        cancelable: false,
       });
     } else {
-      ShowAlert({
-        title: Strings.Error,
-        message: Strings.SomethingWrong,
-        btnText: "OK",
-        pressFunc: null,
-        cancelable: false,
-      });
+      somethingWrongAlert();
     }
     console.error(`Error in tryLogin: [${error}]`);
   };

@@ -2,13 +2,18 @@ import React, { useState } from "react";
 import { View, Modal, TextInput, Button, Text } from "react-native";
 
 import { createWorkout } from "../../api/MyWorkouts";
+import { somethingWrongAlert } from "../../utils/ShowAlert";
+import getUserId from "../../hooks/getUserId";
+import getUserToken from "../../hooks/getToken";
 
 import style from "./style";
 import Strings from "../../assets/strings/Strings";
 
-const AddWorkoutDialog = ({ visible, onClose, userId, userToken }) => {
+const AddWorkoutDialog = ({ visible, onClose }) => {
   const [workoutName, setWorkoutName] = useState("");
   const [showError, setShowError] = useState(false);
+  const userId = getUserId();
+  const userToken = getUserToken();
 
   const closeDialog = () => {
     onClose();
@@ -17,14 +22,15 @@ const AddWorkoutDialog = ({ visible, onClose, userId, userToken }) => {
   };
 
   const createNewWorkout = async () => {
+    if (workoutName === "") {
+      setShowError(true);
+      return;
+    }
     try {
-      if (workoutName === "") {
-        setShowError(true);
-        return;
-      }
       await createWorkout(userToken, userId, workoutName, "workoutA");
       closeDialog();
     } catch (error) {
+      somethingWrongAlert();
       console.error(`Error in createWorkout: [${error}]`);
     }
   };

@@ -1,13 +1,11 @@
 import React from "react";
 import { Text, View, Image, Pressable, TouchableOpacity } from "react-native";
+import PropTypes from "prop-types";
 
 import getUserToken from "../../hooks/getToken";
-import getUserId from "../../hooks/getUserId";
 import { deleteWorkoutFromList } from "../../api/MyWorkouts";
-
-import PropTypes from "prop-types";
 import BorderContainer from "../borderContainer/BorderContainer";
-import ShowAlert from "../../utils/ShowAlert";
+import ShowAlert, { somethingWrongAlert } from "../../utils/ShowAlert";
 
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
@@ -19,13 +17,11 @@ import Strings from "../../assets/strings/Strings";
 const WorkOutOption = ({
   workoutName,
   workoutId,
-  userToken,
   picture,
   navigatePress,
   setWorkoutsList,
 }) => {
-  getUserId();
-  getUserToken;
+  const userToken = getUserToken();
   const showDeleteAlert = () => {
     ShowAlert({
       title: Strings.DeleteWorkoutAlertTitle.replace("***", workoutName),
@@ -38,6 +34,7 @@ const WorkOutOption = ({
             prevList.filter((workout) => workout._id !== workoutId)
           );
         } catch (error) {
+          somethingWrongAlert();
           console.error(`Error in deleteWorkoutFromList: [${error}]`);
         }
       },
@@ -80,6 +77,7 @@ WorkOutOption.prototype = {
   workoutId: PropTypes.string.isRequired,
   picture: PropTypes.object.isRequired,
   navigatePress: PropTypes.func.isRequired,
+  setWorkoutsList: PropTypes.array,
 };
 
 export default WorkOutOption;

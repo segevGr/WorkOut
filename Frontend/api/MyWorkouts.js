@@ -31,6 +31,23 @@ export const getWorkoutExercises = async (userToken, workoutId) => {
   return data.data.workout.exercises;
 };
 
+export const createWorkout = async (
+  userToken,
+  user,
+  workoutName,
+  workoutImage
+) => {
+  const body = { workoutName, workoutImage, user };
+  const response = await handleRequests(
+    `${URL}/api/workouts/`,
+    "POST",
+    userToken,
+    body
+  );
+  const data = await handleApiResponse(response);
+  return data.status;
+};
+
 export const updateMyExercise = async (
   userToken,
   workoutId,
@@ -47,19 +64,16 @@ export const updateMyExercise = async (
   return;
 };
 
-export const createWorkout = async (
+export const addExerciseToWorkout = async (
   userToken,
-  user,
-  workoutName,
-  workoutImage
+  workoutId,
+  exerciseID
 ) => {
-  const body = { workoutName, workoutImage, user };
   const response = await handleRequests(
-    `${URL}/api/workouts/`,
+    `${URL}/api/workouts/${workoutId}/exercise/${exerciseID}`,
     "POST",
-    userToken,
-    body
+    userToken
   );
   const data = await handleApiResponse(response);
-  return data.status;
+  return data.data.workout.exercises;
 };

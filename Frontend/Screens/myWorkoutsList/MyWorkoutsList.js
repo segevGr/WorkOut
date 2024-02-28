@@ -5,10 +5,10 @@ import { Routes } from "../../navigation/Routes";
 import getUserToken from "../../hooks/getToken";
 import getUserId from "../../hooks/getUserId";
 import { getMyWorkoutsList } from "../../api/MyWorkouts";
-
 import Header from "../../components/header/Header";
 import WorkOutOption from "../../components/workoutOption/WorkoutOption";
 import AddWorkoutDialog from "../../components/addWorkoutDialog/AddWorkoutDialog";
+import { somethingWrongAlert } from "../../utils/ShowAlert";
 
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
@@ -28,13 +28,14 @@ const MyWorkoutsList = ({ navigation }) => {
     try {
       setWorkoutsList(await getMyWorkoutsList(userToken, userId));
     } catch (error) {
+      somethingWrongAlert();
       console.error(`Error in getMyWorkouts: [${error}]`);
     }
   };
 
   useEffect(() => {
     getMyWorkouts(userToken, userId);
-  }, [userToken, userId, renderScreen]);
+  }, [renderScreen]);
 
   const navigateToWorkout = (workoutName, workoutId) => {
     navigation.navigate(Routes.Workout, { workoutName, workoutId });
@@ -48,8 +49,6 @@ const MyWorkoutsList = ({ navigation }) => {
           setWorkoutDialogVisibility(false);
           setRenderScreen(!renderScreen);
         }}
-        userId={userId}
-        userToken={userToken}
       />
       <FlatList
         ListHeaderComponent={
@@ -69,7 +68,6 @@ const MyWorkoutsList = ({ navigation }) => {
             key={item._id}
             workoutName={item.workoutName}
             workoutId={item._id}
-            userToken={userToken}
             picture={Indexes[item.workoutImage]}
             setWorkoutsList={setWorkoutsList}
             navigatePress={() => navigateToWorkout(item.workoutName, item._id)}
