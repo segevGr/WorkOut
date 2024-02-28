@@ -10,6 +10,7 @@ exports.getWorkoutsById = factory.getOne(Workouts, "workout", {
 });
 exports.deleteWorkout = factory.deleteOne(Workouts, "workout");
 exports.createWorkout = factory.createOne(Workouts, "workout");
+
 exports.updateExerciseFromWorkout = catchAsync(async (req, res, next) => {
   const workoutId = req.params.workoutId;
   const exerciseId = req.params.exerciseId;
@@ -37,6 +38,32 @@ exports.updateExerciseFromWorkout = catchAsync(async (req, res, next) => {
   };
 
   const workout = await Workouts.findOneAndUpdate(filters, update, options);
+
+  if (!workout) {
+    return next(
+      new AppError("No workout or exercise found with those IDs", 404)
+    );
+  }
+
+  res.status(200).json({
+    status: "success",
+    data: {
+      workout,
+    },
+  });
+});
+
+exports.addExerciseToWorkout = catchAsync(async (req, res, next) => {
+  const filter = { _id: req.params.workoutId };
+  const update = {
+    $push: { exercises: { exerciseId: req.params.exerciseId } },
+  };
+  const options = {
+    new: true,
+    runValidators: true,
+  };
+
+  const workout = await Workouts.findOneAndUpdate(filter, update, options);
 
   if (!workout) {
     return next(

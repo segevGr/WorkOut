@@ -17,5 +17,7 @@ router
 
 router
   .route("/:workoutId/exercise/:exerciseId")
-  .patch(WorkoutsController.updateExerciseFromWorkout);
+  .patch(WorkoutsController.updateExerciseFromWorkout)
+  .post(WorkoutsController.addExerciseToWorkout);
+
 module.exports = router;
