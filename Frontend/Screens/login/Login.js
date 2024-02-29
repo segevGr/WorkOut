@@ -69,8 +69,8 @@ const Login = () => {
       });
     } else {
       somethingWrongAlert();
+      console.error(`Error in tryLogin: [${error}]`);
     }
-    console.error(`Error in tryLogin: [${error}]`);
   };
 
   return (

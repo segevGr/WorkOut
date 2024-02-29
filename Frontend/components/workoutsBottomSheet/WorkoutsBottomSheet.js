@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, FlatList, Switch } from "react-native";
 import PropTypes from "prop-types";
 
@@ -20,8 +20,10 @@ const WorkoutsBottomSheet = ({
   workoutId,
 }) => {
   const userToken = getUserToken();
+  const [isDisabled, setIsDisabled] = useState(false);
 
   const toggleSwitch = async (value, exerciseId) => {
+    setIsDisabled(true);
     if (value === true) {
       try {
         const workout = await addExerciseToWorkout(
@@ -29,10 +31,12 @@ const WorkoutsBottomSheet = ({
           workoutId,
           exerciseId
         );
-        setExerciseList(workout);
+        await setExerciseList(workout);
       } catch (error) {
         somethingWrongAlert();
         console.error(`Error in addExerciseToWorkout: [${error}]`);
+      } finally {
+        setIsDisabled(false);
       }
     }
   };
@@ -51,18 +55,21 @@ const WorkoutsBottomSheet = ({
           showsVerticalScrollIndicator={false}
           data={exercisesBankList}
           renderItem={({ item }) => {
+            let switchValue = exerciseList.includes(item._id);
             return (
               <View style={style.itemContainer}>
                 <Switch
-                  value={exerciseList.includes(item._id)}
+                  value={switchValue}
                   onValueChange={async (newValue) =>
                     await toggleSwitch(newValue, item._id)
                   }
+                  disabled={isDisabled}
                 />
                 <ExerciseBankItem exercise={item} />
               </View>
             );
           }}
+          keyExtractor={(item) => item._id}
         />
       </BottomSheetView>
     </BottomSheet>
