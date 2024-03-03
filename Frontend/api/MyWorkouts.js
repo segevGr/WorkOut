@@ -77,3 +77,17 @@ export const addExerciseToWorkout = async (
   const data = await handleApiResponse(response);
   return data.data.workout.exercises;
 };
+
+export const deleteExerciseFromWorkout = async (
+  userToken,
+  workoutId,
+  exerciseID
+) => {
+  const response = await handleRequests(
+    `${URL}/api/workouts/${workoutId}/exercise/${exerciseID}`,
+    "DELETE",
+    userToken
+  );
+  const data = await handleApiResponse(response);
+  return data.data.workout.exercises;
+};

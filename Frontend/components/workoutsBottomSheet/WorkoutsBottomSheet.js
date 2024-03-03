@@ -10,7 +10,10 @@ import { somethingWrongAlert } from "../../utils/ShowAlert";
 // Assets
 import ExerciseBankItem from "../exerciseBankItem/ExerciseBankItem";
 import style from "./style";
-import { addExerciseToWorkout } from "../../api/MyWorkouts";
+import {
+  addExerciseToWorkout,
+  deleteExerciseFromWorkout,
+} from "../../api/MyWorkouts";
 
 const WorkoutsBottomSheet = ({
   exercisesBankList,
@@ -24,20 +27,25 @@ const WorkoutsBottomSheet = ({
 
   const toggleSwitch = async (value, exerciseId) => {
     setIsDisabled(true);
-    if (value === true) {
-      try {
-        const workout = await addExerciseToWorkout(
+    try {
+      let workout = [];
+      if (value === true) {
+        workout = await addExerciseToWorkout(userToken, workoutId, exerciseId);
+      } else {
+        workout = await deleteExerciseFromWorkout(
           userToken,
           workoutId,
           exerciseId
         );
-        await setExerciseList(workout);
-      } catch (error) {
-        somethingWrongAlert();
-        console.error(`Error in addExerciseToWorkout: [${error}]`);
-      } finally {
-        setIsDisabled(false);
       }
+      await setExerciseList(workout);
+    } catch (error) {
+      somethingWrongAlert();
+      console.error(
+        `Error in addExerciseToWorkout/deleteExerciseFromWorkout: [${error}]`
+      );
+    } finally {
+      setIsDisabled(false);
     }
   };
 

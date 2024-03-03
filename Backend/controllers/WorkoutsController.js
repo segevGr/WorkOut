@@ -85,3 +85,36 @@ exports.addExerciseToWorkout = catchAsync(async (req, res, next) => {
     },
   });
 });
+
+exports.deleteExerciseFromWorkout = catchAsync(async (req, res, next) => {
+  const filter = { _id: req.params.workoutId };
+  const update = {
+    $pull: { exercises: { exerciseId: req.params.exerciseId } },
+  };
+  const options = {
+    new: true,
+    runValidators: true,
+  };
+
+  const workout = await Workouts.findOneAndUpdate(
+    filter,
+    update,
+    options
+  ).populate({
+    path: "exercises.exerciseId",
+    select: "exerciseName highlights exerciseVideo",
+  });
+
+  if (!workout) {
+    return next(
+      new AppError("No workout or exercise found with those IDs", 404)
+    );
+  }
+
+  res.status(200).json({
+    status: "success",
+    data: {
+      workout,
+    },
+  });
+});
