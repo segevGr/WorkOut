@@ -136,7 +136,6 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
     user.passwordResetToken = undefined;
     await user.save({ validateBeforeSave: false });
 
-    console.log(err);
     return next(new AppError("Email could not be sent.", 500));
   }
 });

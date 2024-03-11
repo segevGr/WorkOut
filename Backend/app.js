@@ -6,6 +6,7 @@ const helmet = require("helmet");
 const mongoSanitize = require("express-mongo-sanitize");
 const xss = require("xss-clean");
 const hpp = require("hpp");
+const compression = require("compression");
 
 const AppError = require("./utils/AppError");
 const globalErrorHandler = require("./controllers/ErrorController");
@@ -64,6 +65,7 @@ app.use(
     ],
   })
 );
+app.use(compression());
 
 // routes
 app.use("/api/muscles", MusclesRouter);
