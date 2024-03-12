@@ -54,31 +54,37 @@ const HomePage = ({ navigation }) => {
         />
         <View style={style.optionsContainer}>
           <TouchableOpacity
+            style={style.btnContainer}
             onPress={() => navigation.navigate(Routes.MyWorkoutsList)}
           >
             <Text style={style.optionText}>{Strings.MyWorkouts}</Text>
           </TouchableOpacity>
-          {/* <TouchableOpacity
+          {/* <TouchableOpacity style={style.btnContainer}
             onPress={() => navigation.navigate(Routes.MyMenusList)}
           >
             <Text style={style.optionText}>{Strings.MyMenu}</Text>
           </TouchableOpacity> */}
           <TouchableOpacity
+            style={style.btnContainer}
             onPress={() => navigation.navigate(Routes.MusclesList)}
           >
             <Text style={style.optionText}>{Strings.ExercisesBank}</Text>
           </TouchableOpacity>
-          {/* <TouchableOpacity
+          {/* <TouchableOpacity style={style.btnContainer}
             onPress={() => navigation.navigate(Routes.MenuBankList)}
           >
             <Text style={style.optionText}>{Strings.MenuBank}</Text>
           </TouchableOpacity> */}
           <TouchableOpacity
+            style={style.btnContainer}
             onPress={() => navigation.navigate(Routes.TipsCategories)}
           >
             <Text style={style.optionText}>{Strings.Tips}</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => showLogOutAlert()}>
+          <TouchableOpacity
+            style={style.btnContainer}
+            onPress={() => showLogOutAlert()}
+          >
             <Text style={style.optionText}>{Strings.LogOut}</Text>
           </TouchableOpacity>
         </View>

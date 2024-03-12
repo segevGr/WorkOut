@@ -1,6 +1,10 @@
 import { StyleSheet } from "react-native";
 import { getFontFamily } from "../../assets/fonts/getFontFamily";
-import { scaleFontSize, verticalScale } from "../../assets/styles/scaling";
+import {
+  horizontalScale,
+  scaleFontSize,
+  verticalScale,
+} from "../../assets/styles/scaling";
 
 const style = StyleSheet.create({
   background: {
@@ -14,11 +18,18 @@ const style = StyleSheet.create({
     justifyContent: "center",
     // marginTop: verticalScale(30),
   },
+  btnContainer: {
+    borderWidth: 1,
+    borderColor: "#FFF",
+    borderRadius: 100,
+    marginBottom: verticalScale(40),
+  },
   optionText: {
     color: "#FFF",
     fontSize: scaleFontSize(28),
     fontFamily: getFontFamily("Heebo", "500"),
-    marginBottom: verticalScale(40),
+    paddingVertical: verticalScale(9),
+    paddingHorizontal: horizontalScale(40),
   },
   versionDetails: {
     color: "#FFF",
