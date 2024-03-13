@@ -1,10 +1,7 @@
 import { Dimensions } from "react-native";
-// import DeviceInfo from "react-native-device-info";
-import Constants from "expo-constants";
 
 const { width, height } = Dimensions.get("window");
 
-// const isSmall = width <= 375 && !DeviceInfo.hasNotch();
 const isSmall = width <= 375;
 
 const guidelineBaseWidth = () => (isSmall ? 330 : 350);
