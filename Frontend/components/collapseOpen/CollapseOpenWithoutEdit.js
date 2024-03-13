@@ -14,15 +14,12 @@ const CollapseOpenWithoutEdit = ({ title, exerciseData, backgroundColor }) => {
           ...style.innerContainer,
           backgroundColor: backgroundColor,
         }}
-        content={
-          <>
-            <View style={style.contentContainer}>
-              <Text style={style.textsTitle}>{title}</Text>
-              <Text style={style.content}>{exerciseData}</Text>
-            </View>
-          </>
-        }
-      />
+      >
+        <View style={style.contentContainer}>
+          <Text style={style.textsTitle}>{title}</Text>
+          <Text style={style.content}>{exerciseData}</Text>
+        </View>
+      </BorderContainer>
     </View>
   );
 };

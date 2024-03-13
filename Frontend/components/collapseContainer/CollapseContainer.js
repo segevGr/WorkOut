@@ -18,23 +18,21 @@ const CollapseContainer = ({ name, collapseOpenContent, media, mediaType }) => {
   };
 
   return (
-    <BorderContainer
-      content={
-        <>
-          <CollapseHeader
-            handlePress={handlePress}
-            collapseImage={collapseImage}
-            name={name}
-          />
-          <Collapsible collapsed={isCollapsed}>
-            {collapseOpenContent ? collapseOpenContent : null}
-            {media ? (
-              <InnerMediaContainer mediaSource={media} mediaType={mediaType} />
-            ) : null}
-          </Collapsible>
-        </>
-      }
-    ></BorderContainer>
+    <BorderContainer>
+      <>
+        <CollapseHeader
+          handlePress={handlePress}
+          collapseImage={collapseImage}
+          name={name}
+        />
+        <Collapsible collapsed={isCollapsed}>
+          {collapseOpenContent ? collapseOpenContent : null}
+          {media ? (
+            <InnerMediaContainer mediaSource={media} mediaType={mediaType} />
+          ) : null}
+        </Collapsible>
+      </>
+    </BorderContainer>
   );
 };
 

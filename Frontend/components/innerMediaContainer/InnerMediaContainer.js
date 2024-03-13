@@ -1,5 +1,5 @@
 import React from "react";
-import { Image } from "react-native";
+import { Image, View } from "react-native";
 
 import { Video } from "expo-av";
 import PropTypes from "prop-types";
@@ -10,18 +10,15 @@ import BorderContainer from "../borderContainer/BorderContainer";
 
 const InnerMediaContainer = ({ mediaType, mediaSource }) => {
   return (
-    <BorderContainer
-      containerStyle={style.container}
-      content={
-        <>
-          {mediaType === "video" ? (
-            <Video source={mediaSource} style={style.media} useNativeControls />
-          ) : (
-            <Image source={mediaSource} style={style.media} />
-          )}
-        </>
-      }
-    />
+    <View>
+      <BorderContainer containerStyle={style.container}>
+        {mediaType === "video" ? (
+          <Video source={mediaSource} style={style.media} useNativeControls />
+        ) : (
+          <Image source={mediaSource} style={style.media} />
+        )}
+      </BorderContainer>
+    </View>
   );
 };
 

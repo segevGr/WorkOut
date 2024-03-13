@@ -44,30 +44,22 @@ const WorkOutOption = ({
 
   return (
     <Pressable onPress={navigatePress}>
-      <BorderContainer
-        content={
-          <>
-            <Image
-              source={picture}
-              resizeMode="cover"
-              style={style.workoutImage}
-            />
-            <View style={style.detailsContainer}>
-              <Text style={style.workoutDetails}>{workoutName}</Text>
-            </View>
-            <TouchableOpacity
-              onPress={() => showDeleteAlert(workoutName)}
-              style={style.deleteButton}
-            >
-              <FontAwesomeIcon
-                icon={faTrashCan}
-                size={horizontalScale(17)}
-                color={"white"}
-              />
-            </TouchableOpacity>
-          </>
-        }
-      ></BorderContainer>
+      <BorderContainer>
+        <Image source={picture} resizeMode="cover" style={style.workoutImage} />
+        <View style={style.detailsContainer}>
+          <Text style={style.workoutDetails}>{workoutName}</Text>
+        </View>
+        <TouchableOpacity
+          onPress={() => showDeleteAlert(workoutName)}
+          style={style.deleteButton}
+        >
+          <FontAwesomeIcon
+            icon={faTrashCan}
+            size={horizontalScale(17)}
+            color={"white"}
+          />
+        </TouchableOpacity>
+      </BorderContainer>
     </Pressable>
   );
 };

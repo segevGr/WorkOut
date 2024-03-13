@@ -53,19 +53,14 @@ const MusclesList = ({ navigation }) => {
         data={musclesList}
         renderItem={({ item }) => {
           return (
-            <BorderContainer
-              key={item.muscleName}
-              content={
-                <>
-                  <CategoryContainer
-                    image={Indexes[item.muscleImage]}
-                    primaryText={item.muscleName}
-                    secondaryText={`${Strings.GoToMuscleMessage} ${item.muscleName}`}
-                    onPress={() => navigateToMuscle(item._id, item.muscleName)}
-                  />
-                </>
-              }
-            />
+            <BorderContainer key={item.muscleName}>
+              <CategoryContainer
+                image={Indexes[item.muscleImage]}
+                primaryText={item.muscleName}
+                secondaryText={`${Strings.GoToMuscleMessage} ${item.muscleName}`}
+                onPress={() => navigateToMuscle(item._id, item.muscleName)}
+              />
+            </BorderContainer>
           );
         }}
       />

@@ -3,8 +3,8 @@ import { View } from "react-native";
 import PropTypes from "prop-types";
 import style from "./style";
 
-const BorderContainer = ({ content, containerStyle }) => {
-  return <View style={[style.container, containerStyle]}>{content}</View>;
+const BorderContainer = ({ children, containerStyle }) => {
+  return <View style={[style.container, containerStyle]}>{children}</View>;
 };
 
 BorderContainer.defaultProps = {
@@ -12,7 +12,7 @@ BorderContainer.defaultProps = {
 };
 
 BorderContainer.prototype = {
-  content: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired,
   containerStyle: PropTypes.object,
 };
 

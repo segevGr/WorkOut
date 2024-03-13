@@ -65,49 +65,40 @@ const CollapseOpenWithEdit = ({
           ...style.innerContainer,
           backgroundColor: backgroundColor,
         }}
-        content={
-          <>
-            <View style={style.contentContainer}>
-              {isEditing ? (
-                <>
-                  <View style={style.titleContainer}>
-                    <TouchableOpacity onPress={() => submitChanges()}>
-                      <FontAwesomeIcon
-                        icon={faCheck}
-                        size={scaleFontSize(22)}
-                      />
-                    </TouchableOpacity>
-                    <Text style={style.textsTitle}>{title}</Text>
-                  </View>
-                  <TextInput
-                    ref={inputRef}
-                    style={style.content}
-                    placeholder={placeHolder}
-                    value={isSets ? setsValue : notesValue}
-                    onChangeText={setValues}
-                    multiline
-                  />
-                </>
-              ) : (
-                <>
-                  <View style={style.titleContainer}>
-                    <TouchableOpacity onPress={() => setIsEditing(true)}>
-                      <FontAwesomeIcon
-                        icon={faPencil}
-                        size={scaleFontSize(22)}
-                      />
-                    </TouchableOpacity>
-                    <Text style={style.textsTitle}>{title}</Text>
-                  </View>
-                  <Text style={style.content}>
-                    {isSets ? setsValue : notesValue}
-                  </Text>
-                </>
-              )}
-            </View>
-          </>
-        }
-      />
+      >
+        <View style={style.contentContainer}>
+          {isEditing ? (
+            <>
+              <View style={style.titleContainer}>
+                <TouchableOpacity onPress={() => submitChanges()}>
+                  <FontAwesomeIcon icon={faCheck} size={scaleFontSize(22)} />
+                </TouchableOpacity>
+                <Text style={style.textsTitle}>{title}</Text>
+              </View>
+              <TextInput
+                ref={inputRef}
+                style={style.content}
+                placeholder={placeHolder}
+                value={isSets ? setsValue : notesValue}
+                onChangeText={setValues}
+                multiline
+              />
+            </>
+          ) : (
+            <>
+              <View style={style.titleContainer}>
+                <TouchableOpacity onPress={() => setIsEditing(true)}>
+                  <FontAwesomeIcon icon={faPencil} size={scaleFontSize(22)} />
+                </TouchableOpacity>
+                <Text style={style.textsTitle}>{title}</Text>
+              </View>
+              <Text style={style.content}>
+                {isSets ? setsValue : notesValue}
+              </Text>
+            </>
+          )}
+        </View>
+      </BorderContainer>
     </View>
   );
 };

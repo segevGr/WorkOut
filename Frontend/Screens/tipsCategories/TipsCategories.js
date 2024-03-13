@@ -36,19 +36,14 @@ const TipsCategories = ({ navigation }) => {
       />
       {tipsCategoriesList.map((tip) => {
         return (
-          <BorderContainer
-            key={tip.tipCategory}
-            content={
-              <>
-                <CategoryContainer
-                  image={tip.tipImage}
-                  primaryText={tip.tipCategory}
-                  secondaryText={getSecondaryText(tip.tipCategory)}
-                  onPress={() => navigateToTips(tip.tipCategory)}
-                />
-              </>
-            }
-          />
+          <BorderContainer key={tip.tipCategory}>
+            <CategoryContainer
+              image={tip.tipImage}
+              primaryText={tip.tipCategory}
+              secondaryText={getSecondaryText(tip.tipCategory)}
+              onPress={() => navigateToTips(tip.tipCategory)}
+            />
+          </BorderContainer>
         );
       })}
     </SafeAreaView>

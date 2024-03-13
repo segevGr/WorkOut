@@ -32,19 +32,14 @@ const MenuBankList = ({ navigation }) => {
       />
       {menuCategoriesList.map((category) => {
         return (
-          <BorderContainer
-            key={category.menuCategory}
-            content={
-              <>
-                <CategoryContainer
-                  image={category.menuImage}
-                  primaryText={category.menuCategory}
-                  secondaryText={`${Strings.MenuSecondaryText} ${category.menuCategory}`}
-                  onPress={() => navigateToTips(category.menuCategory)}
-                />
-              </>
-            }
-          />
+          <BorderContainer key={category.menuCategory}>
+            <CategoryContainer
+              image={category.menuImage}
+              primaryText={category.menuCategory}
+              secondaryText={`${Strings.MenuSecondaryText} ${category.menuCategory}`}
+              onPress={() => navigateToTips(category.menuCategory)}
+            />
+          </BorderContainer>
         );
       })}
     </SafeAreaView>
