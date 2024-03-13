@@ -16,13 +16,6 @@ import Indexes from "../../assets/icons/muscles/Indexes";
 const MusclesList = ({ navigation }) => {
   const userToken = getUserToken();
 
-  const navigateToMuscle = (muscleId, muscleName) => {
-    navigation.navigate(Routes.MuscleExercisesBank, {
-      muscleId,
-      muscleName,
-    });
-  };
-
   const [musclesList, setMusclesList] = useState([]);
   const getMuscles = async (userToken) => {
     try {
@@ -43,10 +36,7 @@ const MusclesList = ({ navigation }) => {
       <FlatList
         ListHeaderComponent={
           <>
-            <Header
-              title={Strings.BankTitle}
-              backPress={() => navigation.goBack()}
-            />
+            <Header title={Strings.BankTitle} />
           </>
         }
         showsVerticalScrollIndicator={false}
@@ -56,9 +46,10 @@ const MusclesList = ({ navigation }) => {
             <BorderContainer key={item.muscleName}>
               <CategoryContainer
                 image={Indexes[item.muscleImage]}
+                type={"Muscle"}
                 primaryText={item.muscleName}
                 secondaryText={`${Strings.GoToMuscleMessage} ${item.muscleName}`}
-                onPress={() => navigateToMuscle(item._id, item.muscleName)}
+                itemId={item._id}
               />
             </BorderContainer>
           );

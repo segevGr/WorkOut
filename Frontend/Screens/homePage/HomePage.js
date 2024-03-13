@@ -51,6 +51,7 @@ const HomePage = ({ navigation }) => {
         <Header
           title={`${Strings.WelcomeMessage} ${username}`}
           textColor={"#FFF"}
+          canGoBack={false}
         />
         <View style={style.optionsContainer}>
           <TouchableOpacity
@@ -59,22 +60,12 @@ const HomePage = ({ navigation }) => {
           >
             <Text style={style.optionText}>{Strings.MyWorkouts}</Text>
           </TouchableOpacity>
-          {/* <TouchableOpacity style={style.btnContainer}
-            onPress={() => navigation.navigate(Routes.MyMenusList)}
-          >
-            <Text style={style.optionText}>{Strings.MyMenu}</Text>
-          </TouchableOpacity> */}
           <TouchableOpacity
             style={style.btnContainer}
             onPress={() => navigation.navigate(Routes.MusclesList)}
           >
             <Text style={style.optionText}>{Strings.ExercisesBank}</Text>
           </TouchableOpacity>
-          {/* <TouchableOpacity style={style.btnContainer}
-            onPress={() => navigation.navigate(Routes.MenuBankList)}
-          >
-            <Text style={style.optionText}>{Strings.MenuBank}</Text>
-          </TouchableOpacity> */}
           <TouchableOpacity
             style={style.btnContainer}
             onPress={() => navigation.navigate(Routes.TipsCategories)}

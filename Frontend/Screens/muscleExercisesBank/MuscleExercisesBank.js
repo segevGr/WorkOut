@@ -14,13 +14,10 @@ import globalStyle from "../../assets/styles/globalStyle";
 import Strings from "../../assets/strings/Strings";
 import ExerciseBankItem from "../../components/exerciseBankItem/ExerciseBankItem";
 
-const MuscleExercisesBank = ({ navigation, route }) => {
+const MuscleExercisesBank = ({ route }) => {
   const userToken = getUserToken();
 
   const { muscleId, muscleName } = route.params;
-  const navigateBack = () => {
-    navigation.goBack();
-  };
 
   const [exercisesList, setExercisesList] = useState([]);
   const getExercises = async () => {
@@ -42,10 +39,7 @@ const MuscleExercisesBank = ({ navigation, route }) => {
       <FlatList
         ListHeaderComponent={
           <>
-            <Header
-              title={`${Strings.MuscleBankTitle}${muscleName}`}
-              backPress={() => navigateBack()}
-            />
+            <Header title={`${Strings.MuscleBankTitle}${muscleName}`} />
           </>
         }
         showsVerticalScrollIndicator={false}

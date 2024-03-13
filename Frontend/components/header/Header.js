@@ -1,26 +1,29 @@
 import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
-
 import PropTypes from "prop-types";
+
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
+import { useNavigation } from "@react-navigation/native";
 
 import style from "./style";
 import { horizontalScale } from "../../assets/styles/scaling";
 
 const Header = ({
   title,
-  backPress,
+  canGoBack,
   optionButtonIcon,
   optionButtonFunction,
   textColor,
 }) => {
+  const navigation = useNavigation();
+
   return (
     <View style={style.headerContainer}>
       <View style={style.headerItemsContainer}>
         <View style={style.backButtonContainer}>
-          {backPress ? (
-            <TouchableOpacity onPress={backPress}>
+          {canGoBack ? (
+            <TouchableOpacity onPress={navigation.goBack}>
               <FontAwesomeIcon
                 icon={faArrowLeftLong}
                 size={horizontalScale(25)}
@@ -52,11 +55,12 @@ const Header = ({
 
 Header.defaultProps = {
   textColor: "#000",
+  canGoBack: true,
 };
 
 Header.prototype = {
   title: PropTypes.string.isRequired,
-  backPress: PropTypes.func,
+  canGoBack: PropTypes.boolean,
   optionButtonIcon: PropTypes.func,
   optionButtonFunction: PropTypes.func,
   textColor: PropTypes.string,

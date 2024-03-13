@@ -37,10 +37,6 @@ const MyWorkoutsList = ({ navigation }) => {
     getMyWorkouts(userToken, userId);
   }, [renderScreen]);
 
-  const navigateToWorkout = (workoutName, workoutId) => {
-    navigation.navigate(Routes.Workout, { workoutName, workoutId });
-  };
-
   return (
     <SafeAreaView style={globalStyle.background}>
       <AddWorkoutDialog
@@ -55,7 +51,6 @@ const MyWorkoutsList = ({ navigation }) => {
           <>
             <Header
               title={Strings.WorkOuts}
-              backPress={() => navigation.goBack()}
               optionButtonIcon={faPlus}
               optionButtonFunction={() => setWorkoutDialogVisibility(true)}
             />
@@ -70,7 +65,6 @@ const MyWorkoutsList = ({ navigation }) => {
             workoutId={item._id}
             picture={Indexes[item.workoutImage]}
             setWorkoutsList={setWorkoutsList}
-            navigatePress={() => navigateToWorkout(item.workoutName, item._id)}
           />
         )}
       />

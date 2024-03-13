@@ -3,10 +3,12 @@ import { Text, View, Image, Pressable, TouchableOpacity } from "react-native";
 import PropTypes from "prop-types";
 
 import getUserToken from "../../hooks/getToken";
+import { Routes } from "../../navigation/Routes";
 import { deleteWorkoutFromList } from "../../api/MyWorkouts";
 import BorderContainer from "../borderContainer/BorderContainer";
 import ShowAlert, { somethingWrongAlert } from "../../utils/ShowAlert";
 
+import { useNavigation } from "@react-navigation/native";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
@@ -18,10 +20,15 @@ const WorkOutOption = ({
   workoutName,
   workoutId,
   picture,
-  navigatePress,
   setWorkoutsList,
 }) => {
   const userToken = getUserToken();
+  const navigation = useNavigation();
+
+  const navigateToWorkout = () => {
+    navigation.navigate(Routes.Workout, { workoutName, workoutId });
+  };
+
   const showDeleteAlert = () => {
     ShowAlert({
       title: Strings.DeleteWorkoutAlertTitle.replace("***", workoutName),
@@ -43,7 +50,7 @@ const WorkOutOption = ({
   };
 
   return (
-    <Pressable onPress={navigatePress}>
+    <Pressable onPress={navigateToWorkout}>
       <BorderContainer>
         <Image source={picture} resizeMode="cover" style={style.workoutImage} />
         <View style={style.detailsContainer}>
@@ -68,7 +75,6 @@ WorkOutOption.prototype = {
   workoutName: PropTypes.string.isRequired,
   workoutId: PropTypes.string.isRequired,
   picture: PropTypes.object.isRequired,
-  navigatePress: PropTypes.func.isRequired,
   setWorkoutsList: PropTypes.array,
 };
 

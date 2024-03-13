@@ -9,10 +9,8 @@ import CollapseContainer from "../../components/collapseContainer/CollapseContai
 import Strings from "../../assets/strings/Strings";
 import globalStyle from "../../assets/styles/globalStyle";
 
-const Tips = ({ navigation }) => {
-  const categoryName = useSelector(
-    (state) => state.tipsList.selectedCategory["categoryName"]
-  );
+const Tips = ({ route }) => {
+  const categoryName = route.params.headerText;
 
   let tipsList = useSelector(
     (state) => state.tipsList.selectedCategory["tips"]
@@ -31,10 +29,7 @@ const Tips = ({ navigation }) => {
       <FlatList
         ListHeaderComponent={
           <>
-            <Header
-              title={getTitleText(categoryName)}
-              backPress={() => navigation.goBack()}
-            />
+            <Header title={getTitleText(categoryName)} />
           </>
         }
         showsVerticalScrollIndicator={false}

@@ -18,7 +18,7 @@ import { somethingWrongAlert } from "../../utils/ShowAlert";
 import globalStyle from "../../assets/styles/globalStyle";
 import Indexes from "../../assets/videos/Indexes";
 
-const Workout = ({ navigation, route }) => {
+const Workout = ({ route }) => {
   const userToken = getUserToken();
   const { workoutName, workoutId } = route.params;
 
@@ -61,7 +61,6 @@ const Workout = ({ navigation, route }) => {
         <ScrollView>
           <Header
             title={workoutName}
-            backPress={() => navigation.goBack()}
             optionButtonIcon={faPlus}
             optionButtonFunction={openBottomSheet}
           />

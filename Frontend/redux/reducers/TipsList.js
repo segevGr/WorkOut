@@ -54,6 +54,12 @@ const initialState = {
         mediaType: "image",
         tipMedia: require("../../assets/tips/LoseFatGaiMuscle.png"),
       },
+      {
+        name: "קשר מוח שריר",
+        category: "אימונים",
+        mediaType: "image",
+        tipMedia: require("../../assets/tips/calorieBalance.png"),
+      },
     ],
   },
 };

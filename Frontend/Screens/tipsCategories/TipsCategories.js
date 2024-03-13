@@ -30,15 +30,13 @@ const TipsCategories = ({ navigation }) => {
 
   return (
     <SafeAreaView style={globalStyle.background}>
-      <Header
-        title={Strings.TipsCategoriesTitle}
-        backPress={() => navigation.goBack()}
-      />
+      <Header title={Strings.TipsCategoriesTitle} />
       {tipsCategoriesList.map((tip) => {
         return (
           <BorderContainer key={tip.tipCategory}>
             <CategoryContainer
               image={tip.tipImage}
+              type={"Tips"}
               primaryText={tip.tipCategory}
               secondaryText={getSecondaryText(tip.tipCategory)}
               onPress={() => navigateToTips(tip.tipCategory)}
