@@ -84,7 +84,7 @@ const WorkoutsBottomSheet = ({
   );
 };
 
-WorkoutsBottomSheet.PropTypes = {
+WorkoutsBottomSheet.propTypes = {
   exercisesBankList: PropTypes.array.isRequired,
   exerciseList: PropTypes.array.isRequired,
   setExerciseList: PropTypes.func.isRequired,

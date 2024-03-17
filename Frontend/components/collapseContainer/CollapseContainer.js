@@ -36,7 +36,7 @@ const CollapseContainer = ({ name, collapseOpenContent, media, mediaType }) => {
   );
 };
 
-CollapseContainer.prototype = {
+CollapseContainer.propTypes = {
   name: PropTypes.string.isRequired,
   collapseOpenContent: PropTypes.node,
   media: PropTypes.string,

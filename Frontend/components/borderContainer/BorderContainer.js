@@ -12,7 +12,7 @@ BorderContainer.defaultProps = {
   containerStyle: style.default,
 };
 
-BorderContainer.prototype = {
+BorderContainer.propTypes = {
   children: PropTypes.node.isRequired,
   containerStyle: PropTypes.object,
 };

@@ -75,7 +75,7 @@ WorkOutOption.propTypes = {
   workoutName: PropTypes.string.isRequired,
   workoutId: PropTypes.string.isRequired,
   picture: PropTypes.number.isRequired,
-  setWorkoutsList: PropTypes.array,
+  setWorkoutsList: PropTypes.func,
 };
 
 export default WorkOutOption;

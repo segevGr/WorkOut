@@ -47,7 +47,7 @@ const CategoryContainer = ({
   );
 };
 
-CategoryContainer.prototype = {
+CategoryContainer.propTypes = {
   image: PropTypes.number.isRequired,
   type: PropTypes.string.isRequired,
   primaryText: PropTypes.string.isRequired,

@@ -18,7 +18,7 @@ const CollapseHeader = ({ handlePress, collapseImage, name }) => {
   );
 };
 
-CollapseHeader.prototype = {
+CollapseHeader.propTypes = {
   handlePress: PropTypes.func.isRequired,
   collapseImage: PropTypes.object.isRequired,
   name: PropTypes.string.isRequired,

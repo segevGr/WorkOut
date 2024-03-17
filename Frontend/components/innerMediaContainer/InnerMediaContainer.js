@@ -21,7 +21,7 @@ const InnerMediaContainer = ({ mediaType, mediaSource }) => {
   );
 };
 
-InnerMediaContainer.prototype = {
+InnerMediaContainer.propTypes = {
   mediaType: PropTypes.string.isRequired,
   mediaSource: PropTypes.number.isRequired,
 };

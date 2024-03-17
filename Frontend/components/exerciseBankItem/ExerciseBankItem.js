@@ -34,7 +34,7 @@ ExerciseBankItem.defaultProps = {
   backgroundColor: "#FFFFFF",
 };
 
-ExerciseBankItem.prototype = {
+ExerciseBankItem.propTypes = {
   exercise: PropTypes.object.isRequired,
 };
 

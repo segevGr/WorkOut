@@ -111,11 +111,11 @@ CollapseOpenWithEdit.defaultProps = {
   isSets: false,
 };
 
-CollapseOpenWithEdit.prototype = {
+CollapseOpenWithEdit.propTypes = {
   workoutId: PropTypes.string.isRequired,
   exerciseId: PropTypes.string.isRequired,
   backgroundColor: PropTypes.string,
-  setsData: PropTypes.object,
+  setsData: PropTypes.string,
   notesData: PropTypes.string,
   isSets: PropTypes.bool,
 };

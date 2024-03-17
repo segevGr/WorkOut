@@ -28,7 +28,7 @@ CollapseOpenWithoutEdit.defaultProps = {
   backgroundColor: "#FFFFFF",
 };
 
-CollapseOpenWithoutEdit.prototype = {
+CollapseOpenWithoutEdit.propTypes = {
   title: PropTypes.string.isRequired,
   exerciseData: PropTypes.string.isRequired,
   backgroundColor: PropTypes.string,
