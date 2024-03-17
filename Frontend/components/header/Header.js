@@ -61,7 +61,7 @@ Header.defaultProps = {
 Header.propTypes = {
   title: PropTypes.string.isRequired,
   canGoBack: PropTypes.bool,
-  optionButtonIcon: PropTypes.func,
+  optionButtonIcon: PropTypes.object,
   optionButtonFunction: PropTypes.func,
   textColor: PropTypes.string,
 };
