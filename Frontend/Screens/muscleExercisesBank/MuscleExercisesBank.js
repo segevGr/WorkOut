@@ -7,11 +7,13 @@ import { somethingWrongAlert } from "../../utils/ShowAlert";
 
 import Header from "../../components/header/Header";
 import ExerciseBankItem from "../../components/exerciseBankItem/ExerciseBankItem";
+import LoadingOverlay from "../../utils/LoadingOverlay";
 
 import Strings from "../../assets/strings/Strings";
 import globalStyle from "../../assets/styles/globalStyle";
 
 const MuscleExercisesBank = ({ route }) => {
+  const [isFetchingData, setIsFetchingData] = useState(true);
   const userToken = getUserToken();
 
   const { muscleId, muscleName } = route.params;
@@ -24,12 +26,18 @@ const MuscleExercisesBank = ({ route }) => {
     } catch (error) {
       somethingWrongAlert();
       console.error(`Error in getExercisesList: [${error}]`);
+    } finally {
+      setIsFetchingData(false);
     }
   };
 
   useEffect(() => {
     fetchExercises();
   }, []);
+
+  if (isFetchingData) {
+    return <LoadingOverlay />;
+  }
 
   return (
     <SafeAreaView style={globalStyle.background}>

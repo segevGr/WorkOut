@@ -9,6 +9,7 @@ import { somethingWrongAlert } from "../../utils/ShowAlert";
 import Header from "../../components/header/Header";
 import WorkOutOption from "../../components/workoutOption/WorkoutOption";
 import AddWorkoutDialog from "../../components/addWorkoutDialog/AddWorkoutDialog";
+import LoadingOverlay from "../../utils/LoadingOverlay";
 
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
@@ -17,6 +18,7 @@ import globalStyle from "../../assets/styles/globalStyle";
 import Indexes from "../../assets/workouts/Indexes";
 
 const MyWorkoutsList = () => {
+  const [isFetchingData, setIsFetchingData] = useState(true);
   const userToken = getUserToken();
   const userId = getUserId();
   const [renderScreen, setRenderScreen] = useState(false);
@@ -30,12 +32,18 @@ const MyWorkoutsList = () => {
     } catch (error) {
       somethingWrongAlert();
       console.error(`Error in getMyWorkouts: [${error}]`);
+    } finally {
+      setIsFetchingData(false);
     }
   };
 
   useEffect(() => {
     fetchMyWorkouts(userToken, userId);
   }, [renderScreen]);
+
+  if (isFetchingData) {
+    return <LoadingOverlay />;
+  }
 
   return (
     <SafeAreaView style={globalStyle.background}>

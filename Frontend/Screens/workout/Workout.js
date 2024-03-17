@@ -9,6 +9,7 @@ import Header from "../../components/header/Header";
 import CollapseContainer from "../../components/collapseContainer/CollapseContainer";
 import CollapseOpenWithEdit from "../../components/collapseOpen/CollapseOpenWithEdit";
 import WorkoutsBottomSheet from "../../components/workoutsBottomSheet/WorkoutsBottomSheet";
+import LoadingOverlay from "../../utils/LoadingOverlay";
 
 // API and Hooks
 import getUserToken from "../../hooks/getToken";
@@ -21,6 +22,7 @@ import globalStyle from "../../assets/styles/globalStyle";
 import Indexes from "../../assets/videos/Indexes";
 
 const Workout = ({ route }) => {
+  const [isFetchingData, setIsFetchingData] = useState(true);
   const userToken = getUserToken();
   const { workoutName, workoutId } = route.params;
 
@@ -44,6 +46,8 @@ const Workout = ({ route }) => {
     } catch (error) {
       somethingWrongAlert();
       console.error(`Error in getWorkoutExercises: [${error}]`);
+    } finally {
+      setIsFetchingData(false);
     }
   };
 
@@ -56,6 +60,10 @@ const Workout = ({ route }) => {
       bottomSheetRef.current?.expand();
     }
   }, [exercisesBankList]);
+
+  if (isFetchingData) {
+    return <LoadingOverlay />;
+  }
 
   return (
     <SafeAreaView style={globalStyle.background}>

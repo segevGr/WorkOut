@@ -71,10 +71,10 @@ const WorkOutOption = ({
   );
 };
 
-WorkOutOption.prototype = {
+WorkOutOption.propTypes = {
   workoutName: PropTypes.string.isRequired,
   workoutId: PropTypes.string.isRequired,
-  picture: PropTypes.object.isRequired,
+  picture: PropTypes.number.isRequired,
   setWorkoutsList: PropTypes.array,
 };
 
