@@ -5,15 +5,16 @@ import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faPencil, faCheck } from "@fortawesome/free-solid-svg-icons";
 
+import BorderContainer from "../borderContainer/BorderContainer";
+
 import { updateMyExercise } from "../../api/MyWorkouts";
 import { somethingWrongAlert } from "../../utils/ShowAlert";
 import getUserToken from "../../hooks/getToken";
 
-import BorderContainer from "../borderContainer/BorderContainer";
+import Strings from "../../assets/strings/Strings";
+import { scaleFontSize } from "../../assets/styles/scaling";
 
 import style from "./style";
-import { scaleFontSize } from "../../assets/styles/scaling";
-import Strings from "../../assets/strings/Strings";
 
 const CollapseOpenWithEdit = ({
   workoutId,

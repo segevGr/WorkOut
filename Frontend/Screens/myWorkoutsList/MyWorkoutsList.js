@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { SafeAreaView, FlatList } from "react-native";
 
-import { Routes } from "../../navigation/Routes";
 import getUserToken from "../../hooks/getToken";
 import getUserId from "../../hooks/getUserId";
 import { getMyWorkoutsList } from "../../api/MyWorkouts";
+import { somethingWrongAlert } from "../../utils/ShowAlert";
+
 import Header from "../../components/header/Header";
 import WorkOutOption from "../../components/workoutOption/WorkoutOption";
 import AddWorkoutDialog from "../../components/addWorkoutDialog/AddWorkoutDialog";
-import { somethingWrongAlert } from "../../utils/ShowAlert";
 
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
@@ -16,7 +16,7 @@ import Strings from "../../assets/strings/Strings";
 import globalStyle from "../../assets/styles/globalStyle";
 import Indexes from "../../assets/workouts/Indexes";
 
-const MyWorkoutsList = ({ navigation }) => {
+const MyWorkoutsList = () => {
   const userToken = getUserToken();
   const userId = getUserId();
   const [renderScreen, setRenderScreen] = useState(false);
@@ -24,7 +24,7 @@ const MyWorkoutsList = ({ navigation }) => {
   const [workoutDialogVisibility, setWorkoutDialogVisibility] = useState(false);
 
   const [workoutsList, setWorkoutsList] = useState([]);
-  const getMyWorkouts = async (userToken) => {
+  const fetchMyWorkouts = async (userToken) => {
     try {
       setWorkoutsList(await getMyWorkoutsList(userToken, userId));
     } catch (error) {
@@ -34,7 +34,7 @@ const MyWorkoutsList = ({ navigation }) => {
   };
 
   useEffect(() => {
-    getMyWorkouts(userToken, userId);
+    fetchMyWorkouts(userToken, userId);
   }, [renderScreen]);
 
   return (

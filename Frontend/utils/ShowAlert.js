@@ -9,10 +9,10 @@ export default showAlert = ({
   pressFunc,
   cancelText,
 }) => {
-  Alert.alert(title, message, btnsArray(btnText, pressFunc, cancelText));
+  Alert.alert(title, message, buttonsArray(btnText, pressFunc, cancelText));
 };
 
-const btnsArray = (btnText, pressFunc, cancelText) => {
+const buttonsArray = (btnText, pressFunc, cancelText) => {
   const arr = [
     {
       text: btnText,

@@ -5,13 +5,15 @@ import { SafeAreaView, ScrollView, View } from "react-native";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 // Internal Components and Modules
-import getUserToken from "../../hooks/getToken";
-import { getWorkoutExercises } from "../../api/MyWorkouts";
 import Header from "../../components/header/Header";
 import CollapseContainer from "../../components/collapseContainer/CollapseContainer";
 import CollapseOpenWithEdit from "../../components/collapseOpen/CollapseOpenWithEdit";
-import { getExercisesList } from "../../api/MuscleExercisesBank";
 import WorkoutsBottomSheet from "../../components/workoutsBottomSheet/WorkoutsBottomSheet";
+
+// API and Hooks
+import getUserToken from "../../hooks/getToken";
+import { getWorkoutExercises } from "../../api/MyWorkouts";
+import { getExercisesList } from "../../api/MuscleExercisesBank";
 import { somethingWrongAlert } from "../../utils/ShowAlert";
 
 // Assets
@@ -35,7 +37,7 @@ const Workout = ({ route }) => {
   };
 
   const [exerciseList, setExerciseList] = useState([]);
-  const getExercisesOfWorkout = async (userToken) => {
+  const fetchWorkoutExercises = async (userToken) => {
     try {
       const workout = await getWorkoutExercises(userToken, workoutId);
       setExerciseList(workout);
@@ -46,7 +48,7 @@ const Workout = ({ route }) => {
   };
 
   useEffect(() => {
-    getExercisesOfWorkout(userToken);
+    fetchWorkoutExercises(userToken);
   }, []);
 
   useEffect(() => {

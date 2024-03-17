@@ -19,9 +19,9 @@ import ShowAlert, { somethingWrongAlert } from "../../utils/ShowAlert";
 
 import LoginInput from "../../components/loginInput/LoginInput";
 
-import style from "./style";
 import Strings from "../../assets/strings/Strings";
 import globalStyle from "../../assets/styles/globalStyle";
+import style from "./style";
 
 const Login = () => {
   const [email, setEmail] = useState("");

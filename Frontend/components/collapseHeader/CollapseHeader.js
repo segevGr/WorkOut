@@ -1,10 +1,10 @@
 import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
-
 import PropTypes from "prop-types";
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { horizontalScale } from "../../assets/styles/scaling";
 
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+
+import { horizontalScale } from "../../assets/styles/scaling";
 import style from "./style";
 
 const CollapseHeader = ({ handlePress, collapseImage, name }) => {

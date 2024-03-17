@@ -37,6 +37,7 @@ const Tips = ({ route }) => {
         renderItem={({ item }) => {
           return (
             <CollapseContainer
+              key={item.name}
               name={item.name}
               media={item.tipMedia}
               mediaType={item.mediaType}

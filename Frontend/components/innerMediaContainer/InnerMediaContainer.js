@@ -1,12 +1,11 @@
 import React from "react";
 import { Image, View } from "react-native";
-
 import { Video } from "expo-av";
 import PropTypes from "prop-types";
 
-import style from "./style";
-
 import BorderContainer from "../borderContainer/BorderContainer";
+
+import style from "./style";
 
 const InnerMediaContainer = ({ mediaType, mediaSource }) => {
   return (

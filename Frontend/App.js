@@ -1,12 +1,8 @@
 import React from "react";
-import {
-  Text,
-  SafeAreaView,
-  KeyboardAvoidingView,
-  Platform,
-} from "react-native";
+import { KeyboardAvoidingView, Platform } from "react-native";
 import { Provider } from "react-redux";
 
+import LoadingOverlay from "./utils/LoadingOverlay";
 import { NavigationContainer } from "@react-navigation/native";
 import RootNavigation from "./navigation/RootNavigation";
 
@@ -28,11 +24,7 @@ const App = () => {
   });
 
   if (!fontsLoaded) {
-    return (
-      <SafeAreaView>
-        <Text>App Loading</Text>
-      </SafeAreaView>
-    );
+    return <LoadingOverlay />;
   }
 
   return (

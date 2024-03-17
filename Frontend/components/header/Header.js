@@ -2,12 +2,12 @@ import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import PropTypes from "prop-types";
 
+import { useNavigation } from "@react-navigation/native";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
-import { useNavigation } from "@react-navigation/native";
 
-import style from "./style";
 import { horizontalScale } from "../../assets/styles/scaling";
+import style from "./style";
 
 const Header = ({
   title,

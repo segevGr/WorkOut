@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { View, Modal, TextInput, Button, Text } from "react-native";
+import { Button, Modal, Text, TextInput, View } from "react-native";
 
 import { createWorkout } from "../../api/MyWorkouts";
-import { somethingWrongAlert } from "../../utils/ShowAlert";
 import getUserId from "../../hooks/getUserId";
 import getUserToken from "../../hooks/getToken";
+import { somethingWrongAlert } from "../../utils/ShowAlert";
 
-import style from "./style";
 import Strings from "../../assets/strings/Strings";
+import style from "./style";
 
 const AddWorkoutDialog = ({ visible, onClose }) => {
   const [workoutName, setWorkoutName] = useState("");

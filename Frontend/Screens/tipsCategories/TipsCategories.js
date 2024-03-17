@@ -31,15 +31,15 @@ const TipsCategories = ({ navigation }) => {
   return (
     <SafeAreaView style={globalStyle.background}>
       <Header title={Strings.TipsCategoriesTitle} />
-      {tipsCategoriesList.map((tip) => {
+      {tipsCategoriesList.map((category) => {
         return (
-          <BorderContainer key={tip.tipCategory}>
+          <BorderContainer key={category.tipCategory}>
             <CategoryContainer
-              image={tip.tipImage}
+              image={category.tipImage}
               type={"Tips"}
-              primaryText={tip.tipCategory}
-              secondaryText={getSecondaryText(tip.tipCategory)}
-              onPress={() => navigateToTips(tip.tipCategory)}
+              primaryText={category.tipCategory}
+              secondaryText={getSecondaryText(category.tipCategory)}
+              onPress={() => navigateToTips(category.tipCategory)}
             />
           </BorderContainer>
         );

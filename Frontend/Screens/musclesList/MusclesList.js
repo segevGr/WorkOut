@@ -4,6 +4,7 @@ import { SafeAreaView, FlatList } from "react-native";
 import getUserToken from "../../hooks/getToken";
 import { somethingWrongAlert } from "../../utils/ShowAlert";
 import { getMusclesList } from "../../api/MusclesList";
+
 import Header from "../../components/header/Header";
 import BorderContainer from "../../components/borderContainer/BorderContainer";
 import CategoryContainer from "../../components/categoryContainer/CategoryContainer";
@@ -18,19 +19,20 @@ const MusclesList = () => {
   const userToken = getUserToken();
 
   const [musclesList, setMusclesList] = useState([]);
-  const getMuscles = async (userToken) => {
+  const fetchMuscles = async (userToken) => {
     try {
       const results = await getMusclesList(userToken);
       setMusclesList(results);
     } catch (error) {
       somethingWrongAlert();
       console.error(`Error in getMusclesList: [${error}]`);
+    } finally {
+      setIsFetchingData(false);
     }
   };
 
   useEffect(() => {
-    getMuscles(userToken);
-    setIsFetchingData(false);
+    fetchMuscles(userToken);
   }, []);
 
   if (isFetchingData) {

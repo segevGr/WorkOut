@@ -7,8 +7,6 @@ import {
   SafeAreaView,
 } from "react-native";
 
-import { Routes } from "../../navigation/Routes";
-
 import { useDispatch, useSelector } from "react-redux";
 import {
   updateLogIn,
@@ -16,11 +14,14 @@ import {
   updateUser,
 } from "../../redux/reducers/UserDetails";
 
+import { Routes } from "../../navigation/Routes";
+
 import Header from "../../components/header/Header";
 
 import Strings from "../../assets/strings/Strings";
-import style from "./style";
 import ShowAlert from "../../utils/ShowAlert";
+
+import style from "./style";
 
 const HomePage = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -31,12 +32,12 @@ const HomePage = ({ navigation }) => {
       title: Strings.LogOutTitle,
       message: null,
       btnText: Strings.Yes,
-      pressFunc: () => doLogOut(),
+      pressFunc: () => logout(),
       cancelText: Strings.No,
     });
   };
 
-  const doLogOut = () => {
+  const logout = () => {
     dispatch(updateLogIn(false));
     dispatch(updateToken(null));
     dispatch(updateUser(null));

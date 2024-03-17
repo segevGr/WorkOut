@@ -2,18 +2,18 @@ import React, { useState } from "react";
 import { View, FlatList, Switch } from "react-native";
 import PropTypes from "prop-types";
 
-import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
+import { BottomSheet, BottomSheetView } from "@gorhom/bottom-sheet";
 
-import getUserToken from "../../hooks/getToken";
-import { somethingWrongAlert } from "../../utils/ShowAlert";
-
-// Assets
-import ExerciseBankItem from "../exerciseBankItem/ExerciseBankItem";
-import style from "./style";
 import {
   addExerciseToWorkout,
   deleteExerciseFromWorkout,
 } from "../../api/MyWorkouts";
+import getUserToken from "../../hooks/getToken";
+import { somethingWrongAlert } from "../../utils/ShowAlert";
+
+import ExerciseBankItem from "../exerciseBankItem/ExerciseBankItem";
+
+import style from "./style";
 
 const WorkoutsBottomSheet = ({
   exercisesBankList,

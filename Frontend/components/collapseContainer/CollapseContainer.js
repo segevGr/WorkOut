@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Collapsible from "react-native-collapsible";
-
 import PropTypes from "prop-types";
+
 import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 
 import BorderContainer from "../borderContainer/BorderContainer";

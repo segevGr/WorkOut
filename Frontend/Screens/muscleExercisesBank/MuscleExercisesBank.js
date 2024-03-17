@@ -1,18 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { SafeAreaView, FlatList } from "react-native";
 
-// External Libraries and Packages
 import { getExercisesList } from "../../api/MuscleExercisesBank";
 import getUserToken from "../../hooks/getToken";
 import { somethingWrongAlert } from "../../utils/ShowAlert";
 
-// Internal Components and Modules
 import Header from "../../components/header/Header";
-
-// Assets
-import globalStyle from "../../assets/styles/globalStyle";
-import Strings from "../../assets/strings/Strings";
 import ExerciseBankItem from "../../components/exerciseBankItem/ExerciseBankItem";
+
+import Strings from "../../assets/strings/Strings";
+import globalStyle from "../../assets/styles/globalStyle";
 
 const MuscleExercisesBank = ({ route }) => {
   const userToken = getUserToken();
@@ -20,7 +17,7 @@ const MuscleExercisesBank = ({ route }) => {
   const { muscleId, muscleName } = route.params;
 
   const [exercisesList, setExercisesList] = useState([]);
-  const getExercises = async () => {
+  const fetchExercises = async () => {
     try {
       const results = await getExercisesList(userToken, muscleId);
       setExercisesList(results);
@@ -31,7 +28,7 @@ const MuscleExercisesBank = ({ route }) => {
   };
 
   useEffect(() => {
-    getExercises();
+    fetchExercises();
   }, []);
 
   return (
