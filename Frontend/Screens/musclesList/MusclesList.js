@@ -7,12 +7,14 @@ import { getMusclesList } from "../../api/MusclesList";
 import Header from "../../components/header/Header";
 import BorderContainer from "../../components/borderContainer/BorderContainer";
 import CategoryContainer from "../../components/categoryContainer/CategoryContainer";
+import LoadingOverlay from "../../utils/LoadingOverlay";
 
 import Strings from "../../assets/strings/Strings";
 import globalStyle from "../../assets/styles/globalStyle";
 import Indexes from "../../assets/icons/muscles/Indexes";
 
-const MusclesList = ({ navigation }) => {
+const MusclesList = () => {
+  const [isFetchingData, setIsFetchingData] = useState(true);
   const userToken = getUserToken();
 
   const [musclesList, setMusclesList] = useState([]);
@@ -28,7 +30,12 @@ const MusclesList = ({ navigation }) => {
 
   useEffect(() => {
     getMuscles(userToken);
+    setIsFetchingData(false);
   }, []);
+
+  if (isFetchingData) {
+    return <LoadingOverlay />;
+  }
 
   return (
     <SafeAreaView style={globalStyle.background}>
