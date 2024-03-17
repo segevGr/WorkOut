@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, FlatList, Switch } from "react-native";
 import PropTypes from "prop-types";
 
-import { BottomSheet, BottomSheetView } from "@gorhom/bottom-sheet";
+import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 
 import {
   addExerciseToWorkout,
@@ -84,7 +84,7 @@ const WorkoutsBottomSheet = ({
   );
 };
 
-ExerciseBankItem.prototype = {
+WorkoutsBottomSheet.PropTypes = {
   exercisesBankList: PropTypes.array.isRequired,
   exerciseList: PropTypes.array.isRequired,
   setExerciseList: PropTypes.func.isRequired,
