@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { SafeAreaView, FlatList } from "react-native";
 
-import { Routes } from "../../navigation/Routes";
 import getUserToken from "../../hooks/getToken";
 import { somethingWrongAlert } from "../../utils/ShowAlert";
 import { getMusclesList } from "../../api/MusclesList";
