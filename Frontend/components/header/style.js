@@ -5,11 +5,12 @@ import {
   verticalScale,
 } from "../../assets/styles/scaling";
 import { getFontFamily } from "../../assets/fonts/getFontFamily";
+import Colors from "../../assets/styles/Colors";
 
 const style = StyleSheet.create({
   headerContainer: {
     width: "100%",
-    backgroundColor: "transparent",
+    backgroundColor: Colors.transparent,
   },
   headerItemsContainer: {
     flexDirection: "row",
@@ -32,7 +33,7 @@ const style = StyleSheet.create({
   },
   divider: {
     height: verticalScale(2),
-    backgroundColor: "#E5F0FA",
+    backgroundColor: Colors.lightBluePrimary,
   },
 });
 

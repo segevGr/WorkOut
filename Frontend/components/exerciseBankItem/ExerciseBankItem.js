@@ -5,6 +5,7 @@ import CollapseContainer from "../collapseContainer/CollapseContainer";
 import CollapseOpenWithoutEdit from "../collapseOpen/CollapseOpenWithoutEdit";
 
 import Strings from "../../assets/strings/Strings";
+import Colors from "../../assets/styles/Colors";
 import Indexes from "../../assets/videos/Indexes";
 
 const ExerciseBankItem = ({ exercise }) => {
@@ -22,7 +23,7 @@ const ExerciseBankItem = ({ exercise }) => {
           <CollapseOpenWithoutEdit
             title={Strings.Highlights}
             exerciseData={exercise.highlights}
-            backgroundColor="#F6FAFD"
+            backgroundColor={Colors.lightBlueSecondary}
           />
         </>
       }
@@ -31,7 +32,7 @@ const ExerciseBankItem = ({ exercise }) => {
 };
 
 ExerciseBankItem.defaultProps = {
-  backgroundColor: "#FFFFFF",
+  backgroundColor: Colors.white,
 };
 
 ExerciseBankItem.propTypes = {

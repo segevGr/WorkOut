@@ -12,6 +12,7 @@ import { somethingWrongAlert } from "../../utils/ShowAlert";
 import getUserToken from "../../hooks/getToken";
 
 import Strings from "../../assets/strings/Strings";
+import Colors from "../../assets/styles/Colors";
 import { scaleFontSize } from "../../assets/styles/scaling";
 
 import style from "./style";
@@ -105,7 +106,7 @@ const CollapseOpenWithEdit = ({
 };
 
 CollapseOpenWithEdit.defaultProps = {
-  backgroundColor: "#FFFFFF",
+  backgroundColor: Colors.white,
   setsData: null,
   notesData: null,
   isSets: false,

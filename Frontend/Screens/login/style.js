@@ -5,6 +5,7 @@ import {
   scaleFontSize,
   verticalScale,
 } from "../../assets/styles/scaling";
+import Colors from "../../assets/styles/Colors";
 
 const style = StyleSheet.create({
   container: {
@@ -23,7 +24,7 @@ const style = StyleSheet.create({
   },
   loginBtn: {
     justifyContent: "center",
-    backgroundColor: "#2979F2",
+    backgroundColor: Colors.submitButton,
     height: verticalScale(55),
     borderRadius: horizontalScale(50),
     marginBottom: verticalScale(24),
@@ -35,7 +36,7 @@ const style = StyleSheet.create({
     fontFamily: getFontFamily("Heebo", "500"),
     fontSize: scaleFontSize(20),
     textAlign: "center",
-    color: "#FFFFFF",
+    color: Colors.black,
   },
 });
 

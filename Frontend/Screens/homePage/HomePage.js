@@ -21,6 +21,7 @@ import Header from "../../components/header/Header";
 import Strings from "../../assets/strings/Strings";
 import ShowAlert from "../../utils/ShowAlert";
 
+import Colors from "../../assets/styles/Colors";
 import style from "./style";
 
 const HomePage = ({ navigation }) => {
@@ -51,7 +52,7 @@ const HomePage = ({ navigation }) => {
       <SafeAreaView style={{ flex: 1 }}>
         <Header
           title={`${Strings.WelcomeMessage} ${username}`}
-          textColor={"#FFF"}
+          textColor={Colors.white}
           canGoBack={false}
         />
         <View style={style.optionsContainer}>

@@ -1,6 +1,7 @@
 import { StyleSheet } from "react-native";
 import { getFontFamily } from "../../assets/fonts/getFontFamily";
 import { scaleFontSize, verticalScale } from "../../assets/styles/scaling";
+import Colors from "../../assets/styles/Colors";
 
 const style = StyleSheet.create({
   container: {
@@ -8,7 +9,7 @@ const style = StyleSheet.create({
   },
   label: {
     fontFamily: getFontFamily("Heebo", "400"),
-    color: "#36455A",
+    color: Colors.darkBlueSecondary,
     fontSize: scaleFontSize(20),
     textAlign: "right",
   },
@@ -16,7 +17,7 @@ const style = StyleSheet.create({
     textAlign: "right",
     paddingVertical: verticalScale(5),
     borderBottomWidth: 1,
-    borderBottomColor: "rgba(167, 167, 167, 0.5)",
+    borderBottomColor: Colors.inputTransparent,
   },
 });
 

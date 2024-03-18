@@ -13,6 +13,7 @@ import { somethingWrongAlert } from "../../utils/ShowAlert";
 
 import ExerciseBankItem from "../exerciseBankItem/ExerciseBankItem";
 
+import Colors from "../../assets/styles/Colors";
 import style from "./style";
 
 const WorkoutsBottomSheet = ({
@@ -54,7 +55,7 @@ const WorkoutsBottomSheet = ({
       ref={bottomSheetRef}
       snapPoints={["92%"]}
       enablePanDownToClose={true}
-      backgroundStyle={{ backgroundColor: "#D4E5F7", opacity: 1 }}
+      backgroundStyle={{ backgroundColor: Colors.lightBluePrimary, opacity: 1 }}
       index={-1}
       enableContentPanningGesture={true}
     >

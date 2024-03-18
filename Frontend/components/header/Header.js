@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
 
 import { horizontalScale } from "../../assets/styles/scaling";
+import Colors from "../../assets/styles/Colors";
 import style from "./style";
 
 const Header = ({
@@ -54,7 +55,7 @@ const Header = ({
 };
 
 Header.defaultProps = {
-  textColor: "#000",
+  textColor: Colors.black,
   canGoBack: true,
 };
 

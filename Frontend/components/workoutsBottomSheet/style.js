@@ -1,10 +1,5 @@
 import { StyleSheet } from "react-native";
-import {
-  horizontalScale,
-  scaleFontSize,
-  verticalScale,
-} from "../../assets/styles/scaling";
-import { getFontFamily } from "../../assets/fonts/getFontFamily";
+import { horizontalScale, verticalScale } from "../../assets/styles/scaling";
 
 const style = StyleSheet.create({
   itemContainer: {

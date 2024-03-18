@@ -5,6 +5,7 @@ import {
   scaleFontSize,
   verticalScale,
 } from "../../assets/styles/scaling";
+import Colors from "../../assets/styles/Colors";
 
 const style = StyleSheet.create({
   background: {
@@ -20,19 +21,19 @@ const style = StyleSheet.create({
   },
   btnContainer: {
     borderWidth: 1,
-    borderColor: "#FFF",
+    borderColor: Colors.white,
     borderRadius: 100,
     marginBottom: verticalScale(40),
   },
   optionText: {
-    color: "#FFF",
+    color: Colors.white,
     fontSize: scaleFontSize(28),
     fontFamily: getFontFamily("Heebo", "500"),
     paddingVertical: verticalScale(9),
     paddingHorizontal: horizontalScale(40),
   },
   versionDetails: {
-    color: "#FFF",
+    color: Colors.white,
     textAlign: "center",
     fontSize: scaleFontSize(16),
     fontFamily: getFontFamily("Heebo", "300"),

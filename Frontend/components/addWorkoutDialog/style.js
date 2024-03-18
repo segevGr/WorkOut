@@ -5,16 +5,17 @@ import {
   verticalScale,
 } from "../../assets/styles/scaling";
 import { getFontFamily } from "../../assets/fonts/getFontFamily";
+import Colors from "../../assets/styles/Colors";
 
 const style = StyleSheet.create({
   backgroundContainer: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    backgroundColor: Colors.blackTransparent,
   },
   dialogContainer: {
-    backgroundColor: "white",
+    backgroundColor: Colors.white,
     alignItems: "center",
     padding: 20,
     borderRadius: 10,
@@ -26,7 +27,7 @@ const style = StyleSheet.create({
   input: {
     height: verticalScale(25),
     width: horizontalScale(150),
-    borderColor: "gray",
+    borderColor: Colors.grey,
     borderWidth: horizontalScale(0.7),
     margin: horizontalScale(10),
     textAlign: "center",
@@ -34,7 +35,7 @@ const style = StyleSheet.create({
     fontFamily: getFontFamily("Heebo", "300"),
   },
   errorMsg: {
-    color: "red",
+    color: Colors.red,
     marginBottom: verticalScale(5),
     fontSize: scaleFontSize(15),
     fontFamily: getFontFamily("Heebo", "400"),

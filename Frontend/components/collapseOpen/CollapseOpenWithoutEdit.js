@@ -3,6 +3,7 @@ import { View, Text } from "react-native";
 import PropTypes from "prop-types";
 
 import BorderContainer from "../borderContainer/BorderContainer";
+import Colors from "../../assets/styles/Colors";
 
 import style from "./style";
 
@@ -25,7 +26,7 @@ const CollapseOpenWithoutEdit = ({ title, exerciseData, backgroundColor }) => {
 };
 
 CollapseOpenWithoutEdit.defaultProps = {
-  backgroundColor: "#FFFFFF",
+  backgroundColor: Colors.white,
 };
 
 CollapseOpenWithoutEdit.propTypes = {

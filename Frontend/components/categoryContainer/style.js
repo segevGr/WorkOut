@@ -5,10 +5,11 @@ import {
   scaleFontSize,
   verticalScale,
 } from "../../assets/styles/scaling";
+import Colors from "../../assets/styles/Colors";
 
 const style = StyleSheet.create({
   categoryContainer: {
-    backgroundColor: "#FFF",
+    backgroundColor: Colors.white,
     padding: horizontalScale(16),
     flexDirection: "row",
     alignItems: "center",
@@ -17,7 +18,7 @@ const style = StyleSheet.create({
   imageContainer: {
     height: horizontalScale(60),
     width: horizontalScale(60),
-    backgroundColor: "#F6FAFD",
+    backgroundColor: Colors.lightBlueSecondary,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -34,7 +35,7 @@ const style = StyleSheet.create({
     fontSize: scaleFontSize(25),
   },
   secondaryText: {
-    color: "#4A6375",
+    color: Colors.darkBluePrimary,
     fontFamily: getFontFamily("Heebo", "400"),
     fontSize: scaleFontSize(16),
   },

@@ -18,6 +18,7 @@ import { getExercisesList } from "../../api/MuscleExercisesBank";
 import { somethingWrongAlert } from "../../utils/ShowAlert";
 
 // Assets
+import Colors from "../../assets/styles/Colors";
 import globalStyle from "../../assets/styles/globalStyle";
 import Indexes from "../../assets/videos/Indexes";
 
@@ -91,7 +92,7 @@ const Workout = ({ route }) => {
                   <CollapseOpenWithEdit
                     workoutId={workoutId}
                     exerciseId={item._id}
-                    backgroundColor="#F6FAFD"
+                    backgroundColor={Colors.lightBlueSecondary}
                     notesData={item.notes}
                   />
                 </>
