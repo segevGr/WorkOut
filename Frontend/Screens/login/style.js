@@ -8,26 +8,36 @@ import {
 import Colors from "../../assets/styles/Colors";
 
 const style = StyleSheet.create({
-  container: {
+  flex1: {
     flex: 1,
-    justifyContent: "center",
-    marginHorizontal: horizontalScale(24),
+  },
+  blackOpacity: {
+    flex: 1,
+    backgroundColor: "black",
+    opacity: 0.6,
+  },
+  contentContainer: {
+    flex: 2,
+    backgroundColor: Colors.opacityBlack,
+    alignItems: "center",
   },
   welcomeHeader: {
     fontFamily: getFontFamily("Heebo", "600"),
     textAlign: "right",
     fontSize: scaleFontSize(40),
-    marginBottom: verticalScale(30),
+    marginTop: verticalScale(10),
+    color: Colors.white,
   },
-  inputsContainer: {
-    marginBottom: verticalScale(17),
+  fieldsContainer: {
+    flex: 5,
+    alignItems: "center",
+    flexDirection: "column",
+    justifyContent: "space-between",
   },
   loginBtn: {
     justifyContent: "center",
-    backgroundColor: Colors.submitButton,
-    height: verticalScale(55),
-    borderRadius: horizontalScale(50),
-    marginBottom: verticalScale(24),
+    backgroundColor: Colors.submitPurple,
+    marginBottom: verticalScale(120),
   },
   disabled: {
     opacity: 0.5,
@@ -37,6 +47,11 @@ const style = StyleSheet.create({
     fontSize: scaleFontSize(20),
     textAlign: "center",
     color: Colors.black,
+  },
+  itemContainer: {
+    width: horizontalScale(250),
+    height: verticalScale(40),
+    borderRadius: horizontalScale(20),
   },
 });
 

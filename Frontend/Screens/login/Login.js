@@ -5,6 +5,7 @@ import {
   View,
   Text,
   Keyboard,
+  ImageBackground,
 } from "react-native";
 
 import { useDispatch } from "react-redux";
@@ -22,6 +23,7 @@ import LoginInput from "../../components/loginInput/LoginInput";
 import Strings from "../../assets/strings/Strings";
 import globalStyle from "../../assets/styles/globalStyle";
 import style from "./style";
+import Colors from "../../assets/styles/Colors";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -74,36 +76,46 @@ const Login = () => {
   };
 
   return (
-    <SafeAreaView style={globalStyle.background}>
-      <View style={style.container}>
-        <Text style={style.welcomeHeader}>{Strings.Welcome}</Text>
-        <View style={style.inputsContainer}>
+    <View style={style.flex1}>
+      <ImageBackground
+        style={style.flex1}
+        source={require("../../assets/pictures/LoginBackground.png")}
+        resizeMode="cover"
+      >
+        <View style={style.blackOpacity} />
+      </ImageBackground>
+      <View style={style.contentContainer}>
+        <View style={style.flex1}>
+          <Text style={style.welcomeHeader}>{Strings.Welcome}</Text>
+        </View>
+        <View style={style.fieldsContainer}>
           <LoginInput
-            label={Strings.MailLabel}
             placeholder={Strings.MailPlaceholder}
             keyboardType={"email-address"}
             onChangeText={setEmail}
+            styles={style.itemContainer}
           />
           <LoginInput
-            label={Strings.PasswordLabel}
             placeholder={Strings.PasswordPlaceholder}
             secureTextEntry={true}
             onChangeText={setPassword}
+            styles={style.itemContainer}
           />
+
+          <TouchableOpacity
+            disabled={isLoginFormEmpty()}
+            style={
+              isLoginFormEmpty()
+                ? [style.loginBtn, style.itemContainer, style.disabled]
+                : [style.loginBtn, style.itemContainer]
+            }
+            onPress={() => submitLogin()}
+          >
+            <Text style={style.loginBtnText}>{Strings.LoginBtn}</Text>
+          </TouchableOpacity>
         </View>
-        <TouchableOpacity
-          disabled={isLoginFormEmpty()}
-          style={
-            isLoginFormEmpty()
-              ? [style.loginBtn, style.disabled]
-              : style.loginBtn
-          }
-          onPress={() => submitLogin()}
-        >
-          <Text style={style.loginBtnText}>{Strings.LoginBtn}</Text>
-        </TouchableOpacity>
       </View>
-    </SafeAreaView>
+    </View>
   );
 };
 

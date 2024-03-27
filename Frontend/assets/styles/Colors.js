@@ -1,7 +1,9 @@
 export default Colors = {
   white: "#fff",
   black: "#000",
+  opacityBlack: "#0A0E12",
   grey: "#808080",
+  opacityGray: "#666666",
   red: "#FF0000",
   lightBluePrimary: "#E5F0FA",
   lightBlueSecondary: "#F6FAFD",
@@ -11,4 +13,5 @@ export default Colors = {
   blackTransparent: "#00000080",
   inputTransparent: "#A7A7A780",
   submitButton: "#2979F2",
+  submitPurple: "#625DE7",
 };

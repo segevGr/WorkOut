@@ -1,24 +1,25 @@
 import React, { useState } from "react";
-import { View, Text, TextInput } from "react-native";
+import { View, TextInput } from "react-native";
 
 import PropTypes from "prop-types";
 
 import style from "./style";
+import Colors from "../../assets/styles/Colors";
 
 const LoginInput = ({
-  label,
   placeholder,
   secureTextEntry,
   keyboardType,
   onChangeText,
+  styles,
 }) => {
   const [value, setValue] = useState("");
   return (
-    <View style={style.container}>
-      <Text style={style.label}>{label}</Text>
+    <View>
       <TextInput
         placeholder={placeholder ? placeholder : null}
-        style={style.input}
+        placeholderTextColor={Colors.white}
+        style={{ ...style.input, ...styles }}
         value={value}
         secureTextEntry={secureTextEntry}
         keyboardType={keyboardType}
@@ -38,11 +39,11 @@ LoginInput.defaultProps = {
 };
 
 LoginInput.propTypes = {
-  label: PropTypes.string.isRequired,
-  placeholder: PropTypes.string,
+  placeholder: PropTypes.string.isRequired,
   secureTextEntry: PropTypes.bool,
   keyboardType: PropTypes.string,
   onChangeText: PropTypes.func,
+  styles: PropTypes.object.isRequired,
 };
 
 export default LoginInput;

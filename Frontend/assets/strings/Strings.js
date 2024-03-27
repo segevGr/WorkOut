@@ -9,11 +9,9 @@ export default Strings = {
   SomethingWrongSummery: "אנא נסו שוב מאוחר יותר",
 
   //Login page
-  Welcome: "ברוך הבא!",
-  MailLabel: "כתובת דואר אלקטרוני",
-  MailPlaceholder: "אנא הזן את כתובת דואר האלקטרוני",
-  PasswordLabel: "סיסמה",
-  PasswordPlaceholder: "אנא הזן את הסיסמה",
+  Welcome: "ברוך הבא שגב!",
+  MailPlaceholder: "דואר אלקטרוני",
+  PasswordPlaceholder: "סיסמה",
   LoginBtn: "התחברות",
 
   //Login alerts
