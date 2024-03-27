@@ -11,8 +11,15 @@ const style = StyleSheet.create({
   flex1: {
     flex: 1,
   },
-  blackOpacity: {
+  imageContainer: {
     flex: 1,
+  },
+  image: {
+    width: "100%",
+    height: "100%",
+  },
+  blackOpacity: {
+    ...StyleSheet.absoluteFillObject,
     backgroundColor: "black",
     opacity: 0.6,
   },

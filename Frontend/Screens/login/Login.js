@@ -6,6 +6,8 @@ import {
   Text,
   Keyboard,
   ImageBackground,
+  Image,
+  ScrollView,
 } from "react-native";
 
 import { useDispatch } from "react-redux";
@@ -77,13 +79,14 @@ const Login = () => {
 
   return (
     <View style={style.flex1}>
-      <ImageBackground
-        style={style.flex1}
-        source={require("../../assets/pictures/LoginBackground.png")}
-        resizeMode="cover"
-      >
+      <View style={style.imageContainer}>
+        <Image
+          style={style.image}
+          source={require("../../assets/pictures/LoginBackground.png")}
+          resizeMode="cover"
+        ></Image>
         <View style={style.blackOpacity} />
-      </ImageBackground>
+      </View>
       <View style={style.contentContainer}>
         <View style={style.flex1}>
           <Text style={style.welcomeHeader}>{Strings.Welcome}</Text>

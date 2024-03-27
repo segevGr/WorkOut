@@ -9,7 +9,7 @@ export default Strings = {
   SomethingWrongSummery: "אנא נסו שוב מאוחר יותר",
 
   //Login page
-  Welcome: "ברוך הבא שגב!",
+  Welcome: "ברוכים הבאים!",
   MailPlaceholder: "דואר אלקטרוני",
   PasswordPlaceholder: "סיסמה",
   LoginBtn: "התחברות",
