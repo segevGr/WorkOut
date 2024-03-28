@@ -84,7 +84,7 @@ const Login = () => {
           style={style.image}
           source={require("../../assets/pictures/LoginBackground.png")}
           resizeMode="cover"
-        ></Image>
+        />
         <View style={style.blackOpacity} />
       </View>
       <View style={style.contentContainer}>
