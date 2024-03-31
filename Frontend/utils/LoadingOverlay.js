@@ -1,16 +1,26 @@
 import { View, ActivityIndicator, Text, StyleSheet } from "react-native";
+import PropTypes from "prop-types";
 
 import { scaleFontSize, verticalScale } from "../assets/styles/scaling";
 import { getFontFamily } from "../assets/fonts/getFontFamily";
+import Strings from "../assets/strings/Strings";
 
-function LoadingOverlay() {
+const LoadingOverlay = ({ loadingText }) => {
   return (
     <View style={styles.container}>
       <ActivityIndicator size="large" color="black" />
-      <Text style={styles.text}>אנא המתינו</Text>
+      <Text style={styles.text}>{loadingText}</Text>
     </View>
   );
-}
+};
+
+LoadingOverlay.defaultProps = {
+  loadingText: Strings.LoadingGenericMessage,
+};
+
+LoadingOverlay.propTypes = {
+  loadingText: PropTypes.string,
+};
 
 export default LoadingOverlay;
 

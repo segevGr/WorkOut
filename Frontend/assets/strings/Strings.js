@@ -7,12 +7,14 @@ export default Strings = {
   Cancel: "ביטול",
   SomethingWrong: "משהו השתבש",
   SomethingWrongSummery: "אנא נסו שוב מאוחר יותר",
+  LoadingGenericMessage: "אנא המתינו",
 
   //Login page
   Welcome: "ברוכים הבאים!",
   MailPlaceholder: "דואר אלקטרוני",
   PasswordPlaceholder: "סיסמה",
   LoginBtn: "התחברות",
+  LoginLoadingMessage: "מבצע התחברות",
 
   //Login alerts
   WrongDetails: "שם משתמש או סיסמה לא נכונים",

@@ -1,14 +1,5 @@
 import React, { useState } from "react";
-import {
-  SafeAreaView,
-  TouchableOpacity,
-  View,
-  Text,
-  Keyboard,
-  ImageBackground,
-  Image,
-  ScrollView,
-} from "react-native";
+import { TouchableOpacity, View, Text, Keyboard, Image } from "react-native";
 
 import { useDispatch } from "react-redux";
 import {
@@ -19,17 +10,17 @@ import {
 
 import { tryLogin } from "../../api/Login";
 import ShowAlert, { somethingWrongAlert } from "../../utils/ShowAlert";
+import LoadingOverlay from "../../utils/LoadingOverlay";
 
 import LoginInput from "../../components/loginInput/LoginInput";
 
 import Strings from "../../assets/strings/Strings";
-import globalStyle from "../../assets/styles/globalStyle";
 import style from "./style";
-import Colors from "../../assets/styles/Colors";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loginLoaded, setLoginLoaded] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -40,6 +31,7 @@ const Login = () => {
   const submitLogin = async () => {
     try {
       Keyboard.dismiss();
+      setLoginLoaded(true);
       const result = await tryLogin(email.trim(), password);
       ShowAlert({
         title: Strings.WelcomeAlert,
@@ -50,9 +42,10 @@ const Login = () => {
       dispatch(updateToken(result.token));
       dispatch(updateUser(result.user));
       dispatch(updateLogIn(true));
-      return;
     } catch (error) {
       handleLoginError(error);
+    } finally {
+      setLoginLoaded(false);
     }
   };
 
@@ -76,6 +69,10 @@ const Login = () => {
       console.error(`Error in tryLogin: [${error}]`);
     }
   };
+
+  if (loginLoaded) {
+    return <LoadingOverlay loadingText={Strings.LoginLoadingMessage} />;
+  }
 
   return (
     <View style={style.flex1}>
