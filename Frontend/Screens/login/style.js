@@ -52,6 +52,16 @@ const style = StyleSheet.create({
     borderRadius: horizontalScale(20),
     marginVertical: verticalScale(20),
   },
+  input: {
+    textAlign: "right",
+    fontFamily: getFontFamily("Heebo", "400"),
+    fontSize: scaleFontSize(16),
+    color: Colors.white,
+    paddingVertical: verticalScale(15),
+    paddingHorizontal: horizontalScale(20),
+    borderWidth: 1,
+    borderColor: Colors.opacityGray,
+  },
 });
 
 export default style;

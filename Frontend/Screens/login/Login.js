@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { TouchableOpacity, View, Text, Keyboard, Image } from "react-native";
 
 import { useDispatch } from "react-redux";
@@ -12,21 +12,18 @@ import { tryLogin } from "../../api/Login";
 import ShowAlert, { somethingWrongAlert } from "../../utils/ShowAlert";
 import LoadingOverlay from "../../utils/LoadingOverlay";
 
-import LoginInput from "../../components/loginInput/LoginInput";
-
 import Strings from "../../assets/strings/Strings";
 import style from "./style";
+import { TextInput } from "react-native-gesture-handler";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isFieldsFilled, setIsFieldsFilled] = useState(false);
   const [loginLoaded, setLoginLoaded] = useState(false);
+  const passwordRef = useRef(null);
 
   const dispatch = useDispatch();
-
-  const isLoginFormEmpty = () => {
-    return email === "" || password === "";
-  };
 
   const submitLogin = async () => {
     try {
@@ -66,9 +63,23 @@ const Login = () => {
       });
     } else {
       somethingWrongAlert();
-      console.error(`Error in tryLogin: [${error}]`);
+      console.error(
+        `Error in tryLogin: [${error}] Status code ${error.statusCode}`
+      );
     }
   };
+
+  const focusPassword = () => {
+    if (passwordRef.current) {
+      passwordRef.current.focus();
+    }
+  };
+
+  useEffect(() => {
+    email === "" || password === ""
+      ? setIsFieldsFilled(false)
+      : setIsFieldsFilled(true);
+  }, [email, password]);
 
   if (loginLoaded) {
     return <LoadingOverlay loadingText={Strings.LoginLoadingMessage} />;
@@ -86,25 +97,34 @@ const Login = () => {
       </View>
       <View style={style.contentContainer}>
         <Text style={style.welcomeHeader}>{Strings.Welcome}</Text>
-        <LoginInput
+        <TextInput
           placeholder={Strings.MailPlaceholder}
-          keyboardType={"email-address"}
+          placeholderTextColor={Colors.white}
+          style={[style.input, style.itemContainer]}
+          value={email}
           onChangeText={setEmail}
-          styles={style.itemContainer}
+          onSubmitEditing={focusPassword}
+          returnKeyType="next"
+          keyboardType={"email-address"}
         />
-        <LoginInput
+        <TextInput
           placeholder={Strings.PasswordPlaceholder}
-          secureTextEntry={true}
+          placeholderTextColor={Colors.white}
+          style={[style.input, style.itemContainer]}
+          value={password}
           onChangeText={setPassword}
-          styles={style.itemContainer}
+          onSubmitEditing={submitLogin}
+          returnKeyType="done"
+          secureTextEntry={true}
+          ref={passwordRef}
         />
 
         <TouchableOpacity
-          disabled={isLoginFormEmpty()}
+          disabled={!isFieldsFilled}
           style={
-            isLoginFormEmpty()
-              ? [style.loginBtn, style.itemContainer, style.disabled]
-              : [style.loginBtn, style.itemContainer]
+            isFieldsFilled
+              ? [style.loginBtn, style.itemContainer]
+              : [style.loginBtn, style.itemContainer, style.disabled]
           }
           onPress={() => submitLogin()}
         >
