@@ -2,8 +2,14 @@ import { ApiError } from "./ApiError";
 
 export async function handleApiResponse(response) {
   if (!response.ok) {
-    const errorData = await response.json();
-    const errorMessage = errorData.message || "Unknown error";
+    let errorMessage = null;
+    const contentType = response.headers.get("content-type");
+    if (contentType && contentType.includes("application/json")) {
+      const errorData = await response.json();
+      errorMessage = errorData.message || "Unknown error";
+    } else {
+      errorMessage = await response.text();
+    }
     const statusCode = response.status;
     throw new ApiError(errorMessage, statusCode);
   }
