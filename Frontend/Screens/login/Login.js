@@ -76,7 +76,7 @@ const Login = () => {
 
   return (
     <View style={style.flex1}>
-      <View style={style.imageContainer}>
+      <View style={style.flex1}>
         <Image
           style={style.image}
           source={require("../../assets/pictures/LoginBackground.png")}
@@ -85,35 +85,31 @@ const Login = () => {
         <View style={style.blackOpacity} />
       </View>
       <View style={style.contentContainer}>
-        <View style={style.flex1}>
-          <Text style={style.welcomeHeader}>{Strings.Welcome}</Text>
-        </View>
-        <View style={style.fieldsContainer}>
-          <LoginInput
-            placeholder={Strings.MailPlaceholder}
-            keyboardType={"email-address"}
-            onChangeText={setEmail}
-            styles={style.itemContainer}
-          />
-          <LoginInput
-            placeholder={Strings.PasswordPlaceholder}
-            secureTextEntry={true}
-            onChangeText={setPassword}
-            styles={style.itemContainer}
-          />
+        <Text style={style.welcomeHeader}>{Strings.Welcome}</Text>
+        <LoginInput
+          placeholder={Strings.MailPlaceholder}
+          keyboardType={"email-address"}
+          onChangeText={setEmail}
+          styles={style.itemContainer}
+        />
+        <LoginInput
+          placeholder={Strings.PasswordPlaceholder}
+          secureTextEntry={true}
+          onChangeText={setPassword}
+          styles={style.itemContainer}
+        />
 
-          <TouchableOpacity
-            disabled={isLoginFormEmpty()}
-            style={
-              isLoginFormEmpty()
-                ? [style.loginBtn, style.itemContainer, style.disabled]
-                : [style.loginBtn, style.itemContainer]
-            }
-            onPress={() => submitLogin()}
-          >
-            <Text style={style.loginBtnText}>{Strings.LoginBtn}</Text>
-          </TouchableOpacity>
-        </View>
+        <TouchableOpacity
+          disabled={isLoginFormEmpty()}
+          style={
+            isLoginFormEmpty()
+              ? [style.loginBtn, style.itemContainer, style.disabled]
+              : [style.loginBtn, style.itemContainer]
+          }
+          onPress={() => submitLogin()}
+        >
+          <Text style={style.loginBtnText}>{Strings.LoginBtn}</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );

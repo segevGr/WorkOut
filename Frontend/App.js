@@ -31,7 +31,7 @@ const App = () => {
     <Provider store={store}>
       <StatusBar hidden />
       <KeyboardAvoidingView
-        behavior={Platform.OS === "ios" ? "padding" : "padding"}
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={{ flex: 1 }}
       >
         <NavigationContainer>

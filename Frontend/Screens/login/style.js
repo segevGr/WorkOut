@@ -11,9 +11,6 @@ const style = StyleSheet.create({
   flex1: {
     flex: 1,
   },
-  imageContainer: {
-    flex: 1,
-  },
   image: {
     width: "100%",
     height: "100%",
@@ -27,6 +24,7 @@ const style = StyleSheet.create({
     flex: 2,
     backgroundColor: Colors.opacityBlack,
     alignItems: "center",
+    paddingBottom: 30,
   },
   welcomeHeader: {
     fontFamily: getFontFamily("Heebo", "600"),
@@ -35,16 +33,9 @@ const style = StyleSheet.create({
     marginTop: verticalScale(10),
     color: Colors.white,
   },
-  fieldsContainer: {
-    flex: 5,
-    alignItems: "center",
-    flexDirection: "column",
-    justifyContent: "space-between",
-  },
   loginBtn: {
     justifyContent: "center",
     backgroundColor: Colors.submitPurple,
-    marginBottom: verticalScale(120),
   },
   disabled: {
     opacity: 0.5,
@@ -59,6 +50,7 @@ const style = StyleSheet.create({
     width: horizontalScale(250),
     height: verticalScale(40),
     borderRadius: horizontalScale(20),
+    marginVertical: verticalScale(20),
   },
 });
 
