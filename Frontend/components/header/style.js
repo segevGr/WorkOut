@@ -25,7 +25,7 @@ const style = StyleSheet.create({
   title: {
     fontSize: scaleFontSize(23),
     padding: horizontalScale(5),
-    fontFamily: getFontFamily("Heebo", "700"),
+    fontFamily: getFontFamily("NotoSansHebrew", "700"),
   },
   optionsButtonContainer: {
     marginRight: horizontalScale(28),

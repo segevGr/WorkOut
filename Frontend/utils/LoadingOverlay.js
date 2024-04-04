@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
   },
   text: {
     marginTop: verticalScale(8),
-    fontFamily: getFontFamily("Heebo", "400"),
+    fontFamily: getFontFamily("NotoSansHebrew", "400"),
     fontSize: scaleFontSize(18),
   },
 });

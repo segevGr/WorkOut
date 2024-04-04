@@ -22,7 +22,7 @@ const style = StyleSheet.create({
   },
   title: {
     fontSize: scaleFontSize(20),
-    fontFamily: getFontFamily("Heebo", "500"),
+    fontFamily: getFontFamily("NotoSansHebrew", "500"),
   },
   input: {
     height: verticalScale(25),
@@ -32,13 +32,13 @@ const style = StyleSheet.create({
     margin: horizontalScale(10),
     textAlign: "center",
     fontSize: scaleFontSize(18),
-    fontFamily: getFontFamily("Heebo", "300"),
+    fontFamily: getFontFamily("NotoSansHebrew", "300"),
   },
   errorMsg: {
     color: Colors.red,
     marginBottom: verticalScale(5),
     fontSize: scaleFontSize(15),
-    fontFamily: getFontFamily("Heebo", "400"),
+    fontFamily: getFontFamily("NotoSansHebrew", "400"),
   },
   btnsContainer: {
     flexDirection: "row",

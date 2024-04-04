@@ -22,7 +22,7 @@ const style = StyleSheet.create({
   textsTitle: {
     textAlign: "right",
     fontSize: scaleFontSize(20),
-    fontFamily: getFontFamily("Heebo", "600"),
+    fontFamily: getFontFamily("NotoSansHebrew", "600"),
   },
   contentContainer: {
     width: "100%",
@@ -30,7 +30,7 @@ const style = StyleSheet.create({
   content: {
     textAlign: "right",
     fontSize: scaleFontSize(16),
-    fontFamily: getFontFamily("Heebo", "400"),
+    fontFamily: getFontFamily("NotoSansHebrew", "400"),
   },
 });
 

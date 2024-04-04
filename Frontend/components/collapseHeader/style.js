@@ -18,7 +18,7 @@ const style = StyleSheet.create({
     fontSize: scaleFontSize(25),
     paddingHorizontal: horizontalScale(15),
     paddingVertical: verticalScale(10),
-    fontFamily: getFontFamily("Heebo", "400"),
+    fontFamily: getFontFamily("NotoSansHebrew", "400"),
     textAlign: "right",
   },
   collapseContainer: {

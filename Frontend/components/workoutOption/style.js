@@ -18,7 +18,7 @@ const style = StyleSheet.create({
   },
   workoutDetails: {
     fontSize: scaleFontSize(25),
-    fontFamily: getFontFamily("Heebo", "700"),
+    fontFamily: getFontFamily("NotoSansHebrew", "700"),
   },
   deleteButton: {
     position: "absolute",

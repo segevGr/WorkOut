@@ -27,7 +27,7 @@ const style = StyleSheet.create({
     paddingBottom: 30,
   },
   welcomeHeader: {
-    fontFamily: getFontFamily("Heebo", "600"),
+    fontFamily: getFontFamily("NotoSansHebrew", "700"),
     textAlign: "right",
     fontSize: scaleFontSize(40),
     marginTop: verticalScale(10),
@@ -41,7 +41,7 @@ const style = StyleSheet.create({
     opacity: 0.5,
   },
   loginBtnText: {
-    fontFamily: getFontFamily("Heebo", "500"),
+    fontFamily: getFontFamily("NotoSansHebrew", "700"),
     fontSize: scaleFontSize(20),
     textAlign: "center",
     color: Colors.black,
@@ -54,8 +54,8 @@ const style = StyleSheet.create({
   },
   input: {
     textAlign: "right",
-    fontFamily: getFontFamily("Heebo", "400"),
-    fontSize: scaleFontSize(16),
+    fontFamily: getFontFamily("NotoSansHebrew", "500"),
+    fontSize: scaleFontSize(14),
     color: Colors.white,
     paddingVertical: verticalScale(15),
     paddingHorizontal: horizontalScale(20),

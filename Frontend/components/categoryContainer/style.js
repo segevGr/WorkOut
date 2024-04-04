@@ -31,12 +31,12 @@ const style = StyleSheet.create({
     alignItems: "flex-end",
   },
   primaryText: {
-    fontFamily: getFontFamily("Heebo", "700"),
+    fontFamily: getFontFamily("NotoSansHebrew", "700"),
     fontSize: scaleFontSize(25),
   },
   secondaryText: {
     color: Colors.darkBluePrimary,
-    fontFamily: getFontFamily("Heebo", "400"),
+    fontFamily: getFontFamily("NotoSansHebrew", "400"),
     fontSize: scaleFontSize(16),
   },
 });

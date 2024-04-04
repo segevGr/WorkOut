@@ -17,7 +17,6 @@ const style = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    // marginTop: verticalScale(30),
   },
   btnContainer: {
     borderWidth: 1,
@@ -28,7 +27,7 @@ const style = StyleSheet.create({
   optionText: {
     color: Colors.white,
     fontSize: scaleFontSize(28),
-    fontFamily: getFontFamily("Heebo", "500"),
+    fontFamily: getFontFamily("NotoSansHebrew", "700"),
     paddingVertical: verticalScale(9),
     paddingHorizontal: horizontalScale(40),
   },
@@ -36,7 +35,7 @@ const style = StyleSheet.create({
     color: Colors.white,
     textAlign: "center",
     fontSize: scaleFontSize(16),
-    fontFamily: getFontFamily("Heebo", "300"),
+    fontFamily: getFontFamily("NotoSansHebrew", "300"),
     marginBottom: verticalScale(20),
   },
 });

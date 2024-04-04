@@ -11,8 +11,8 @@ export default Strings = {
 
   //Login page
   Welcome: "ברוכים הבאים!",
-  MailPlaceholder: "דואר אלקטרוני",
-  PasswordPlaceholder: "סיסמה",
+  MailPlaceholder: "דואר אלקטרוני:",
+  PasswordPlaceholder: "סיסמה:",
   LoginBtn: "התחברות",
   LoginLoadingMessage: "מבצע התחברות",
 
