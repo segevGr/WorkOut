@@ -5,21 +5,25 @@ import { scaleFontSize, verticalScale } from "../assets/styles/scaling";
 import { getFontFamily } from "../assets/fonts/getFontFamily";
 import Strings from "../assets/strings/Strings";
 
-const LoadingOverlay = ({ loadingText }) => {
+const LoadingOverlay = ({ loadingText, customFont }) => {
   return (
     <View style={styles.container}>
       <ActivityIndicator size="large" color="black" />
-      <Text style={styles.text}>{loadingText}</Text>
+      <Text style={[styles.text, { fontFamily: customFont }]}>
+        {loadingText}
+      </Text>
     </View>
   );
 };
 
 LoadingOverlay.defaultProps = {
   loadingText: Strings.LoadingGenericMessage,
+  customFont: getFontFamily("NotoSansHebrew", "400"),
 };
 
 LoadingOverlay.propTypes = {
   loadingText: PropTypes.string,
+  customFont: PropTypes.string,
 };
 
 export default LoadingOverlay;
@@ -34,7 +38,6 @@ const styles = StyleSheet.create({
   },
   text: {
     marginTop: verticalScale(8),
-    fontFamily: getFontFamily("NotoSansHebrew", "400"),
     fontSize: scaleFontSize(18),
   },
 });

@@ -24,7 +24,7 @@ const App = () => {
   });
 
   if (!fontsLoaded) {
-    return <LoadingOverlay />;
+    return <LoadingOverlay customFont={"System"} />;
   }
 
   return (
