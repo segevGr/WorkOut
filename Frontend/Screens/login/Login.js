@@ -64,7 +64,7 @@ const Login = () => {
     } else {
       somethingWrongAlert();
       console.error(
-        `Error in tryLogin: [${error}] Status code ${error.statusCode}`
+        `E rror in tryLogin: [${error}] Status code ${error.statusCode}`
       );
     }
   };
