@@ -64,7 +64,7 @@ const Login = () => {
     } else {
       somethingWrongAlert();
       console.error(
-        `E rror in tryLogin: [${error}] Status code ${error.statusCode}`
+        `Error in tryLogin: [${error}] Status code ${error.statusCode}`
       );
     }
   };
@@ -75,6 +75,9 @@ const Login = () => {
     }
   };
 
+  const dismissKeyboard = () => {
+    Keyboard.isVisible() && Keyboard.dismiss();
+  };
   useEffect(() => {
     email === "" || password === ""
       ? setIsFieldsFilled(false)
@@ -86,7 +89,11 @@ const Login = () => {
   }
 
   return (
-    <View style={style.flex1}>
+    <TouchableOpacity
+      style={style.flex1}
+      onPress={dismissKeyboard}
+      activeOpacity={1}
+    >
       <View style={style.flex1}>
         <Image
           style={style.image}
@@ -131,7 +138,7 @@ const Login = () => {
           <Text style={style.loginBtnText}>{Strings.LoginBtn}</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
