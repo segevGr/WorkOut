@@ -19,11 +19,26 @@ const Header = ({
 }) => {
   const navigation = useNavigation();
 
+  const getRightIcon = () => {
+    if (optionButtonIcon?.icon) {
+      return (
+        <TouchableOpacity onPress={optionButtonFunction}>
+          <FontAwesomeIcon
+            icon={optionButtonIcon}
+            size={horizontalScale(25)}
+            color={textColor}
+          />
+        </TouchableOpacity>
+      );
+    }
+    return optionButtonIcon;
+  };
+
   return (
     <View style={style.headerContainer}>
       <View style={style.headerItemsContainer}>
         <View style={style.backButtonContainer}>
-          {canGoBack ? (
+          {canGoBack && (
             <TouchableOpacity onPress={navigation.goBack}>
               <FontAwesomeIcon
                 icon={faArrowLeftLong}
@@ -31,23 +46,10 @@ const Header = ({
                 color={textColor}
               />
             </TouchableOpacity>
-          ) : null}
+          )}
         </View>
         <Text style={{ ...style.title, color: textColor }}>{title}</Text>
-        <View
-          style={{
-            ...style.optionsButtonContainer,
-            ...(optionButtonIcon ? {} : { opacity: 0 }),
-          }}
-        >
-          <TouchableOpacity onPress={optionButtonFunction}>
-            <FontAwesomeIcon
-              icon={optionButtonIcon ? optionButtonIcon : faArrowLeftLong}
-              size={horizontalScale(25)}
-              color={textColor}
-            />
-          </TouchableOpacity>
-        </View>
+        <View style={style.optionsButtonContainer}>{getRightIcon()}</View>
       </View>
       <View style={style.divider} />
     </View>
