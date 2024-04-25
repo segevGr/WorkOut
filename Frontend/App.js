@@ -1,5 +1,5 @@
 import React from "react";
-import { KeyboardAvoidingView, Platform } from "react-native";
+import { KeyboardAvoidingView, Platform, I18nManager } from "react-native";
 import { Provider } from "react-redux";
 
 import LoadingOverlay from "./utils/LoadingOverlay";
@@ -26,6 +26,8 @@ const App = () => {
   if (!fontsLoaded) {
     return <LoadingOverlay customFont={"System"} />;
   }
+
+  I18nManager.allowRTL(false);
 
   return (
     <Provider store={store}>
